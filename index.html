@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivez - Never Be Bored Again</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+        }
+
+        .bg-primary {
+            background-color: #e91e63;
+        }
+
+        .text-primary {
+            color: #e91e63;
+        }
+
+        .border-primary {
+            border-color: #e91e63;
+        }
+
+        .ring-primary {
+            --tw-ring-color: #e91e63;
+        }
+
+        .btn {
+            @apply font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out;
+        }
+
+        .btn-primary {
+            @apply bg-primary text-white hover:bg-opacity-90;
+        }
+
+        .btn-outline {
+            @apply bg-transparent border-2 border-gray-300 text-gray-700 hover:bg-gray-100;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: #e91e63;
+            margin: 16px auto 0;
+        }
+
+        .phone-mockup {
+            display: inline-block;
+            padding: 40px 10px 50px;
+            background: #1a1a1a;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 6px;
+            background: #333;
+            border-radius: 3px;
+        }
+
+        .phone-mockup img {
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-primary">Motivez</h1>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#features" class="text-gray-600 hover:text-primary">Features</a>
+                <a href="#why" class="text-gray-600 hover:text-primary">Why Motivez</a>
+                <a href="#screenshots" class="text-gray-600 hover:text-primary">Screenshots</a>
+            </div>
+            <a href="#waitlist" class="btn btn-primary">
+                Get Early Access
+            </a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-white py-20 px-6 text-center">
+        <div class="container mx-auto">
+            <span class="inline-block bg-pink-100 text-primary text-sm font-bold px-4 py-1 rounded-full mb-4">✨ Coming
+                Soon</span>
+            <h2 class="text-5xl md:text-7xl font-extrabold text-gray-900 leading-tight">
+                Never Be Bored Again
+            </h2>
+            <p class="text-xl md:text-2xl mt-4 text-gray-600 max-w-3xl mx-auto">
+                Discover, Plan, and Share Amazing Experiences Near You!
+            </p>
+            <div class="mt-8 flex justify-center gap-4">
+                <a href="#waitlist" class="btn btn-primary">Get Early Access →</a>
+                <a href="#features" class="btn btn-outline">Learn More</a>
+            </div>
+            <div class="mt-16">
+                <div class="phone-mockup">
+                    <img src="images/logo.png" alt="Motivez App Screenshot" class="w-full max-w-xs mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Motivez? -->
+    <section class="py-24 px-6 bg-gray-50">
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="text-left">
+                <h3 class="text-4xl font-bold mb-6 section-title text-center md:text-left">What is Motivez?</h3>
+                <p class="text-lg text-gray-700 mb-8">
+                    Motivez is a mobile app that helps you and your friends find fun things to do—anywhere, anytime.
+                    Instantly get personalized recommendations for activities, events, restaurants, and unique local
+                    spots based on your mood, budget, and location.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start"><i class="fas fa-map-marker-alt text-primary mt-1 mr-4"></i>
+                        <p><strong>Location-Based Discovery:</strong> Find amazing spots and activities right around
+                            you.</p>
+                    </div>
+                    <div class="flex items-start"><i class="fas fa-users text-primary mt-1 mr-4"></i>
+                        <p><strong>Social Planning:</strong> Plan activities with friends and share memorable moments.
+                        </p>
+                    </div>
+                    <div class="flex items-start"><i class="fas fa-lightbulb text-primary mt-1 mr-4"></i>
+                        <p><strong>Real-Time Recommendations:</strong> Get instant suggestions based on your mood and
+                            budget.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="phone-mockup">
+                    <video src="videos/main.mov" autoplay loop muted playsinline
+                        class="w-full max-w-xs mx-auto rounded-xl shadow-lg" alt="Motivez App Preview">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Key Features -->
+    <section id="features" class="py-24 px-6">
+        <div class="container mx-auto">
+            <h3 class="text-4xl font-bold text-center mb-4 section-title">Key Features</h3>
+            <p class="text-center text-lg text-gray-600 mb-16 max-w-2xl mx-auto">Everything you need to discover, plan,
+                and share amazing experiences.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-gray-50 p-8 rounded-lg text-center hover:shadow-xl transition-shadow"><i
+                        class="fas fa-magic text-3xl text-primary mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Personalized Suggestions</h4>
+                    <p class="text-gray-600">Recommendations based on your interests, location, and budget.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-lg text-center hover:shadow-xl transition-shadow"><i
+                        class="fas fa-fire text-3xl text-primary mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Real-time Events</h4>
+                    <p class="text-gray-600">Discover trending places and live events as they happen.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-lg text-center hover:shadow-xl transition-shadow"><i
+                        class="fas fa-wallet text-3xl text-primary mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Cost & Travel Estimates</h4>
+                    <p class="text-gray-600">Plan outings with clear cost and travel information.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-lg text-center hover:shadow-xl transition-shadow"><i
+                        class="fas fa-users-cog text-3xl text-primary mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Group Planning</h4>
+                    <p class="text-gray-600">Easily plan activities with your friends in one place.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-lg text-center hover:shadow-xl transition-shadow"><i
+                        class="fas fa-camera-retro text-3xl text-primary mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Motivez Moments</h4>
+                    <p class="text-gray-600">Share memories and create group chats after every outing.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-lg text-center hover:shadow-xl transition-shadow"><i
+                        class="fas fa-map-marked-alt text-3xl text-primary mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Interactive Map View</h4>
+                    <p class="text-gray-600">Find cool spots around you with an intuitive map.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-lg text-center hover:shadow-xl transition-shadow"><i
+                        class="fas fa-heart text-3xl text-primary mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Save Favorites</h4>
+                    <p class="text-gray-600">Bookmark your favorite places and activities for later.</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-lg text-center hover:shadow-xl transition-shadow"><i
+                        class="fas fa-compass text-3xl text-primary mb-4"></i>
+                    <h4 class="text-xl font-bold mb-2">Explore New Places</h4>
+                    <p class="text-gray-600">Step out of your comfort zone and discover hidden gems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Motivez? -->
+    <section id="why" class="py-24 px-6 bg-gray-50">
+        <div class="container mx-auto text-center">
+            <h3 class="text-4xl font-bold mb-16 section-title">Why Motivez?</h3>
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto items-start">
+                <div class="bg-primary text-white p-8 rounded-lg text-left">
+                    <h4 class="text-2xl font-bold mb-4">The Problem</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start"><i class="fas fa-hourglass-half mr-3 mt-1"></i><span>Hours wasted
+                                searching for things to do.</span></li>
+                        <li class="flex items-start"><i class="fas fa-search-minus mr-3 mt-1"></i><span>Endless
+                                scrolling through multiple apps.</span></li>
+                        <li class="flex items-start"><i class="fas fa-meh mr-3 mt-1"></i><span>Missing out on amazing
+                                local experiences.</span></li>
+                    </ul>
+                </div>
+                <div class="text-left p-8">
+                    <h4 class="text-2xl font-bold mb-4">The Motivez Solution</h4>
+                    <p class="text-gray-600 mb-6">With Motivez, you discover, plan, and share memorable experiences in
+                        one tap—no hassle, just fun.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><span
+                                class="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">1</span><span><strong>Instant
+                                    Discovery:</strong> Get personalized recommendations in seconds.</span></li>
+                        <li class="flex items-start"><span
+                                class="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">2</span><span><strong>Easy
+                                    Planning:</strong> Coordinate with friends effortlessly.</span></li>
+                        <li class="flex items-start"><span
+                                class="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">3</span><span><strong>Share
+                                    Memories:</strong> Create lasting memories with Motivez Moments.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="py-24 px-6">
+        <div class="container mx-auto">
+            <h3 class="text-4xl font-bold text-center mb-4 section-title">See Motivez in Action</h3>
+            <p class="text-center text-lg text-gray-600 mb-16 max-w-2xl mx-auto">Get a sneak peek at the app that's
+                going to transform how you discover and plan activities.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <img src="images/find.png" alt="Home Screen"
+                        class="bg-gray-100 p-2 rounded-lg w-full mb-4 shadow-lg">
+                    <h5 class="font-bold">Discover Activities</h5>
+                    <p class="text-sm text-gray-600">Personalized recommendations</p>
+                </div>
+                <div class="text-center">
+                    <img src="images/dm.png" alt="Group Chat" class="bg-gray-100 p-2 rounded-lg w-full mb-4 shadow-lg">
+                    <h5 class="font-bold">Group Planning</h5>
+                    <p class="text-sm text-gray-600">Plan with friends and coordinate</p>
+                </div>
+                <div class="text-center">
+                    <img src="images/map.png" alt="Map View" class="bg-gray-100 p-2 rounded-lg w-full mb-4 shadow-lg">
+                    <h5 class="font-bold">Map View</h5>
+                    <p class="text-sm text-gray-600">Explore fun spots around you</p>
+                </div>
+                <div class="text-center">
+                    <img src="images/cal.png" alt="Motivez Calendar"
+                        class="bg-gray-100 p-2 rounded-lg w-full mb-4 shadow-lg">
+                    <h5 class="font-bold">Motivez Calendar</h5>
+                    <p class="text-sm text-gray-600">Organize events, track your plans, and stay on top of what’s next
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Waitlist Section -->
+    <section id="waitlist" class="bg-gray-50 py-24 px-6">
+        <div class="container mx-auto text-center max-w-2xl bg-white p-12 rounded-2xl shadow-xl">
+            <h3 class="text-4xl font-bold mb-4">Get Early Access!</h3>
+            <p class="text-lg text-gray-600 mb-8">Sign up to be notified when Motivez launches and be the first to try
+                it. Join thousands of others who are ready to never be bored again!</p>
+            <form id="waitlist-form" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <input type="email" id="email-input" placeholder="Enter your email" required
+                    class="flex-grow p-4 rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-2 ring-primary">
+                <button type="submit" class="btn btn-primary">
+                    Join Waitlist →
+                </button>
+            </form>
+            <div id="success-message"
+                class="mt-6 text-green-500 font-bold hidden rounded-lg p-4 bg-green-100 text-center">
+                <i class="fas fa-check-circle mr-2"></i>You're In! Thanks for joining the waitlist! We'll notify you
+                soon.
+            </div>
+            <p class="text-sm text-gray-500 mt-4">No spam, ever. We'll only notify you when Motivez is ready.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-16 px-6">
+        <div class="container mx-auto grid md:grid-cols-3 gap-8 text-center md:text-left">
+            <div class="space-y-4">
+                <h4 class="text-2xl font-bold text-white">Motivez</h4>
+                <p class="text-gray-400">Never be bored again. Discover, plan, and share amazing experiences near you.
+                </p>
+            </div>
+            <div class="space-y-4">
+                <h5 class="font-bold text-white uppercase tracking-wider">Contact</h5>
+                <a href="mailto:motivezapp@gmail.com"
+                    class="block text-gray-400 hover:text-primary">motivezapp@gmail.com</a>
+            </div>
+            <div class="space-y-4">
+                <h5 class="font-bold text-white uppercase tracking-wider">Follow Us</h5>
+                <div class="flex justify-center md:justify-start space-x-6">
+                    <a href="#" class="text-2xl hover:text-primary"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-2xl hover:text-primary"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto mt-12 pt-8 border-t border-gray-800 text-center text-gray-500">
+            &copy; 2025 Motivez. All rights reserved. Coming soon to iOS and Android.
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('waitlist-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const emailInput = document.getElementById('email-input');
+            const successMessage = document.getElementById('success-message');
+
+            if (emailInput.value) {
+                console.log('Email submitted:', emailInput.value);
+
+                emailInput.value = '';
+                // Hide form, show message
+                document.getElementById('waitlist-form').classList.add('hidden');
+                successMessage.classList.remove('hidden');
+
+                // Optional: reset after some time
+                setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                    document.getElementById('waitlist-form').classList.remove('hidden');
+                }, 5000);
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetEl = document.querySelector(this.getAttribute('href'));
+                if (targetEl) {
+                    targetEl.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
