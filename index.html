@@ -328,40 +328,48 @@
     </footer>
 
     <script>
-        document.getElementById('waitlist-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const emailInput = document.getElementById('email-input');
-            const successMessage = document.getElementById('success-message');
+    document.getElementById('waitlist-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const emailInput = document.getElementById('email-input');
+        const successMessage = document.getElementById('success-message');
+        const email = emailInput.value;
 
-            if (emailInput.value) {
-                console.log('Email submitted:', emailInput.value);
-
+        if (email) {
+            // Send to SheetDB (Google Sheet)
+            fetch('https://sheetdb.io/api/v1/incc588aum0dn', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: [{ Email: email }] }),
+            }).then(() => {
                 emailInput.value = '';
                 // Hide form, show message
                 document.getElementById('waitlist-form').classList.add('hidden');
                 successMessage.classList.remove('hidden');
-
                 // Optional: reset after some time
                 setTimeout(() => {
                     successMessage.classList.add('hidden');
                     document.getElementById('waitlist-form').classList.remove('hidden');
                 }, 5000);
+            }).catch(() => {
+                alert("There was an error submitting your email. Please try again later.");
+            });
+        }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetEl = document.querySelector(this.getAttribute('href'));
+            if (targetEl) {
+                targetEl.scrollIntoView({
+                    behavior: 'smooth'
+                });
             }
         });
+    });
+</script>
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetEl = document.querySelector(this.getAttribute('href'));
-                if (targetEl) {
-                    targetEl.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>
