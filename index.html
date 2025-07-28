@@ -8,6 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -83,7 +84,7 @@
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-3xl font-bold text-primary">Motivez</h1>
+            <img src="images/wordlogo.png" alt="Motivez Logo" class="h-20">
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#features" class="text-gray-600 hover:text-primary">Features</a>
                 <a href="#why" class="text-gray-600 hover:text-primary">Why Motivez</a>
@@ -112,7 +113,7 @@
             </div>
             <div class="mt-16">
                 <div class="phone-mockup">
-                    <img src="images/logo.png" alt="Motivez App Screenshot" class="w-full max-w-xs mx-auto">
+                    <img src="images/screen.png" alt="Motivez App Screenshot" class="w-full max-w-xs mx-auto">
                 </div>
             </div>
         </div>
@@ -328,47 +329,47 @@
     </footer>
 
     <script>
-    document.getElementById('waitlist-form').addEventListener('submit', function (event) {
-        event.preventDefault();
-        const emailInput = document.getElementById('email-input');
-        const successMessage = document.getElementById('success-message');
-        const email = emailInput.value;
+        document.getElementById('waitlist-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const emailInput = document.getElementById('email-input');
+            const successMessage = document.getElementById('success-message');
+            const email = emailInput.value;
 
-        if (email) {
-            // Send to SheetDB (Google Sheet)
-            fetch('https://sheetdb.io/api/v1/incc588aum0dn', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ data: [{ Email: email }] }),
-            }).then(() => {
-                emailInput.value = '';
-                // Hide form, show message
-                document.getElementById('waitlist-form').classList.add('hidden');
-                successMessage.classList.remove('hidden');
-                // Optional: reset after some time
-                setTimeout(() => {
-                    successMessage.classList.add('hidden');
-                    document.getElementById('waitlist-form').classList.remove('hidden');
-                }, 5000);
-            }).catch(() => {
-                alert("There was an error submitting your email. Please try again later.");
-            });
-        }
-    });
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetEl = document.querySelector(this.getAttribute('href'));
-            if (targetEl) {
-                targetEl.scrollIntoView({
-                    behavior: 'smooth'
+            if (email) {
+                // Send to SheetDB (Google Sheet)
+                fetch('https://sheetdb.io/api/v1/incc588aum0dn', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ data: [{ Email: email }] }),
+                }).then(() => {
+                    emailInput.value = '';
+                    // Hide form, show message
+                    document.getElementById('waitlist-form').classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    // Optional: reset after some time
+                    setTimeout(() => {
+                        successMessage.classList.add('hidden');
+                        document.getElementById('waitlist-form').classList.remove('hidden');
+                    }, 5000);
+                }).catch(() => {
+                    alert("There was an error submitting your email. Please try again later.");
                 });
             }
         });
-    });
-</script>
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetEl = document.querySelector(this.getAttribute('href'));
+                if (targetEl) {
+                    targetEl.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 
