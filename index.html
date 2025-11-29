@@ -6,343 +6,823 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Motivez - Never Be Bored Again</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="icon" type="image/png" href="images/favicon.png" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <style>
     :root {
-      --primary: #e91e63;
-      --bg-dark: #0e0e0f;
-      --bg-darker: #060606;
-      --text: #f5f5f5;
+      --bg: #05060b;
+      --panel: rgba(255, 255, 255, 0.06);
+      --primary: #22d3ee;
+      --primary-2: #f472b6;
+      --text: #e9edf7;
+      --muted: #9fb2cf;
+      --glow: 0 20px 80px rgba(34, 211, 238, 0.35);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Sora', system-ui, -apple-system, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(800px 600px at 10% 20%, rgba(233, 30, 99, .2), transparent 70%),
-        radial-gradient(900px 800px at 90% 10%, rgba(233, 30, 99, .2), transparent 70%),
-        linear-gradient(180deg, var(--bg-dark), var(--bg-darker));
+        radial-gradient(900px 900px at 10% 10%, rgba(244, 114, 182, 0.18), transparent),
+        radial-gradient(900px 900px at 80% 0%, rgba(34, 211, 238, 0.18), transparent),
+        linear-gradient(180deg, #03040a, #060713 50%, #04040b);
       overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .noise::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+      opacity: 0.6;
+      mix-blend-mode: soft-light;
+      z-index: 0;
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 90px 90px, 90px 90px;
+      opacity: 0.6;
+      mask-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.5), transparent 65%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
     }
 
     .floating-header {
       position: sticky;
-      top: 20px;
-      z-index: 50;
-      margin: 0 auto 2rem;
-      width: 90%;
-      max-width: 1100px;
-      background: rgba(255, 255, 255, 0.08);
+      top: 16px;
+      z-index: 20;
       backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 24px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-      transition: background 0.3s ease, backdrop-filter 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      background: linear-gradient(120deg, rgba(34, 211, 238, 0.14), rgba(244, 114, 182, 0.14));
+      box-shadow: 0 18px 70px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+      transform: translateY(-2px);
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.35rem;
-      padding: 0.9rem 1.25rem;
-      border-radius: 14px;
+      gap: 0.45rem;
+      padding: 0.95rem 1.35rem;
+      border-radius: 16px;
       font-weight: 700;
       border: 1px solid transparent;
-      transition: all 0.2s ease;
       text-decoration: none;
       cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease;
+      font-family: 'Space Grotesk', 'Sora', sans-serif;
     }
 
-    .btn:focus {
-      outline: 2px solid rgba(233, 30, 99, 0.6);
-      outline-offset: 2px;
-    }
-
-    .btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
+    .btn:focus-visible {
+      outline: 2px solid rgba(34, 211, 238, 0.8);
+      outline-offset: 3px;
     }
 
     .btn-primary {
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 8px 24px rgba(233, 30, 99, 0.35);
+      background: linear-gradient(120deg, #22d3ee, #f472b6);
+      color: #041019;
+      box-shadow: 0 20px 50px rgba(34, 211, 238, 0.35);
     }
 
     .btn-primary:hover {
-      box-shadow: 0 12px 30px rgba(233, 30, 99, 0.45);
-      transform: translateY(-1px);
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 24px 70px rgba(244, 114, 182, 0.35);
     }
 
-    .btn-outline {
-      border: 1px solid rgba(255, 255, 255, 0.35);
+    .btn-ghost {
+      border: 1px solid rgba(255, 255, 255, 0.18);
       color: var(--text);
-      background: transparent;
+      background: rgba(255, 255, 255, 0.03);
     }
 
-    .btn-outline:hover {
-      border-color: var(--primary);
-      color: white;
-      box-shadow: 0 10px 28px rgba(233, 30, 99, 0.2);
-      transform: translateY(-1px);
+    .btn-ghost:hover {
+      border-color: rgba(34, 211, 238, 0.6);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 35px rgba(34, 211, 238, 0.25);
     }
 
-    footer {
-      background: #050506;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.8rem;
     }
 
-    /* Swiper styling */
+    .hero-grid {
+      position: absolute;
+      inset: -10% -30%;
+      background: radial-gradient(circle at 30% 20%, rgba(34, 211, 238, 0.15), transparent 30%),
+        radial-gradient(circle at 70% 40%, rgba(244, 114, 182, 0.16), transparent 32%),
+        radial-gradient(1200px 1200px at 50% 60%, rgba(255, 255, 255, 0.04), transparent 60%);
+      filter: blur(10px);
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    .orb {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle at 30% 30%, rgba(34, 211, 238, 0.8), rgba(34, 211, 238, 0));
+      filter: blur(60px);
+      opacity: 0.7;
+      animation: float 14s ease-in-out infinite;
+      mix-blend-mode: screen;
+    }
+
+    .orb.pink {
+      background: radial-gradient(circle at 70% 30%, rgba(244, 114, 182, 0.85), rgba(244, 114, 182, 0));
+      animation-delay: -5s;
+    }
+
+    .orb.purple {
+      background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.7), rgba(99, 102, 241, 0));
+      animation-delay: -9s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate3d(-10px, 0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate3d(30px, -40px, 0) scale(1.08);
+      }
+
+      100% {
+        transform: translate3d(-10px, 0, 0) scale(1);
+      }
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', 'Sora', sans-serif;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-visual {
+      position: relative;
+      perspective: 1400px;
+      isolation: isolate;
+    }
+
+    .visual-card {
+      position: relative;
+      width: min(520px, 90vw);
+      aspect-ratio: 10 / 13;
+      margin: 0 auto;
+      border-radius: 36px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.45), 0 15px 60px rgba(34, 211, 238, 0.25);
+      overflow: hidden;
+      transform: rotateX(6deg) rotateY(-10deg);
+      transform-style: preserve-3d;
+      animation: hover 12s ease-in-out infinite;
+    }
+
+    @keyframes hover {
+      0% {
+        transform: rotateX(6deg) rotateY(-10deg) translateY(0);
+      }
+
+      50% {
+        transform: rotateX(4deg) rotateY(-6deg) translateY(-12px);
+      }
+
+      100% {
+        transform: rotateX(6deg) rotateY(-10deg) translateY(0);
+      }
+    }
+
+    .visual-card::after {
+      content: '';
+      position: absolute;
+      inset: 16%;
+      border-radius: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 0 80px rgba(255, 255, 255, 0.08);
+      pointer-events: none;
+    }
+
+    .visual-card img,
+    .visual-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      mix-blend-mode: screen;
+    }
+
+    .floating-chip {
+      position: absolute;
+      top: 12%;
+      left: 8%;
+      padding: 0.65rem 1rem;
+      border-radius: 16px;
+      background: rgba(4, 16, 25, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--text);
+      box-shadow: var(--glow);
+      transform: translateZ(60px);
+    }
+
+    .floating-chip.second {
+      top: auto;
+      bottom: 14%;
+      left: auto;
+      right: 8%;
+    }
+
+    .floating-planet {
+      position: absolute;
+      right: -60px;
+      top: 18%;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #22d3ee, rgba(34, 211, 238, 0));
+      box-shadow: inset -24px -24px 50px rgba(4, 16, 25, 0.9), 0 40px 120px rgba(34, 211, 238, 0.45);
+      transform: translateZ(160px) rotateY(20deg);
+      animation: float 12s ease-in-out infinite;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 1rem 1.25rem;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .stat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(140deg, rgba(34, 211, 238, 0.15), rgba(244, 114, 182, 0.15));
+      display: grid;
+      place-items: center;
+      color: var(--text);
+    }
+
+    .section {
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.03);
+      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(900px 900px at 20% 20%, rgba(34, 211, 238, 0.08), transparent),
+        radial-gradient(700px 700px at 90% 10%, rgba(244, 114, 182, 0.08), transparent);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .feature-card {
+      position: relative;
+      padding: 1.6rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px) rotateX(2deg);
+      border-color: rgba(34, 211, 238, 0.4);
+      box-shadow: 0 30px 80px rgba(34, 211, 238, 0.2);
+    }
+
+    .feature-card .flare {
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.18), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .feature-card:hover .flare {
+      opacity: 1;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .timeline-card {
+      position: relative;
+      padding: 1.5rem;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+
+    .timeline-card::before {
+      content: attr(data-step);
+      position: absolute;
+      top: -28px;
+      right: 16px;
+      font-size: 90px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.04);
+      letter-spacing: -0.05em;
+      pointer-events: none;
+    }
+
+    .spline {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(600px 600px at 50% -10%, rgba(34, 211, 238, 0.15), transparent 55%),
+        radial-gradient(600px 600px at 50% 110%, rgba(244, 114, 182, 0.1), transparent 55%);
+      opacity: 0.5;
+      pointer-events: none;
+      filter: blur(20px);
+    }
+
     .swiper {
       width: 100%;
-      max-width: 360px;
-      height: 700px;
+      max-width: 420px;
+      height: 760px;
     }
 
     .swiper-slide {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
       overflow: hidden;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
+      align-items: stretch;
+      justify-content: center;
     }
 
-    .swiper-slide img {
+    .swiper-slide img,
+    .swiper-slide video {
       width: 100%;
-      height: 700px;
+      height: 100%;
       object-fit: cover;
     }
 
     .swiper-pagination-bullet {
       background: var(--primary);
+      opacity: 0.5;
+    }
+
+    .swiper-pagination-bullet-active {
+      opacity: 1;
+      width: 12px;
+      height: 12px;
+    }
+
+    .marquee {
+      display: flex;
+      gap: 1.5rem;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.85rem 1.25rem;
+      mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 1.5rem;
+      animation: marquee 16s linear infinite;
+      white-space: nowrap;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .tilt {
+      transform-style: preserve-3d;
+      transition: transform 0.2s ease;
+    }
+
+    .footer {
+      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    @media (max-width: 768px) {
+      .visual-card {
+        transform: none;
+        animation: hover 14s ease-in-out infinite;
+      }
+
+      .floating-header {
+        top: 10px;
+      }
     }
   </style>
 </head>
 
-<body>
+<body class="noise">
+  <div class="grid-overlay"></div>
+  <div class="orb" style="top:10%;left:-6%;"></div>
+  <div class="orb pink" style="bottom:12%;left:12%;"></div>
+  <div class="orb purple" style="top:18%;right:-10%;"></div>
+  <div class="hero-grid"></div>
+
   <!-- Header -->
-  <header class="floating-header mt-6">
-    <nav class="px-8 py-4 flex justify-between items-center flex-wrap">
-      <img src="images/wordlogo.png" alt="Motivez Logo" class="h-14" />
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="#features" class="text-gray-200 hover:text-pink-400">Features</a>
-        <a href="#why" class="text-gray-200 hover:text-pink-400">Why Motivez</a>
-        <a href="#screenshots" class="text-gray-200 hover:text-pink-400">Screenshots</a>
+  <header class="floating-header shell mt-6">
+    <nav class="flex items-center justify-between px-6 py-4">
+      <div class="flex items-center gap-3">
+        <img src="images/wordlogo.png" alt="Motivez Logo" class="h-12" />
+        <div class="hidden md:flex flex-col leading-tight">
+          <span class="text-sm text-slate-200 uppercase tracking-[0.3em]">Motivez</span>
+          <span class="text-lg text-white font-semibold">Never be bored again</span>
+        </div>
       </div>
-      <a href="#waitlist" class="btn btn-primary text-sm">Get Early Access</a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#why" class="nav-link">Why Motivez</a>
+        <a href="#screenshots" class="nav-link">Screens</a>
+        <a href="#waitlist" class="nav-link">Waitlist</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="#screenshots" class="btn btn-ghost text-sm">See the app</a>
+        <a href="#waitlist" class="btn btn-primary text-sm">Join early →</a>
+      </div>
     </nav>
   </header>
 
   <!-- Hero -->
-  <section class="py-24 px-6 text-center">
-    <div class="container mx-auto">
-      <span class="inline-block bg-pink-900/40 text-pink-300 text-sm font-bold px-4 py-1 rounded-full mb-4">✨ Coming
-        Soon</span>
-      <h2 class="text-5xl md:text-7xl font-extrabold text-white leading-tight">Never Be Bored Again</h2>
-      <p class="text-xl md:text-2xl mt-4 text-gray-300 max-w-3xl mx-auto">Discover, plan, and share amazing experiences
-        near you!</p>
-      <div class="mt-8 flex justify-center gap-4">
-        <a href="#waitlist" class="btn btn-primary">Get Early Access →</a>
-        <a href="#features" class="btn btn-outline">Learn More</a>
+  <section class="relative overflow-hidden pt-16 pb-24">
+    <div class="shell grid lg:grid-cols-2 gap-14 items-center mt-8">
+      <div class="relative z-10 space-y-6">
+        <span class="badge">
+          <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Live near you soon
+        </span>
+        <h1 class="hero-title text-4xl md:text-6xl font-semibold text-white leading-tight">
+          The social adventure OS. <span class="text-cyan-300">Instant plans.</span>
+          <span class="text-pink-200">No boring nights.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-slate-200/80 max-w-2xl">
+          Swipe through hyper-personalized ideas, roll the Motivez dice, and launch nights out with your crew in one tap.
+          Motivez is a cinematic control room for your free time.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#waitlist" class="btn btn-primary text-base">Get early access →</a>
+          <a href="#features" class="btn btn-ghost text-base">Explore features</a>
+        </div>
+
+        <div class="marquee mt-6">
+          <div class="marquee-track">
+            Real-time heatmaps • Dice of destiny • Instant cost + travel • Private squads • Vibes-based discovery •
+            Keep-score memories • Zero-scroll planning • Live RSVP timelines • Real-time heatmaps • Dice of destiny •
+            Instant cost + travel • Private squads
+          </div>
+          <div class="marquee-track">
+            Real-time heatmaps • Dice of destiny • Instant cost + travel • Private squads • Vibes-based discovery •
+            Keep-score memories • Zero-scroll planning • Live RSVP timelines • Real-time heatmaps • Dice of destiny •
+            Instant cost + travel • Private squads
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-card tilt" data-tilt>
+            <div class="stat-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div>
+              <p class="text-sm text-slate-400">Instant picks</p>
+              <p class="text-lg font-semibold text-white">Dice decides for you</p>
+            </div>
+          </div>
+          <div class="stat-card tilt" data-tilt>
+            <div class="stat-icon"><i class="fa-solid fa-people-group"></i></div>
+            <div>
+              <p class="text-sm text-slate-400">Crew-ready</p>
+              <p class="text-lg font-semibold text-white">Sync friends in seconds</p>
+            </div>
+          </div>
+          <div class="stat-card tilt" data-tilt>
+            <div class="stat-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <p class="text-sm text-slate-400">Near you</p>
+              <p class="text-lg font-semibold text-white">Live local intel</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="mt-16">
-        <div class="phone-mockup">
-          <img src="images/screen.png" alt="Motivez App Screenshot"
-            class="w-full max-w-xs mx-auto rounded-3xl shadow-2xl border border-white/10" />
+
+      <div class="hero-visual">
+        <div class="visual-card">
+          <video src="videos/main.mov" autoplay loop muted playsinline></video>
+          <div class="floating-chip">
+            <p class="text-xs text-slate-300 uppercase tracking-[0.25em]">Realtime</p>
+            <p class="font-semibold text-white">Trending motives unlocked</p>
+          </div>
+          <div class="floating-chip second">
+            <p class="text-xs text-slate-300 uppercase tracking-[0.25em]">Dice</p>
+            <p class="font-semibold text-white flex items-center gap-1">
+              Roll for tonight <i class="fa-solid fa-dice"></i>
+            </p>
+          </div>
+          <div class="floating-planet"></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- What is Motivez -->
-  <section class="py-24 px-6 bg-[#121213]">
-    <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
-      <div class="text-left">
-        <h3 class="text-4xl font-bold mb-6 section-title text-center md:text-left text-white">What is Motivez?</h3>
-        <p class="text-lg text-gray-300 mb-8">Motivez helps you and your friends find fun things to do — anywhere,
-          anytime.</p>
-        <div class="space-y-4">
-          <div class="flex items-start"><i class="fas fa-map-marker-alt text-pink-500 mt-1 mr-4"></i>
-            <p><strong>Location-Based Discovery:</strong> Find amazing spots and activities right around you.</p>
+  <section id="what" class="shell section py-16 px-6 md:px-10 mt-6">
+    <div class="spline"></div>
+    <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-4">
+        <p class="badge w-fit">What is Motivez?</p>
+        <h2 class="hero-title text-4xl md:text-5xl font-semibold text-white">Your personal play-captain.</h2>
+        <p class="text-lg text-slate-200/90 leading-relaxed">
+          Motivez helps you and your friends find epic things to do — anywhere, anytime. It is the first social app that
+          treats planning like a game: fast swipes, cinematic UI, and zero friction from idea to invite.
+        </p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="feature-card tilt" data-tilt>
+            <span class="meta-pill"><i class="fa-solid fa-map-pin"></i> Around you</span>
+            <h4 class="text-xl font-semibold mt-3">Location-based discovery</h4>
+            <p class="text-slate-300 mt-1">Curated drops for your block, aligned with your mood, budget, and time.</p>
+            <span class="flare"></span>
           </div>
-          <div class="flex items-start"><i class="fas fa-users text-pink-500 mt-1 mr-4"></i>
-            <p><strong>Social Planning:</strong> Plan activities with friends and share memorable moments.</p>
-          </div>
-          <div class="flex items-start"><i class="fas fa-lightbulb text-pink-500 mt-1 mr-4"></i>
-            <p><strong>Real-Time Recommendations:</strong> Get instant suggestions based on your mood and budget.</p>
+          <div class="feature-card tilt" data-tilt>
+            <span class="meta-pill"><i class="fa-solid fa-heart-pulse"></i> Vibes</span>
+            <h4 class="text-xl font-semibold mt-3">Live recommendations</h4>
+            <p class="text-slate-300 mt-1">See what is trending right now, and autoplan with suggested routes.</p>
+            <span class="flare"></span>
           </div>
         </div>
       </div>
-      <div class="text-center">
-        <div class="phone-mockup">
-          <video src="videos/main.mov" autoplay loop muted playsinline
-            class="w-full max-w-xs mx-auto rounded-xl shadow-lg"></video>
+      <div class="grid gap-4">
+        <div class="feature-card tilt" data-tilt>
+          <div class="meta-pill"><i class="fa-solid fa-wand-magic-sparkles"></i> Mood-matched</div>
+          <h4 class="text-2xl font-semibold mt-3">Instant adventure generator</h4>
+          <p class="text-slate-300 mt-2">Swipe your way to a night out with hyper-personalized picks, then lock it with
+            Motivez dice when the crew cannot decide.</p>
+          <span class="flare"></span>
+        </div>
+        <div class="feature-card tilt" data-tilt>
+          <div class="meta-pill"><i class="fa-solid fa-people-arrows"></i> Social core</div>
+          <h4 class="text-2xl font-semibold mt-3">Social planning without group chats</h4>
+          <p class="text-slate-300 mt-2">Invite friends, collect RSVPs, track costs and travel, and keep memories in one
+            timeline. Motivez is the shared cockpit for your crew.</p>
+          <span class="flare"></span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Key Features -->
-  <section id="features" class="py-24 px-6 bg-[#0d0d0e]">
-    <div class="container mx-auto">
-      <h3 class="text-4xl font-bold text-center mb-4 section-title text-white">Key Features</h3>
-      <p class="text-center text-lg text-gray-400 mb-16 max-w-2xl mx-auto">Everything you need to discover, plan, and
-        share amazing experiences.</p>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="card p-8 text-center"><i class="fas fa-magic text-3xl text-pink-500 mb-4"></i>
-          <h4 class="text-xl font-bold mb-2">Personalized Suggestions</h4>
-          <p class="text-gray-400">Based on your interests, location, and budget.</p>
+  <section id="features" class="shell section py-16 px-6 md:px-10 mt-10">
+    <div class="spline"></div>
+    <div class="relative z-10 space-y-6 text-center">
+      <p class="badge w-fit mx-auto">Core Powers</p>
+      <h3 class="hero-title text-4xl md:text-5xl font-semibold">Key Features that feel like sci-fi</h3>
+      <p class="text-lg text-slate-300 max-w-3xl mx-auto">
+        Everything you need to discover, plan, and share unforgettable experiences — wrapped in a playful interface that
+        feels alive.
+      </p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+        <div class="feature-card tilt" data-tilt>
+          <div class="meta-pill"><i class="fa-solid fa-magic"></i> Personalized</div>
+          <h4 class="text-xl font-semibold mt-3">Curated suggestions</h4>
+          <p class="text-slate-300 mt-2">Interests, location, and time-of-day feed your deck of perfect motives.</p>
+          <span class="flare"></span>
         </div>
-        <div class="card p-8 text-center"><i class="fas fa-fire text-3xl text-pink-500 mb-4"></i>
-          <h4 class="text-xl font-bold mb-2">Real-Time Events</h4>
-          <p class="text-gray-400">Discover trending places and events as they happen.</p>
+        <div class="feature-card tilt" data-tilt>
+          <div class="meta-pill"><i class="fa-solid fa-fire"></i> Real-time</div>
+          <h4 class="text-xl font-semibold mt-3">Trending radar</h4>
+          <p class="text-slate-300 mt-2">Live events and surging spots, refreshed every moment so you never miss out.</p>
+          <span class="flare"></span>
         </div>
-        <div class="card p-8 text-center"><i class="fas fa-wallet text-3xl text-pink-500 mb-4"></i>
-          <h4 class="text-xl font-bold mb-2">Cost & Travel Estimates</h4>
-          <p class="text-gray-400">Plan outings with clarity.</p>
+        <div class="feature-card tilt" data-tilt>
+          <div class="meta-pill"><i class="fa-solid fa-wallet"></i> Clarity</div>
+          <h4 class="text-xl font-semibold mt-3">Cost & travel</h4>
+          <p class="text-slate-300 mt-2">Know the budget and route before you commit. No surprises when you roll out.</p>
+          <span class="flare"></span>
         </div>
-        <div class="card p-8 text-center"><i class="fas fa-users-cog text-3xl text-pink-500 mb-4"></i>
-          <h4 class="text-xl font-bold mb-2">Group Planning</h4>
-          <p class="text-gray-400">Easily plan with your friends.</p>
+        <div class="feature-card tilt" data-tilt>
+          <div class="meta-pill"><i class="fa-solid fa-users-gear"></i> Crew</div>
+          <h4 class="text-xl font-semibold mt-3">Group planning</h4>
+          <p class="text-slate-300 mt-2">Invite friends, capture RSVPs, and broadcast the plan to everyone at once.</p>
+          <span class="flare"></span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Why Motivez -->
-  <section id="why" class="py-24 px-6 bg-[#141416]">
-    <div class="container mx-auto text-center">
-      <h3 class="text-4xl font-bold mb-16 section-title text-white">Why Motivez?</h3>
-      <div class="grid md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto items-stretch">
-        <div class="bg-pink-600/30 p-8 rounded-2xl text-left backdrop-blur-md border border-pink-500/30 h-full flex flex-col gap-8">
-          <h4 class="text-2xl font-bold text-white tracking-wide">The Problem</h4>
-          <p class="text-gray-100 text-lg leading-relaxed">Fun shouldn’t feel like work, yet most nights start with endless searching.</p>
-          <ul class="space-y-5 text-gray-100 text-lg leading-relaxed">
-            <li class="flex items-start"><i class="fas fa-hourglass-half mr-3 mt-1"></i>Hours wasted searching for
-              things to do.</li>
-            <li class="flex items-start"><i class="fas fa-search-minus mr-3 mt-1"></i>Endless scrolling through apps.
-            </li>
-            <li class="flex items-start"><i class="fas fa-meh mr-3 mt-1"></i>Missing out on amazing local experiences.
-            </li>
-          </ul>
+  <section id="why" class="shell section py-16 px-6 md:px-10 mt-10">
+    <div class="spline"></div>
+    <div class="relative z-10 space-y-8">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <p class="badge w-fit">Why Motivez?</p>
+          <h3 class="hero-title text-4xl md:text-5xl font-semibold">We turned FOMO into a feature.</h3>
         </div>
-        <div class="text-left p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm h-full flex flex-col">
-          <h4 class="text-2xl font-bold mb-4 text-white">The Motivez Solution</h4>
-          <p class="text-gray-300 mb-6 text-lg leading-relaxed">With Motivez, you discover, plan, and share memorable experiences in one tap—no
-            hassle, just fun.</p>
-          <ul class="space-y-5 text-gray-200 text-lg leading-relaxed">
-            <li class="flex items-start"><span
-                class="bg-pink-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">1</span>Instant
-              Discovery</li>
-            <li class="flex items-start"><span
-                class="bg-pink-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">2</span>Easy
-              Planning</li>
-            <li class="flex items-start"><span
-                class="bg-pink-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">3</span>Share
-              Memories</li>
-          </ul>
+        <a href="#waitlist" class="btn btn-primary">Skip the line →</a>
+      </div>
+      <div class="timeline">
+        <div class="timeline-card" data-step="01">
+          <div class="meta-pill"><i class="fa-solid fa-hourglass-half"></i> The problem</div>
+          <h4 class="text-2xl font-semibold mt-3">Endless searching is a vibe-killer</h4>
+          <p class="text-slate-300 mt-2">Nights start with doom-scrolling, tabs, and group chat chaos. By the time you
+            pick, the energy is gone.</p>
+        </div>
+        <div class="timeline-card" data-step="02">
+          <div class="meta-pill"><i class="fa-solid fa-rocket"></i> The solution</div>
+          <h4 class="text-2xl font-semibold mt-3">One tap from idea to invite</h4>
+          <p class="text-slate-300 mt-2">Motivez auto-builds your night, pushes RSVPs, tracks costs, and maps your route.
+            You just show up.</p>
+        </div>
+        <div class="timeline-card" data-step="03">
+          <div class="meta-pill"><i class="fa-solid fa-sparkles"></i> The feeling</div>
+          <h4 class="text-2xl font-semibold mt-3">Adventures feel cinematic</h4>
+          <p class="text-slate-300 mt-2">Smooth motion, neon gradients, living data — every screen feels like a control
+            room for fun.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Screenshots Swiper (Updated with real assets + side explanations) -->
-  <section id="screenshots" class="py-24 px-6 bg-[#101011]">
-    <div class="container mx-auto">
-      <h3 class="text-4xl font-bold text-center mb-4 section-title text-white">See Motivez in Action</h3>
-      <p class="text-center text-lg text-gray-400 mb-16 max-w-2xl mx-auto">
-        Swipe through the real Motivez app experience — from discovering places to planning and keeping track of your
-        motives.
-      </p>
-
-      <div class="flex flex-col lg:flex-row justify-center items-center gap-10">
-        <!-- Swiper Deck -->
+  <!-- Screenshots -->
+  <section id="screenshots" class="shell section py-16 px-6 md:px-10 mt-10">
+    <div class="spline"></div>
+    <div class="relative z-10 grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
+      <div class="space-y-4">
+        <p class="badge w-fit">See it live</p>
+        <h3 class="hero-title text-4xl md:text-5xl font-semibold">Swipe through the Motivez cockpit.</h3>
+        <p class="text-lg text-slate-300">
+          Discover, roll the dice, lock plans, and track your crew. This is the real product, not a mock. Swipe through
+          the live screens below.
+        </p>
+        <div id="feature-info" class="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
+          <div class="meta-pill mb-2"><i class="fa-solid fa-arrows-left-right"></i> Swipe to rotate</div>
+          <h4 id="feature-title" class="text-2xl font-semibold text-cyan-200 mb-2">Find Places</h4>
+          <p id="feature-desc" class="text-slate-200 leading-relaxed">
+            Discover local spots through the Motivez DeckSwiper. Swipe right on places you like and build your own day
+            of fun.
+          </p>
+        </div>
+      </div>
+      <div class="flex justify-center">
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" data-title="Find Motivez"
+            <div class="swiper-slide tilt" data-tilt data-title="Find Motivez"
               data-desc="Discover local events and motives near you. Explore what’s happening, see what your friends are doing, and join in with just one tap.">
               <img src="images/Find.jpg" alt="Find Motivez" />
             </div>
-
-            <div class="swiper-slide" data-title="Dice Feature"
+            <div class="swiper-slide tilt" data-tilt data-title="Dice Feature"
               data-desc="Not sure what to do? Roll the Motivez Dice to randomly pick one of your liked places — perfect for spontaneous adventures.">
               <video src="videos/dice.mov" autoplay loop muted playsinline></video>
             </div>
-
-            <div class="swiper-slide" data-title="Calendar"
+            <div class="swiper-slide tilt" data-tilt data-title="Calendar"
               data-desc="Your personalized calendar keeps all upcoming motives organized. Each event automatically updates based on your activity and invites.">
               <img src="images/cal.png" alt="Calendar View" />
             </div>
-
-            <div class="swiper-slide" data-title="Profile & Stats"
+            <div class="swiper-slide tilt" data-tilt data-title="Profile & Stats"
               data-desc="Track your journey with Motivez — see your created motives, saved places, and friends’ activities in one clean dashboard.">
               <img src="images/user.jpg" alt="Profile" />
             </div>
           </div>
           <div class="swiper-pagination mt-6"></div>
         </div>
-
-
-        <!-- Text section -->
-        <div id="feature-info" class="max-w-md text-left lg:text-left text-center lg:text-left">
-          <h4 id="feature-title" class="text-3xl font-bold text-pink-500 mb-4">Find Places</h4>
-          <p id="feature-desc" class="text-gray-300 text-lg leading-relaxed">
-            Discover local spots through the Motivez DeckSwiper. Swipe right on places you like and build your own day
-            of fun.
-          </p>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Waitlist + Footer remain unchanged -->
-  <section id="waitlist" class="py-24 px-6 bg-[#0c0c0c]">
-    <div
-      class="container mx-auto text-center max-w-2xl p-12 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-lg">
-      <h3 class="text-4xl font-bold mb-4 text-white">Get Early Access!</h3>
-      <p class="text-lg text-gray-300 mb-8">Sign up to be notified when Motivez launches and be the first to try it.</p>
-      <form id="waitlist-form" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+  <!-- Waitlist -->
+  <section id="waitlist" class="shell section py-16 px-6 md:px-10 mt-10 mb-10">
+    <div class="spline"></div>
+    <div class="relative z-10 text-center max-w-3xl mx-auto space-y-6">
+      <p class="badge w-fit mx-auto">Early access</p>
+      <h3 class="hero-title text-4xl md:text-5xl font-semibold text-white">Get on the launch list.</h3>
+      <p class="text-lg text-slate-300">Be the first to get Motivez on iOS and Android. No spam — just a direct ticket
+        to the future of going out.</p>
+      <form id="waitlist-form" class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
         <input type="email" id="email-input" placeholder="Enter your email" required
-          class="flex-grow p-4 rounded-lg border border-white/20 bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 ring-pink-500" />
-        <button type="submit" class="btn btn-primary">Join Waitlist →</button>
+          class="flex-grow p-4 rounded-xl border border-white/20 bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 ring-cyan-400" />
+        <button type="submit" class="btn btn-primary w-full sm:w-auto">Join Waitlist →</button>
       </form>
-      <div id="error-message" class="mt-4 hidden rounded-lg p-4 bg-red-100 text-red-700 font-bold">
+      <div id="error-message" class="mt-3 hidden rounded-lg p-4 bg-red-100 text-red-700 font-bold">
         <i class="fas fa-exclamation-circle mr-2"></i>This email is already on the waitlist.
       </div>
-      <div id="success-message" class="mt-6 hidden rounded-lg p-4 bg-green-100 text-green-700 font-bold">
+      <div id="success-message" class="mt-3 hidden rounded-lg p-4 bg-green-100 text-green-700 font-bold">
         <i class="fas fa-check-circle mr-2"></i>You're in! We'll notify you soon.
       </div>
-      <p class="text-sm text-gray-400 mt-4">No spam. We’ll only notify you when Motivez is ready.</p>
+      <p class="text-sm text-slate-400">No spam. We’ll only notify you when Motivez is ready.</p>
     </div>
   </section>
 
-  <footer class="py-16 px-6">
-    <div class="container mx-auto grid md:grid-cols-3 gap-8 text-center md:text-left">
-      <div>
-        <h4 class="text-2xl font-bold text-white">Motivez</h4>
-        <p class="text-gray-400">Never be bored again. Discover, plan, and share amazing experiences near you.</p>
+  <footer class="footer py-12">
+    <div class="shell grid md:grid-cols-3 gap-10 text-center md:text-left">
+      <div class="space-y-3">
+        <h4 class="text-2xl font-semibold text-white">Motivez</h4>
+        <p class="text-slate-300">Never be bored again. Discover, plan, and share amazing experiences near you.</p>
       </div>
       <div>
-        <h5 class="font-bold text-white uppercase tracking-wider mb-2">Contact</h5><a href="mailto:motivezapp@gmail.com"
-          class="text-gray-400 hover:text-pink-400">motivezapp@gmail.com</a>
+        <h5 class="font-bold text-white uppercase tracking-wider mb-2">Contact</h5>
+        <a href="mailto:motivezapp@gmail.com" class="text-slate-300 hover:text-cyan-300">motivezapp@gmail.com</a>
       </div>
       <div>
-        <h5 class="font-bold text-white uppercase tracking-wider mb-2">Follow Us</h5><a
-          href="https://instagram.com/motivezapp" target="_blank" class="text-2xl hover:text-pink-400 mr-4"
-          aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="https://www.tiktok.com/@motivezapp"
-          target="_blank" class="text-2xl hover:text-pink-400" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <h5 class="font-bold text-white uppercase tracking-wider mb-2">Follow Us</h5>
+        <a href="https://instagram.com/motivezapp" target="_blank" class="text-2xl hover:text-cyan-300 mr-4"
+          aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@motivezapp" target="_blank" class="text-2xl hover:text-cyan-300"
+          aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
       </div>
     </div>
-    <div class="mt-12 pt-8 border-t border-white/10 text-center text-gray-500">&copy; 2025 Motivez. All rights reserved.
+    <div class="mt-12 pt-8 border-t border-white/10 text-center text-slate-500">&copy; 2025 Motivez. All rights reserved.
       Coming soon to iOS and Android.</div>
   </footer>
 
@@ -350,10 +830,18 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
     const swiper = new Swiper(".mySwiper", {
-      effect: "cards",
+      effect: "coverflow",
       grabCursor: true,
       loop: true,
-      cardsEffect: { rotate: true, perSlideOffset: 10, perSlideRotate: 5, slideShadows: true },
+      centeredSlides: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+        rotate: 30,
+        stretch: 0,
+        depth: 250,
+        modifier: 1,
+        slideShadows: true,
+      },
       pagination: { el: ".swiper-pagination", clickable: true },
       on: {
         slideChange: function () {
@@ -362,6 +850,26 @@
           document.getElementById("feature-desc").textContent = active.dataset.desc;
         }
       }
+    });
+
+    // Lightweight tilt interaction for 3D feel
+    const tiltElements = document.querySelectorAll('[data-tilt]');
+    tiltElements.forEach(card => {
+      const handleMove = (event) => {
+        const rect = card.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -6;
+        const rotateY = ((x - centerX) / centerX) * 6;
+        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
+      };
+
+      card.addEventListener('mousemove', handleMove);
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
     });
 
     const waitlistForm = document.getElementById('waitlist-form');
@@ -378,7 +886,6 @@
       const normalizedEmail = email.toLowerCase();
       const storedEmails = JSON.parse(localStorage.getItem('waitlistEmails') || '[]');
 
-      // Prevent duplicate submissions from the same device/email
       if (storedEmails.includes(normalizedEmail)) {
         errorMessage.classList.remove('hidden');
         return;
