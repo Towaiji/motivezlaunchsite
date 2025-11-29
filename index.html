@@ -313,6 +313,9 @@
           class="flex-grow p-4 rounded-lg border border-white/20 bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 ring-pink-500" />
         <button type="submit" class="btn btn-primary">Join Waitlist →</button>
       </form>
+      <div id="error-message" class="mt-4 hidden rounded-lg p-4 bg-red-100 text-red-700 font-bold">
+        <i class="fas fa-exclamation-circle mr-2"></i>This email is already on the waitlist.
+      </div>
       <div id="success-message" class="mt-6 hidden rounded-lg p-4 bg-green-100 text-green-700 font-bold">
         <i class="fas fa-check-circle mr-2"></i>You're in! We'll notify you soon.
       </div>
@@ -364,11 +367,22 @@
       event.preventDefault();
       const emailInput = document.getElementById('email-input');
       const successMessage = document.getElementById('success-message');
+      const errorMessage = document.getElementById('error-message');
       const submitButton = this.querySelector('button[type="submit"]');
       const email = emailInput.value.trim();
 
       if (!email || !submitButton) return;
 
+      const normalizedEmail = email.toLowerCase();
+      const storedEmails = JSON.parse(localStorage.getItem('waitlistEmails') || '[]');
+
+      // Prevent duplicate submissions from the same device/email
+      if (storedEmails.includes(normalizedEmail)) {
+        errorMessage.classList.remove('hidden');
+        return;
+      }
+
+      errorMessage.classList.add('hidden');
       submitButton.disabled = true;
       submitButton.textContent = 'Joining...';
 
@@ -381,6 +395,7 @@
 
         if (!response.ok) throw new Error('Waitlist request failed');
 
+        localStorage.setItem('waitlistEmails', JSON.stringify([...storedEmails, normalizedEmail]));
         emailInput.value = '';
         this.classList.add('hidden');
         successMessage.classList.remove('hidden');
