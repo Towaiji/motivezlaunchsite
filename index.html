@@ -500,6 +500,7 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 100;
+      width: min(1100px, calc(100% - 2rem));
       background: rgba(17, 17, 19, 0.7);
       backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -511,6 +512,10 @@
     .nav-floating.scrolled {
       background: rgba(17, 17, 19, 0.9);
       padding: 14px 28px;
+    }
+
+    .nav-cta .cta-short {
+      display: none;
     }
     
     /* Section styling */
@@ -724,6 +729,32 @@
     
     /* Responsive */
     @media (max-width: 768px) {
+      .nav-floating {
+        display: none;
+      }
+
+      .nav-floating.scrolled {
+        display: none;
+      }
+
+      .nav-logo {
+        height: 40px;
+      }
+
+      .nav-cta {
+        padding: 10px 14px;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      .nav-cta .cta-full {
+        display: none;
+      }
+
+      .nav-cta .cta-short {
+        display: inline;
+      }
+
       .section-journey {
         padding: 60px 20px;
       }
@@ -746,16 +777,19 @@
   
   <!-- Navigation -->
   <nav class="nav-floating" id="navbar">
-    <div class="flex items-center gap-10">
+    <div class="flex w-full items-center justify-between gap-3 md:gap-10">
       <a href="#" class="flex items-center gap-3">
-        <img src="images/wordlogo.png" alt="Motivez" class="h-14" />
+        <img src="images/wordlogo.png" alt="Motivez" class="h-14 nav-logo" />
       </a>
       <div class="hidden md:flex items-center gap-8">
         <a href="#problem" class="nav-link text-base">The Problem</a>
         <a href="#how-it-works" class="nav-link text-base">How It Works</a>
         <a href="#features" class="nav-link text-base">Features</a>
       </div>
-      <a href="#waitlist" class="btn-primary text-base py-3 px-6">Get Early Access</a>
+      <a href="#waitlist" class="btn-primary text-base py-3 px-6 nav-cta">
+        <span class="cta-full">Get Early Access</span>
+        <span class="cta-short">Early Access</span>
+      </a>
     </div>
   </nav>
 
@@ -820,13 +854,6 @@
       </div>
     </div>
     
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500">
-      <span class="text-xs uppercase tracking-widest">Scroll</span>
-      <div class="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center pt-2">
-        <div class="w-1.5 h-3 bg-pink-500 rounded-full animate-bounce"></div>
-      </div>
-    </div>
   </section>
 
   <!-- THE PROBLEM SECTION -->
