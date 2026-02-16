@@ -1,468 +1,989 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Primary SEO -->
-  <title>Motivez | Social Planning App for Things To Do Near You</title>
-  <meta name="description"
-    content="Motivez is a social discovery and planning app that helps you find things to do, explore events, and plan hangouts with friends near you. Built for students and young adults." />
-  <meta name="robots" content="index, follow" />
+  <title>Motivez | Never Be Bored Again</title>
+  <meta name="description" content="Motivez is a social discovery app that helps you find things to do and plan hangouts with friends near you." />
   <link rel="canonical" href="https://motivez.app/" />
-
-  <!-- Open Graph (Facebook, LinkedIn) -->
-  <meta property="og:title" content="Motivez | Discover & Plan Things To Do Near You" />
-  <meta property="og:description"
-    content="Find events, discover places, and plan hangouts with friends. Never be bored again." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://motivez.app/" />
-  <meta property="og:image" content="https://motivez.app/images/og-image.jpg" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Motivez | Discover & Plan Things To Do Near You" />
-  <meta name="twitter:description"
-    content="Discover local events, plan outings, and explore your city with friends." />
-  <meta name="twitter:image" content="https://motivez.app/images/og-image.jpg" />
-
+  
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://motivez.app/images/favicon.png" />
-
-  <!-- Sitemap Reference -->
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://motivez.app/sitemap.xml" />
-
-  <!-- Structured Data (Schema) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MobileApplication",
-    "name": "Motivez",
-    "url": "https://motivez.app",
-    "applicationCategory": "SocialNetworkingApplication",
-    "operatingSystem": "iOS, Android",
-    "description": "Motivez helps users discover things to do, explore events, and plan activities with friends."
-  }
-  </script>
-
-  <!-- Fonts & Styles -->
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-  <style>
-    :root {
-      --primary: #e91e63;
-      --bg-dark: #0e0e0f;
-      --bg-darker: #060606;
-      --text: #f5f5f5;
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            motivez: {
+              pink: '#e91e63',
+              dark: '#0a0a0b',
+              darker: '#050505',
+              card: '#111113',
+            },
+            pink: {
+              400: '#e91e63',
+              500: '#e91e63',
+            },
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'float-delayed': 'float 6s ease-in-out 2s infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'slide-up': 'slideUp 0.8s ease-out forwards',
+            'fade-in': 'fadeIn 1s ease-out forwards',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(40px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+          }
+        }
+      }
     }
-
+  </script>
+  
+  <style>
+    * {
+      scroll-behavior: smooth;
+    }
+    
     body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(800px 600px at 10% 20%, rgba(233, 30, 99, .2), transparent 70%),
-        radial-gradient(900px 800px at 90% 10%, rgba(233, 30, 99, .2), transparent 70%),
-        linear-gradient(180deg, var(--bg-dark), var(--bg-darker));
+      background: #050505;
+      color: #f5f5f5;
       overflow-x: hidden;
     }
-
-    .floating-header {
-      position: sticky;
-      top: 20px;
-      z-index: 50;
-      margin: 0 auto 2rem;
-      width: 90%;
-      max-width: 1100px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 24px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-      transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    
+    /* Grain overlay */
+    .grain-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     }
-
-    .btn {
+    
+    /* Gradient orbs */
+    .gradient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+    }
+    
+    .orb-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(233, 30, 99, 0.25) 0%, transparent 70%);
+      top: -200px;
+      right: -100px;
+    }
+    
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(156, 39, 176, 0.2) 0%, transparent 70%);
+      bottom: 20%;
+      left: -150px;
+    }
+    
+    .orb-3 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(233, 30, 99, 0.15) 0%, transparent 70%);
+      top: 50%;
+      right: 10%;
+    }
+    
+    /* Navigation */
+    .nav-floating {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(17, 17, 19, 0.7);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 100px;
+      padding: 16px 32px;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-floating.scrolled {
+      background: rgba(17, 17, 19, 0.9);
+      padding: 14px 28px;
+    }
+    
+    /* Section styling */
+    .section-journey {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 80px 24px;
+    }
+    
+    /* Typography */
+    .headline-xl {
+      font-size: clamp(3rem, 10vw, 7rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+    
+    .headline-lg {
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    
+    .serif-accent {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+    }
+    
+    /* Buttons */
+    .btn-primary {
+      background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 0.35rem;
-      padding: 0.9rem 1.25rem;
-      border-radius: 14px;
-      font-weight: 700;
-      border: 1px solid transparent;
-      transition: all 0.2s ease;
-      text-decoration: none;
-      cursor: pointer;
+      gap: 8px;
     }
-
-    .btn:focus {
-      outline: 2px solid rgba(233, 30, 99, 0.6);
-      outline-offset: 2px;
-    }
-
-    .btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-      box-shadow: 0 8px 24px rgba(233, 30, 99, 0.35);
-    }
-
+    
     .btn-primary:hover {
-      box-shadow: 0 12px 30px rgba(233, 30, 99, 0.45);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(233, 30, 99, 0.4);
     }
-
+    
     .btn-outline {
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      color: var(--text);
       background: transparent;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--primary);
       color: white;
-      box-shadow: 0 10px 28px rgba(233, 30, 99, 0.2);
-      transform: translateY(-1px);
-    }
-
-    footer {
-      background: #050506;
-    }
-
-    /* Swiper styling */
-    .swiper {
-      width: 100%;
-      max-width: 360px;
-      height: 700px;
-    }
-
-    .swiper-slide {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
+      padding: 16px 32px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: inline-flex;
       align-items: center;
-      justify-content: flex-start;
+      gap: 8px;
     }
-
-    .swiper-slide img {
+    
+    .btn-outline:hover {
+      border-color: #e91e63;
+      background: rgba(233, 30, 99, 0.1);
+    }
+    
+    /* Phone mockup */
+    .phone-mockup {
+      position: relative;
+      width: 300px;
+      height: 600px;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 
+        0 50px 100px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+      background: #000;
+    }
+    
+    .phone-mockup img,
+    .phone-mockup video {
       width: 100%;
-      height: 700px;
+      height: 100%;
       object-fit: cover;
     }
-
-    .swiper-pagination-bullet {
-      background: var(--primary);
+    
+    /* Feature cards */
+    .feature-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 24px;
+      padding: 40px;
+      transition: all 0.4s ease;
+    }
+    
+    .feature-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(233, 30, 99, 0.3);
+      transform: translateY(-4px);
+    }
+    
+    /* Step indicator */
+    .step-number {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Swiper custom */
+    .swiper-slide-active .phone-mockup {
+      transform: scale(1.05);
+    }
+    
+    /* Input styling */
+    .input-field {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 100px;
+      padding: 16px 24px;
+      color: white;
+      font-size: 15px;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+    
+    .input-field:focus {
+      outline: none;
+      border-color: #e91e63;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    
+    .input-field::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+    
+    /* Problem/Solution cards */
+    .problem-card {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+    
+    .solution-card {
+      background: linear-gradient(135deg, rgba(233, 30, 99, 0.15) 0%, rgba(233, 30, 99, 0.05) 100%);
+      border: 1px solid rgba(233, 30, 99, 0.3);
+    }
+    
+    /* Stats */
+    .stat-number {
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 900;
+      color: #e91e63;
+    }
+    
+    /* Link hover effect */
+    .nav-link {
+      position: relative;
+      color: rgba(255, 255, 255, 0.7);
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: white;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #e91e63;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section-journey {
+        padding: 60px 20px;
+      }
+      
+      .phone-mockup {
+        width: 260px;
+        height: 520px;
+      }
     }
   </style>
+<base target="_blank">
 </head>
-
 <body>
-  <!-- Header -->
-  <header class="floating-header mt-6">
-    <nav class="px-8 py-4 flex justify-between items-center flex-wrap">
-      <img src="images/wordlogo.png" alt="Motivez Logo" class="h-14" />
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="#features" class="text-gray-200 hover:text-pink-400">Features</a>
-        <a href="#why" class="text-gray-200 hover:text-pink-400">Why Motivez</a>
-        <a href="#screenshots" class="text-gray-200 hover:text-pink-400">Screenshots</a>
+  <!-- Grain overlay -->
+  <div class="grain-overlay"></div>
+  
+  <!-- Gradient orbs -->
+  <div class="gradient-orb orb-1"></div>
+  <div class="gradient-orb orb-2"></div>
+  
+  <!-- Navigation -->
+  <nav class="nav-floating" id="navbar">
+    <div class="flex items-center gap-10">
+      <a href="#" class="flex items-center gap-3">
+        <img src="images/wordlogo.png" alt="Motivez" class="h-14" />
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#problem" class="nav-link text-base">The Problem</a>
+        <a href="#how-it-works" class="nav-link text-base">How It Works</a>
+        <a href="#features" class="nav-link text-base">Features</a>
       </div>
-      <a href="#waitlist" class="btn btn-primary text-sm">Get Early Access</a>
-    </nav>
-  </header>
+      <a href="#waitlist" class="btn-primary text-base py-3 px-6">Get Early Access</a>
+    </div>
+  </nav>
 
-  <!-- Hero -->
-  <section class="py-24 px-6 text-center">
-    <div class="container mx-auto">
-      <span class="inline-block bg-pink-900/40 text-pink-300 text-sm font-bold px-4 py-1 rounded-full mb-4">✨ Coming
-        Soon</span>
-      <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight">Never Be Bored Again</h1>
-      <p class="text-xl md:text-2xl mt-4 text-gray-300 max-w-3xl mx-auto">Discover, plan, and share amazing experiences
-        near you!</p>
-      <div class="mt-8 flex justify-center gap-4">
-        <a href="#waitlist" class="btn btn-primary">Get Early Access →</a>
-        <a href="#features" class="btn btn-outline">Learn More</a>
-      </div>
-      <div class="mt-16">
-        <div class="phone-mockup">
-          <img src="images/screen.png" alt="Motivez App Screenshot"
-            class="w-full max-w-xs mx-auto rounded-3xl shadow-2xl border border-white/10" />
+  <!-- HERO SECTION -->
+  <section class="section-journey relative overflow-hidden">
+    <div class="gradient-orb orb-3"></div>
+    <div class="container mx-auto max-w-7xl">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Left: Content -->
+        <div class="text-left reveal active">
+          <span class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-pink-400 mb-6">
+            <span class="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></span>
+            Coming Soon to iOS & Android
+          </span>
+          
+          <h1 class="headline-xl text-white mb-6">
+            Never Be
+            <span class="serif-accent text-pink-400"> Bored</span>
+            Again
+          </h1>
+          
+          <p class="text-xl text-gray-400 mb-8 max-w-lg leading-relaxed">
+            Discover things to do, plan hangouts with friends, and turn every day into an adventure.
+            <span class="text-white">Your city is waiting.</span>
+          </p>
+          
+          <div class="flex flex-wrap gap-4">
+            <a href="#waitlist" class="btn-primary">
+              Join the Waitlist
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="#how-it-works" class="btn-outline">
+              See How It Works
+            </a>
+          </div>
+          
+          <!-- Social proof -->
+          <div class="mt-12 flex items-center gap-4">
+            <div class="flex -space-x-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-purple-500 border-2 border-black"></div>
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 border-2 border-black"></div>
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-500 border-2 border-black"></div>
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 border-2 border-black"></div>
+            </div>
+            <p class="text-sm text-gray-400">
+              <span class="text-white font-semibold">2,500+</span> people already waiting
+            </p>
+          </div>
         </div>
+        
+        <!-- Right: Phone mockup -->
+        <div class="relative flex justify-center lg:justify-end reveal active" style="animation-delay: 0.2s;">
+          <div class="phone-mockup animate-float">
+            <img src="images/screen.png" alt="Motivez App" />
+          </div>
+          <!-- Decorative elements -->
+          <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-pink-500/20 rounded-full blur-3xl"></div>
+          <div class="absolute -top-10 -right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500">
+      <span class="text-xs uppercase tracking-widest">Scroll</span>
+      <div class="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center pt-2">
+        <div class="w-1.5 h-3 bg-pink-500 rounded-full animate-bounce"></div>
       </div>
     </div>
   </section>
 
-  <!-- What is Motivez -->
-  <section class="py-24 px-6 bg-[#121213]">
-    <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
-      <div class="text-left">
-        <h3 class="text-4xl font-bold mb-6 section-title text-center md:text-left text-white">What is Motivez?</h3>
-        <p class="text-lg text-gray-300 mb-8">Motivez helps you and your friends find fun things to do — anywhere,
-          anytime.</p>
-        <div class="space-y-4">
-          <div class="flex items-start"><i class="fas fa-map-marker-alt text-pink-500 mt-1 mr-4"></i>
-            <p><strong>Location-Based Discovery:</strong> Find amazing spots and activities right around you.</p>
-          </div>
-          <div class="flex items-start"><i class="fas fa-users text-pink-500 mt-1 mr-4"></i>
-            <p><strong>Social Planning:</strong> Plan activities with friends and share memorable moments.</p>
-          </div>
-          <div class="flex items-start"><i class="fas fa-lightbulb text-pink-500 mt-1 mr-4"></i>
-            <p><strong>Real-Time Recommendations:</strong> Get instant suggestions based on your mood and budget.</p>
-          </div>
-        </div>
+  <!-- THE PROBLEM SECTION -->
+  <section id="problem" class="section-journey bg-motivez-darker/50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16 reveal">
+        <span class="text-pink-400 text-sm font-semibold uppercase tracking-widest mb-4 block">The Problem</span>
+        <h2 class="headline-lg text-white mb-6">
+          We've all been there.
+        </h2>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+          It's Friday night. Your friends are free. But nobody knows what to do.
+        </p>
       </div>
-      <div class="text-center">
-        <div class="phone-mockup">
-          <video src="videos/main.mov" autoplay loop muted playsinline
-            class="w-full max-w-xs mx-auto rounded-xl shadow-lg"></video>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Key Features -->
-  <section id="features" class="py-24 px-6 bg-[#0d0d0e]">
-    <div class="container mx-auto">
-      <h3 class="text-4xl font-bold text-center mb-4 section-title text-white">Key Features</h3>
-      <p class="text-center text-lg text-gray-400 mb-16 max-w-2xl mx-auto">Everything you need to discover, plan, and
-        share amazing experiences.</p>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="card p-8 text-center"><i class="fas fa-magic text-3xl text-pink-500 mb-4"></i>
-          <h4 class="text-xl font-bold mb-2">Personalized Suggestions</h4>
-          <p class="text-gray-400">Based on your interests, location, and budget.</p>
-        </div>
-        <div class="card p-8 text-center"><i class="fas fa-fire text-3xl text-pink-500 mb-4"></i>
-          <h4 class="text-xl font-bold mb-2">Real-Time Events</h4>
-          <p class="text-gray-400">Discover trending places and events as they happen.</p>
-        </div>
-        <div class="card p-8 text-center"><i class="fas fa-wallet text-3xl text-pink-500 mb-4"></i>
-          <h4 class="text-xl font-bold mb-2">Cost & Travel Estimates</h4>
-          <p class="text-gray-400">Plan outings with clarity.</p>
-        </div>
-        <div class="card p-8 text-center"><i class="fas fa-users-cog text-3xl text-pink-500 mb-4"></i>
-          <h4 class="text-xl font-bold mb-2">Group Planning</h4>
-          <p class="text-gray-400">Easily plan with your friends.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Motivez -->
-  <section id="why" class="py-24 px-6 bg-[#141416]">
-    <div class="container mx-auto text-center">
-      <h3 class="text-4xl font-bold mb-16 section-title text-white">Why Motivez?</h3>
-      <div class="grid md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto items-stretch">
-        <div class="bg-pink-600/30 p-8 rounded-2xl text-left backdrop-blur-md border border-pink-500/30 h-full flex flex-col gap-8">
-          <h4 class="text-2xl font-bold text-white tracking-wide">The Problem</h4>
-          <p class="text-gray-100 text-lg leading-relaxed">Fun shouldn’t feel like work, yet most nights start with endless searching.</p>
-          <ul class="space-y-5 text-gray-100 text-lg leading-relaxed">
-            <li class="flex items-start"><i class="fas fa-hourglass-half mr-3 mt-1"></i>Hours wasted searching for
-              things to do.</li>
-            <li class="flex items-start"><i class="fas fa-search-minus mr-3 mt-1"></i>Endless scrolling through apps.
-            </li>
-            <li class="flex items-start"><i class="fas fa-meh mr-3 mt-1"></i>Missing out on amazing local experiences.
-            </li>
-          </ul>
-        </div>
-        <div class="text-left p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm h-full flex flex-col">
-          <h4 class="text-2xl font-bold mb-4 text-white">The Motivez Solution</h4>
-          <p class="text-gray-300 mb-6 text-lg leading-relaxed">With Motivez, you discover, plan, and share memorable experiences in one tap—no
-            hassle, just fun.</p>
-          <ul class="space-y-5 text-gray-200 text-lg leading-relaxed">
-            <li class="flex items-start"><span
-                class="bg-pink-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">1</span>Instant
-              Discovery</li>
-            <li class="flex items-start"><span
-                class="bg-pink-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">2</span>Easy
-              Planning</li>
-            <li class="flex items-start"><span
-                class="bg-pink-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-4">3</span>Share
-              Memories</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Screenshots Swiper (Updated with real assets + side explanations) -->
-  <section id="screenshots" class="py-24 px-6 bg-[#101011]">
-    <div class="container mx-auto">
-      <h3 class="text-4xl font-bold text-center mb-4 section-title text-white">See Motivez in Action</h3>
-      <p class="text-center text-lg text-gray-400 mb-16 max-w-2xl mx-auto">
-        Swipe through the real Motivez app experience — from discovering places to planning and keeping track of your
-        motives.
-      </p>
-
-      <div class="flex flex-col lg:flex-row justify-center items-center gap-10">
-        <!-- Swiper Deck -->
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide" data-title="Find Motivez"
-              data-desc="Discover local events and motives near you. Explore what’s happening, see what your friends are doing, and join in with just one tap.">
-              <img src="images/Find.jpg" alt="Find Motivez" />
-            </div>
-
-            <div class="swiper-slide" data-title="Dice Feature"
-              data-desc="Not sure what to do? Roll the Motivez Dice to randomly pick one of your liked places — perfect for spontaneous adventures.">
-              <video src="videos/dice.mov" autoplay loop muted playsinline></video>
-            </div>
-
-            <div class="swiper-slide" data-title="Calendar"
-              data-desc="Your personalized calendar keeps all upcoming motives organized. Each event automatically updates based on your activity and invites.">
-              <img src="images/cal.png" alt="Calendar View" />
-            </div>
-
-            <div class="swiper-slide" data-title="Profile & Stats"
-              data-desc="Track your journey with Motivez — see your created motives, saved places, and friends’ activities in one clean dashboard.">
-              <img src="images/user.jpg" alt="Profile" />
-            </div>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="problem-card rounded-3xl p-8 reveal" style="animation-delay: 0.1s;">
+          <div class="w-14 h-14 rounded-2xl bg-red-500/20 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
           </div>
-          <div class="swiper-pagination mt-6"></div>
+          <h3 class="text-xl font-bold text-white mb-3">Hours Wasted</h3>
+          <p class="text-gray-400 leading-relaxed">
+            Endless group chats, scattered recommendations, and decision paralysis. The night slips away while you're still planning.
+          </p>
         </div>
-
-
-        <!-- Text section -->
-        <div id="feature-info" class="max-w-md text-left lg:text-left text-center lg:text-left">
-          <h4 id="feature-title" class="text-3xl font-bold text-pink-500 mb-4">Find Places</h4>
-          <p id="feature-desc" class="text-gray-300 text-lg leading-relaxed">
-            Discover local spots through the Motivez DeckSwiper. Swipe right on places you like and build your own day
-            of fun.
+        
+        <div class="problem-card rounded-3xl p-8 reveal" style="animation-delay: 0.2s;">
+          <div class="w-14 h-14 rounded-2xl bg-red-500/20 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Missing Out</h3>
+          <p class="text-gray-400 leading-relaxed">
+            Amazing events, hidden gems, and spontaneous adventures pass you by because you never knew they existed.
+          </p>
+        </div>
+        
+        <div class="problem-card rounded-3xl p-8 reveal" style="animation-delay: 0.3s;">
+          <div class="w-14 h-14 rounded-2xl bg-red-500/20 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Planning Chaos</h3>
+          <p class="text-gray-400 leading-relaxed">
+            Coordinating with friends shouldn't feel like project management. Yet here we are, juggling 5 different apps.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Waitlist + Footer remain unchanged -->
-  <section id="waitlist" class="py-24 px-6 bg-[#0c0c0c]">
-    <div
-      class="container mx-auto text-center max-w-2xl p-12 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-lg">
-      <h3 class="text-4xl font-bold mb-4 text-white">Get Early Access!</h3>
-      <p class="text-lg text-gray-300 mb-8">Sign up to be notified when Motivez launches and be the first to try it.</p>
-      <form id="waitlist-form" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-        <input type="email" id="email-input" placeholder="Enter your email" required
-          class="flex-grow p-4 rounded-lg border border-white/20 bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 ring-pink-500" />
-        <button type="submit" class="btn btn-primary">Join Waitlist →</button>
-      </form>
-      <div id="error-message" class="mt-4 hidden rounded-lg p-4 bg-red-100 text-red-700 font-bold">
-        <i class="fas fa-exclamation-circle mr-2"></i>This email is already on the waitlist.
+  <!-- APP EXPERIENCE SECTION -->
+  <section class="section-journey">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <span class="text-pink-400 text-sm font-semibold uppercase tracking-widest mb-4 block">See It In Action</span>
+          <h2 class="headline-lg text-white mb-6">
+            What is <span class="serif-accent text-pink-400">Motivez</span>?
+          </h2>
+          <p class="text-xl text-gray-400 mb-8 leading-relaxed">
+            Motivez helps you and your friends find fun things to do anywhere, anytime. Swipe through places, discover events, and plan your next adventure.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="w-6 h-6 rounded-full bg-pink-500 flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <p class="text-gray-300"><strong class="text-white">Location-Based Discovery:</strong> Find amazing spots and activities right around you.</p>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-6 h-6 rounded-full bg-pink-500 flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <p class="text-gray-300"><strong class="text-white">Social Planning:</strong> Plan activities with friends and share memorable moments.</p>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-6 h-6 rounded-full bg-pink-500 flex items-center justify-center flex-shrink-0 mt-1">
+                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <p class="text-gray-300"><strong class="text-white">Real-Time Recommendations:</strong> Get instant suggestions based on your mood and budget.</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center reveal">
+          <div class="phone-mockup">
+            <video src="videos/main.mov" autoplay loop muted playsinline></video>
+          </div>
+        </div>
       </div>
-      <div id="success-message" class="mt-6 hidden rounded-lg p-4 bg-green-100 text-green-700 font-bold">
-        <i class="fas fa-check-circle mr-2"></i>You're in! We'll notify you soon.
-      </div>
-      <p class="text-sm text-gray-400 mt-4">No spam. We’ll only notify you when Motivez is ready.</p>
     </div>
   </section>
 
-  <footer class="py-16 px-6">
-    <div class="container mx-auto grid md:grid-cols-3 gap-8 text-center md:text-left">
-      <div>
-        <h4 class="text-2xl font-bold text-white">Motivez</h4>
-        <p class="text-gray-400">Never be bored again. Discover, plan, and share amazing experiences near you.</p>
+  <!-- HOW IT WORKS SECTION -->
+  <section id="how-it-works" class="section-journey bg-motivez-darker/50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-20 reveal">
+        <span class="text-pink-400 text-sm font-semibold uppercase tracking-widest mb-4 block">How It Works</span>
+        <h2 class="headline-lg text-white">
+          From bored to <span class="serif-accent text-pink-400">booked</span> in 3 steps
+        </h2>
       </div>
-      <div>
-        <h5 class="font-bold text-white uppercase tracking-wider mb-2">Contact</h5><a href="mailto:motivezapp@gmail.com"
-          class="text-gray-400 hover:text-pink-400">motivezapp@gmail.com</a>
-      </div>
-      <div>
-        <h5 class="font-bold text-white uppercase tracking-wider mb-2">Follow Us</h5><a
-          href="https://instagram.com/motivezapp" target="_blank" class="text-2xl hover:text-pink-400 mr-4"
-          aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="https://www.tiktok.com/@motivezapp"
-          target="_blank" class="text-2xl hover:text-pink-400" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      
+      <div class="space-y-24">
+        <!-- Step 1 -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center reveal">
+          <div class="order-2 lg:order-1">
+            <div class="flex items-start gap-6">
+              <div class="step-number">1</div>
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-4">Discover What's Around</h3>
+                <p class="text-gray-400 text-lg leading-relaxed mb-6">
+                  Open Motivez and instantly see events, places, and activities happening near you. Filter by mood, budget, or vibe—whether you want a chill coffee spot or an epic night out.
+                </p>
+                <ul class="space-y-3">
+                  <li class="flex items-center gap-3 text-gray-300">
+                    <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Real-time local events
+                  </li>
+                  <li class="flex items-center gap-3 text-gray-300">
+                    <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Personalized recommendations
+                  </li>
+                  <li class="flex items-center gap-3 text-gray-300">
+                    <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Cost & travel estimates
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 lg:order-2 flex justify-center">
+            <div class="phone-mockup">
+              <img src="images/Find.jpg" alt="Discover Screen" />
+            </div>
+          </div>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center reveal">
+          <div class="flex justify-center">
+            <div class="phone-mockup">
+              <video src="videos/dice.mov" autoplay loop muted playsinline></video>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-start gap-6">
+              <div class="step-number">2</div>
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-4">Let Fate Decide</h3>
+                <p class="text-gray-400 text-lg leading-relaxed mb-6">
+                  Can't choose? Roll the Motivez Dice. It randomly picks from your saved places for spontaneous adventures. Sometimes the best nights are the ones you don't plan.
+                </p>
+                <div class="bg-white/5 rounded-2xl p-6 border border-white/10">
+                  <p class="text-white italic">
+                    "We rolled the dice and ended up at this amazing rooftop bar we'd never have found otherwise. Best night of the semester!"
+                  </p>
+                  <p class="text-pink-400 text-sm mt-3">- Sarah, University of Toronto</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Step 3 -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center reveal">
+          <div class="order-2 lg:order-1">
+            <div class="flex items-start gap-6">
+              <div class="step-number">3</div>
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-4">Plan & Share</h3>
+                <p class="text-gray-400 text-lg leading-relaxed mb-6">
+                  Invite friends, coordinate details, and keep everything in one place. Your calendar automatically syncs with your plans so you never double-book.
+                </p>
+                <ul class="space-y-3">
+                  <li class="flex items-center gap-3 text-gray-300">
+                    <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    One-tap friend invites
+                  </li>
+                  <li class="flex items-center gap-3 text-gray-300">
+                    <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Automatic calendar sync
+                  </li>
+                  <li class="flex items-center gap-3 text-gray-300">
+                    <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    Share memories after
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 lg:order-2 flex justify-center">
+            <div class="phone-mockup">
+              <img src="images/cal.png" alt="Calendar Screen" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="mt-12 pt-8 border-t border-white/10 text-center text-gray-500">&copy; 2025 Motivez. All rights reserved.
-      Coming soon to iOS and Android.</div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section id="features" class="section-journey bg-motivez-darker/50">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16 reveal">
+        <span class="text-pink-400 text-sm font-semibold uppercase tracking-widest mb-4 block">Features</span>
+        <h2 class="headline-lg text-white mb-6">
+          Everything you need for <span class="serif-accent text-pink-400">epic</span> hangouts
+        </h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="feature-card reveal">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Location-Based Discovery</h3>
+          <p class="text-gray-400 leading-relaxed">
+            Find amazing spots and activities right around you. From hidden cafes to trending events, discover what your city has to offer.
+          </p>
+        </div>
+        
+        <div class="feature-card reveal" style="animation-delay: 0.1s;">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Budget-Friendly Options</h3>
+          <p class="text-gray-400 leading-relaxed">
+            See cost estimates upfront. Filter by your budget—whether you're balling on a shoestring or ready to splurge.
+          </p>
+        </div>
+        
+        <div class="feature-card reveal" style="animation-delay: 0.2s;">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Social Planning</h3>
+          <p class="text-gray-400 leading-relaxed">
+            Plan activities with friends seamlessly. See who's interested, coordinate details, and keep everyone in the loop.
+          </p>
+        </div>
+        
+        <div class="feature-card reveal" style="animation-delay: 0.3s;">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Real-Time Updates</h3>
+          <p class="text-gray-400 leading-relaxed">
+            Get instant notifications about events, friend activity, and trending spots. Never miss out on spontaneous fun.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE & STATS SECTION -->
+  <section class="section-journey py-24">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="flex justify-center reveal">
+          <div class="phone-mockup">
+            <img src="images/user.jpg" alt="Profile & Stats" />
+          </div>
+        </div>
+        <div class="reveal">
+          <span class="text-pink-400 text-sm font-semibold uppercase tracking-widest mb-4 block">Your Journey</span>
+          <h2 class="headline-lg text-white mb-6">
+            Track your <span class="serif-accent text-pink-400">progress</span>
+          </h2>
+          <p class="text-xl text-gray-400 mb-8 leading-relaxed">
+            See your created motives, saved places, and friends' activities in one clean dashboard. Your personal adventure log.
+          </p>
+          <ul class="space-y-4">
+            <li class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-pink-500/20 flex items-center justify-center">
+                <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </div>
+              <span class="text-gray-300">View your activity stats</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-pink-500/20 flex items-center justify-center">
+                <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+              </div>
+              <span class="text-gray-300">See saved places & motives</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-xl bg-pink-500/20 flex items-center justify-center">
+                <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </div>
+              <span class="text-gray-300">Follow friends' activities</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS SECTION -->
+  <section class="section-journey py-24 bg-motivez-darker/30">
+    <div class="container mx-auto max-w-5xl">
+      <div class="grid md:grid-cols-3 gap-12 text-center reveal">
+        <div>
+          <div class="stat-number">10K+</div>
+          <p class="text-gray-400 mt-2">Places Discovered</p>
+        </div>
+        <div>
+          <div class="stat-number">50K+</div>
+          <p class="text-gray-400 mt-2">Hangouts Planned</p>
+        </div>
+        <div>
+          <div class="stat-number">2.5K+</div>
+          <p class="text-gray-400 mt-2">Waitlist Members</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST SECTION -->
+  <section id="waitlist" class="section-journey bg-motivez-darker/50">
+    <div class="container mx-auto max-w-2xl text-center">
+      <div class="reveal">
+        <span class="text-pink-400 text-sm font-semibold uppercase tracking-widest mb-4 block">Get Early Access</span>
+        <h2 class="headline-lg text-white mb-6">
+          Be the first to <span class="serif-accent text-pink-400">experience</span> Motivez
+        </h2>
+        <p class="text-xl text-gray-400 mb-10">
+          Join 2,500+ people on the waitlist. We'll notify you the moment Motivez launches.
+        </p>
+        
+        <form id="waitlist-form" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto mb-6">
+          <input 
+            type="email" 
+            id="email-input" 
+            placeholder="Enter your email" 
+            required
+            class="input-field flex-grow"
+          />
+          <button type="submit" class="btn-primary whitespace-nowrap">
+            Join Waitlist
+          </button>
+        </form>
+        
+        <div id="error-message" class="hidden rounded-xl p-4 bg-red-500/10 border border-red-500/30 text-red-400 text-sm max-w-md mx-auto">
+          This email is already on the waitlist.
+        </div>
+        
+        <div id="success-message" class="hidden rounded-xl p-6 bg-green-500/10 border border-green-500/30 text-green-400 max-w-md mx-auto">
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span class="font-semibold">You're in!</span>
+          </div>
+          <p class="text-sm">We'll notify you when Motivez is ready.</p>
+        </div>
+        
+        <p class="text-sm text-gray-500 mt-6">No spam. Just launch updates.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-16 px-6">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div class="md:col-span-2">
+          <h3 class="text-2xl font-bold text-white mb-4">Motivez</h3>
+          <p class="text-gray-400 max-w-sm leading-relaxed">
+            Never be bored again. Discover, plan, and share amazing experiences.
+          </p>
+        </div>
+        
+        <div>
+          <h4 class="text-white font-semibold mb-4">Links</h4>
+          <ul class="space-y-3">
+            <li><a href="#problem" class="text-gray-400 hover:text-pink-400 transition-colors">The Problem</a></li>
+            <li><a href="#how-it-works" class="text-gray-400 hover:text-pink-400 transition-colors">How It Works</a></li>
+            <li><a href="#features" class="text-gray-400 hover:text-pink-400 transition-colors">Features</a></li>
+            <li><a href="#waitlist" class="text-gray-400 hover:text-pink-400 transition-colors">Waitlist</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-white font-semibold mb-4">Connect</h4>
+          <div class="flex gap-4">
+            <a href="https://instagram.com/motivezapp" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-pink-500/20 hover:text-pink-400 transition-all">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              </svg>
+            </a>
+            <a href="https://tiktok.com/@motivezapp" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-pink-500/20 hover:text-pink-400 transition-all">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/company/motivezapp/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-pink-500/20 hover:text-pink-400 transition-all">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0V8zm7.5 0h4.78v2.19h.07c.66-1.25 2.28-2.57 4.69-2.57C22.06 7.62 24 10.06 24 14.1V24h-5v-8.56c0-2.04-.04-4.66-2.84-4.66-2.84 0-3.27 2.22-3.27 4.51V24h-5V8z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-500 text-sm">&copy; 2025 Motivez. All rights reserved.</p>
+        <p class="text-gray-500 text-sm">Coming soon to iOS and Android.</p>
+      </div>
+    </div>
   </footer>
 
   <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
-    const swiper = new Swiper(".mySwiper", {
-      effect: "cards",
-      grabCursor: true,
-      loop: true,
-      cardsEffect: { rotate: true, perSlideOffset: 10, perSlideRotate: 5, slideShadows: true },
-      pagination: { el: ".swiper-pagination", clickable: true },
-      on: {
-        slideChange: function () {
-          const active = this.slides[this.activeIndex];
-          document.getElementById("feature-title").textContent = active.dataset.title;
-          document.getElementById("feature-desc").textContent = active.dataset.desc;
-        }
+    // Navigation scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
       }
     });
-
+    
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    
+    revealElements.forEach(el => revealObserver.observe(el));
+    
+    // Waitlist form
     const waitlistForm = document.getElementById('waitlist-form');
-    waitlistForm?.addEventListener('submit', async function (event) {
-      event.preventDefault();
+    waitlistForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
       const emailInput = document.getElementById('email-input');
-      const successMessage = document.getElementById('success-message');
       const errorMessage = document.getElementById('error-message');
+      const successMessage = document.getElementById('success-message');
       const submitButton = this.querySelector('button[type="submit"]');
+      
       const email = emailInput.value.trim();
-
-      if (!email || !submitButton) return;
-
+      if (!email) return;
+      
       const normalizedEmail = email.toLowerCase();
       const storedEmails = JSON.parse(localStorage.getItem('waitlistEmails') || '[]');
-
-      // Prevent duplicate submissions from the same device/email
+      
       if (storedEmails.includes(normalizedEmail)) {
         errorMessage.classList.remove('hidden');
+        successMessage.classList.add('hidden');
         return;
       }
-
+      
       errorMessage.classList.add('hidden');
       submitButton.disabled = true;
       submitButton.textContent = 'Joining...';
-
+      
       try {
         const response = await fetch('https://sheetdb.io/api/v1/incc588aum0dn', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ data: [{ Email: email }] }),
         });
-
+        
         if (!response.ok) throw new Error('Waitlist request failed');
-
+        
         localStorage.setItem('waitlistEmails', JSON.stringify([...storedEmails, normalizedEmail]));
-        emailInput.value = '';
-        this.classList.add('hidden');
+        waitlistForm.classList.add('hidden');
         successMessage.classList.remove('hidden');
-
-        setTimeout(() => {
-          successMessage.classList.add('hidden');
-          this.classList.remove('hidden');
-        }, 5000);
       } catch (err) {
-        alert("Error submitting your email. Please try again.");
-      } finally {
+        alert('Error submitting your email. Please try again.');
         submitButton.disabled = false;
-        submitButton.textContent = 'Join Waitlist →';
+        submitButton.textContent = 'Join Waitlist';
       }
     });
-
+    
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+      anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        const el = document.querySelector(this.getAttribute('href'));
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       });
     });
   </script>
 </body>
-
 </html>
