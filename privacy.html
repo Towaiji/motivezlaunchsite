@@ -85,9 +85,9 @@
       display: flex;
       max-width: 1280px;
       margin: 56px 0 0;
-      margin-left: 64px;
+      margin-left: 128px;
       margin-right: 64px;
-      gap: 48px;
+      gap: 96px;
       align-items: flex-start;
     }
 
@@ -149,13 +149,15 @@
       text-decoration: underline;
     }
 
-    /* Right-side table of contents – wide enough for one line per item */
+    /* Right-side table of contents – wide enough for one line per item, shifted right for spacing */
     .toc-sidebar {
       width: 480px;
       flex-shrink: 0;
       position: sticky;
       top: 88px;
       padding-top: 0.25rem;
+      padding-left: 80px;
+      margin-left: 56px;
       max-height: calc(100vh - 100px);
       overflow-y: auto;
     }
@@ -165,6 +167,9 @@
       padding: 0;
       font-size: 0.78rem;
       line-height: 1.4;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     .toc strong {
@@ -178,7 +183,7 @@
     }
 
     .toc a {
-      display: block;
+      display: inline-block;
       margin: 0 0 4px;
       padding: 6px 8px;
       color: var(--muted);
@@ -401,7 +406,7 @@
       <h2 id="canada">18. Canada (PIPEDA)</h2>
       <p>If you are in Canada, your Personal Data is collected, used, and disclosed in accordance with the Personal Information Protection and Electronic Documents Act (PIPEDA) and applicable provincial laws. We collect only the information necessary for the purposes identified in this policy, and we do not sell your personal information. You may contact us at <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a> to access, correct, or withdraw consent for the collection, use, or disclosure of your personal information, subject to legal exceptions. We will respond in accordance with applicable law.</p>
 
-      <p style="margin-top: 32px;"><a href="index.html">Back to Motivez</a></p>
+      <p style="margin-top: 32px;">For any other questions, email <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>.</p>
     </article>
     </main>
 
@@ -445,7 +450,8 @@
               <li><a href="index.html#how-it-works">How It Works</a></li>
               <li><a href="index.html#features">Features</a></li>
               <li><a href="index.html#waitlist">Waitlist</a></li>
-              <li><a href="/privacy.html">Privacy Policy</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms and Conditions</a></li>
             </ul>
           </nav>
         </div>
