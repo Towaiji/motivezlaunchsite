@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0b" />
   <title>Motivez Privacy Policy</title>
-  <meta name="description" content="Privacy Policy for Motivez." />
+  <meta name="description" content="Privacy Policy for Motivez – social discovery app for students and young adults. Canada and United States." />
   <link rel="canonical" href="https://motivez.app/privacy" />
   <style>
     :root {
-      --text: #111111;
-      --muted: #555555;
-      --line: #e8e8e8;
-      --bg: #ffffff;
-      --chip: #f5f5f5;
+      --text: #f5f5f5;
+      --muted: #a0a0a0;
+      --bg: #0a0a0b;
+      --accent: #e91e63;
     }
 
     * {
@@ -24,40 +24,116 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
       line-height: 1.7;
       color: var(--text);
-      background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
+      background: var(--bg);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Top header: logo left, go back right */
+    .privacy-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 20px 64px 20px 64px;
+      background: var(--bg);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .privacy-header a {
+      text-decoration: none;
+    }
+    .privacy-header a:hover {
+      text-decoration: none;
+    }
+    .privacy-header .logo-link {
+      display: flex;
+      align-items: center;
+    }
+    .privacy-header .logo-link img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+    .privacy-header .btn-back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .privacy-header .btn-back:hover {
+      background: rgba(233, 30, 99, 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      .privacy-header {
+        padding: 16px 32px;
+      }
+    }
+
+    .page-layout {
+      display: flex;
+      max-width: 1280px;
+      margin: 56px 0 0;
+      margin-left: 128px;
+      margin-right: 64px;
+      gap: 96px;
+      align-items: flex-start;
     }
 
     main {
-      max-width: 860px;
-      margin: 56px auto;
-      padding: 0 20px 64px;
+      flex: 1;
+      min-width: 0;
+      max-width: 920px;
+      padding: 0 0 64px;
+      text-align: left;
+      font-size: 0.95rem;
     }
 
     .card {
-      background: var(--bg);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 10px 30px rgba(17, 17, 17, 0.04);
+      padding: 0;
     }
 
     h1 {
       margin: 0 0 8px;
       line-height: 1.2;
-      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      font-size: clamp(2.6rem, 5vw, 3.4rem);
+      font-weight: 700;
       letter-spacing: -0.02em;
+      text-align: left;
+      color: var(--text);
     }
 
     h2 {
-      margin: 28px 0 12px;
+      margin: 32px 0 12px;
       line-height: 1.3;
-      font-size: 1.22rem;
+      font-size: 1.5rem;
+      font-weight: 700;
       letter-spacing: -0.01em;
+      text-align: left;
+      color: var(--text);
     }
 
     p, li {
       margin: 0 0 12px;
       color: var(--text);
+      text-align: left;
+    }
+
+    .intro {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--muted);
     }
 
     ul {
@@ -65,69 +141,336 @@
       padding: 0;
     }
 
-    .meta {
-      display: inline-block;
-      margin: 0 0 10px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--chip);
-      color: var(--muted);
-      font-size: 0.92rem;
+    a {
+      color: var(--accent);
     }
 
-    a {
-      color: #0f62fe;
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Right-side table of contents – wide enough for one line per item, shifted right for spacing */
+    .toc-sidebar {
+      width: 480px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 88px;
+      padding-top: 0.25rem;
+      padding-left: 80px;
+      margin-left: 56px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+    }
+
+    .toc {
+      margin: 0;
+      padding: 0;
+      font-size: 0.78rem;
+      line-height: 1.4;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .toc strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .toc a {
+      display: inline-block;
+      margin: 0 0 4px;
+      padding: 6px 8px;
+      color: var(--muted);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.15s ease, color 0.15s ease;
+      line-height: 1.35;
+    }
+
+    .toc a:hover,
+    .toc a:active,
+    .toc a:focus-visible {
+      background: rgba(255, 255, 255, 0.07);
+      color: var(--text);
+    }
+
+    .toc a:focus {
+      outline: none;
+    }
+
+    /* Footer (matches main site) */
+    .footer {
+      padding: 4rem 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: 3rem;
+    }
+    .footer-container {
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+      .footer-brand {
+        grid-column: span 2;
+      }
+    }
+    .footer-brand h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 1rem;
+    }
+    .footer-brand p {
+      color: var(--muted);
+      max-width: 24rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .footer-heading {
+      color: var(--text);
+      font-weight: 600;
+      margin: 0 0 1rem;
+      font-size: 1rem;
+    }
+    .footer-links ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .footer-links li {
+      margin: 0 0 0.75rem;
+    }
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+    .footer-connect {
+      display: flex;
+      gap: 1rem;
+    }
+    .footer-connect a {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .footer-connect a:hover {
+      background: rgba(233, 30, 99, 0.2);
+      color: var(--accent);
+    }
+    .footer-connect svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .footer-bottom p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    @media (max-width: 960px) {
+      .toc-sidebar {
+        display: none;
+      }
     }
 
     @media (max-width: 640px) {
-      main {
+      .page-layout {
         margin-top: 28px;
-      }
-      .card {
-        padding: 22px 18px;
-        border-radius: 14px;
+        margin-left: 32px;
+        margin-right: 32px;
       }
     }
   </style>
 </head>
 <body>
-  <main>
-    <article class="card">
-      <h1>Privacy Policy for Motivez</h1>
-      <p class="meta"><strong>Effective Date:</strong> February 16, 2026</p>
+  <header class="privacy-header">
+    <a href="index.html" class="logo-link" aria-label="Motivez home">
+      <img src="images/wordlogo.png" alt="Motivez" />
+    </a>
+    <a href="index.html" class="btn-back">Go back</a>
+  </header>
+  <div class="page-layout">
+    <main>
+      <article class="card">
+        <h1>Privacy Policy</h1>
 
-      <h2>1. Information We Collect</h2>
-      <p><strong>Location Data:</strong> Motivez collects location information to show nearby places and events.</p>
-      <p><strong>Camera Access:</strong> Motivez may request access to your device camera to allow users to upload photos.</p>
-      <p><strong>Account Information:</strong> If you create an account, we collect your email address and authentication data through Supabase.</p>
-      <p><strong>Usage Data:</strong> We may collect device type, crash logs, and app performance data to improve the service.</p>
+        <p class="intro"><strong>Effective Date:</strong> February 16, 2026</p>
 
-      <h2>2. How We Use Information</h2>
-      <ul>
-        <li>To provide location-based discovery</li>
-        <li>To enable user-generated content</li>
-        <li>To maintain authentication</li>
-        <li>To improve app performance</li>
-      </ul>
+        <p class="intro">This Privacy Policy explains how Motivez ("Motivez," "we," "us," or "our") collects, uses, discloses, and protects personal information when you use our website, mobile application, and related services (collectively, the "Service"). Motivez is a social discovery app that helps users find nearby places, events, and experiences, create and join public or private "Motives," and view social context such as attendees and friends, with a location-powered discovery experience. This policy is written for users in Canada and the United States.</p>
 
-      <h2>3. Data Storage</h2>
-      <p>User data is stored securely using Supabase and secure backend infrastructure.</p>
+        <p class="intro">Depending on where you live, additional rights may apply under the Personal Information Protection and Electronic Documents Act (PIPEDA) in Canada and the California Consumer Privacy Act (CCPA) as amended by the California Privacy Rights Act (CPRA) in California. We also align our practices with commonly recognized privacy principles reflected in laws such as the General Data Protection Regulation (GDPR) for transparency, security, and user rights, even if you are not located in the European Economic Area.</p>
 
-      <h2>4. Third-Party Services</h2>
-      <p>Motivez uses third-party services including Supabase, hosting providers, and map/location services.</p>
+        <h2 id="information-we-collect">1. Information We Collect</h2>
+        <p>We collect information you provide directly, information collected automatically when you use the Service, and information from third parties you choose to connect. When you create an account, we collect identifiers and account details such as your name (or username), email address, authentication credentials (stored using secure methods by our authentication provider), and basic profile information you choose to add, such as interests, bio, and profile photo. If you create or join Motives, we collect the details you submit, such as the motive title, description, location, time, attendee status, and any optional notes you provide. If the Service includes social features (for example, adding friends or inviting contacts), we may collect information needed to support those features, such as friend connections or invite-related identifiers.</p>
+        <p>Because Motivez is designed around local discovery, we may collect location information. Depending on your settings, this can include approximate location (such as city-level derived from IP) and/or precise device location (GPS) if you grant permission. You can usually disable precise location in your device settings. If you disable location, discovery and other location-based features may not work or may work with limited relevance.</p>
+        <p>We also collect technical and usage information automatically. This typically includes device and app information (such as device type, operating system, app version), network information, log data (such as timestamps, feature usage, and crashes), and general analytics about how you interact with the Service. If we use advertising or ad-related analytics in the future, we may collect mobile advertising IDs where permitted by your device settings. On our website, we may use cookies or similar technologies to maintain sessions, improve performance, and measure usage.</p>
+        <p>If we introduce in-app payments (for example, ticketing or subscriptions), payment card information is typically collected and processed by a third-party payment processor, not stored directly by Motivez, though we may receive transaction confirmations and limited billing details.</p>
 
-      <h2>5. Data Sharing</h2>
-      <p>We do not sell personal data. Information is used solely to operate and improve the app.</p>
+        <h2 id="how-we-use">2. How We Use Personal Information</h2>
+        <p>We use personal information to provide, maintain, and improve the Service. This includes creating and managing your account, authenticating you, enabling you to discover places and events, allowing you to create and join Motives, and delivering core functionality like location-based results and social context.</p>
+        <p>We also use information to personalize your experience. For example, your interests, past activity, and social connections may be used to recommend places or Motives you are more likely to enjoy. We use usage and diagnostic data to troubleshoot issues, optimize performance (including feed speed and reliability), and develop new features.</p>
+        <p>We use contact details like email to send important service communications, such as verification messages, security alerts, updates about changes to the Service, and responses to support requests. Where legally required, we will obtain your consent before sending marketing messages, and you can opt out of promotional communications at any time.</p>
+        <p>We may also use information to protect Motivez, our users, and the public by detecting fraud, preventing abuse, enforcing our terms, and complying with legal obligations.</p>
 
-      <h2>6. Security</h2>
-      <p>We take reasonable steps to protect user information.</p>
+        <h2 id="legal-bases">3. Legal Bases and Consent (Canada and U.S. Approach)</h2>
+        <p>In Canada, we generally rely on your knowledge and consent to collect, use, and disclose personal information, except where permitted or required by law. Consent can be express (for example, enabling precise location) or implied depending on the context (for example, using your email to provide account-related notices). You may withdraw consent in certain cases, but doing so may limit your ability to use parts of the Service.</p>
+        <p>In the United States, privacy requirements vary by state. We apply similar principles of notice, choice, and reasonable security. If you are a California resident, you may have additional rights described in the California section below.</p>
 
-      <h2>7. Contact</h2>
-      <p>If you have questions, contact: <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a></p>
+        <h2 id="how-we-share">4. How We Share Personal Information</h2>
+        <p>We do not sell personal information in the ordinary sense of exchanging it for money. We may share personal information in the following situations.</p>
+        <p>We share information with service providers who help us operate the Service (for example, cloud infrastructure, database and authentication providers, analytics and monitoring tools, customer support tools, and communications providers). These providers act on our instructions as processors and are permitted to use personal information only to perform services for us; we remain responsible for your personal information and require them to protect it under appropriate confidentiality and security obligations.</p>
+        <p>We share information when you choose to make it public or visible to others. For example, if you create a public Motive, other users may see the Motive details and attendee list depending on your settings and the nature of the event. If you join a Motive, your profile may be visible to the host and other attendees to support social coordination.</p>
+        <p>We may share information for legal and safety reasons if we believe disclosure is reasonably necessary to comply with law, respond to lawful requests, protect the rights and safety of our users, investigate fraud or security issues, or enforce our terms.</p>
+        <p>If Motivez is involved in a corporate transaction (such as a merger, acquisition, financing, or sale of assets), personal information may be transferred as part of that transaction, subject to standard confidentiality protections.</p>
 
-      <h2>8. Updates</h2>
-      <p>This Privacy Policy may be updated from time to time.</p>
+        <h2 id="your-rights">5. Your Privacy Rights and Choices</h2>
+        <p>You can usually review and update certain account and profile information in the app. You may also request access to the personal information we hold about you and request corrections if it is inaccurate.</p>
+        <p>You may request deletion of your account and associated personal information, subject to limited exceptions (for example, where we must retain information for legal compliance, security, dispute resolution, or to complete a transaction you requested). Where applicable, you may also request a copy of your information in a portable format, to the extent technically feasible.</p>
+        <p>You can control location access through your device settings. You can also manage certain communications preferences by using unsubscribe links in promotional emails or by changing in-app notification settings where available.</p>
+        <p>To exercise privacy rights, contact us using the details in the "Contact Us" section. We may need to verify your identity before completing your request. [If we offer a dedicated privacy request webform, we will make it available at: [Privacy request webform link].]</p>
+
+        <h2 id="security">6. Data Security and Protection Practices</h2>
+        <p>We use reasonable administrative, technical, and physical safeguards designed to protect personal information from unauthorized access, disclosure, alteration, and destruction. We use encryption in transit (for example, HTTPS/TLS) when data moves between your device and our servers, and encryption at rest where supported by our infrastructure providers. We use access controls and least-privilege permissions to limit who can access personal information, and we monitor for suspicious activity to help detect abuse and security incidents. We maintain an incident response posture to assess and respond to potential breaches in accordance with our internal procedures and applicable law. No method of transmission or storage is completely secure; while we work to protect your information, we cannot guarantee absolute security.</p>
+
+        <h2 id="international-transfers">7. International and Cross-Border Data Transfers</h2>
+        <p>Motivez operates in Canada and the United States, and we may store or process information in either country depending on our service providers and infrastructure. Your personal information may therefore be transferred across borders and may be subject to the laws of the jurisdiction where it is processed. Where required, we use contractual and organizational safeguards intended to protect personal information when it is processed by service providers (including, where relevant, concepts comparable to standard contractual clauses or other transfer mechanisms). If we expand our processing locations in the future, we will update this Privacy Policy accordingly and describe the safeguards we rely on.</p>
+
+        <h2 id="data-retention">8. Data Retention</h2>
+        <p>We retain personal information for as long as needed to provide the Service and for legitimate business purposes such as maintaining security, preventing fraud, complying with legal obligations, resolving disputes, and enforcing agreements. Retention depends on the purpose for which the information was collected and used. If you delete your account, we will take steps to delete or de-identify personal information associated with your account within a reasonable period, except where retention is required or permitted by law. Some information may persist in backups for a limited time and will be removed according to our backup and retention cycles.</p>
+
+        <h2 id="children">9. Children and Minors</h2>
+        <p>Motivez is intended for older teens and adults. We do not knowingly collect personal information from children under 13. If we learn that we have collected personal information from a child under 13, we will delete it. For users who are minors (for example, under 18), we encourage using the Service with appropriate discretion, and we may apply additional limitations or protections where required by law. If you are a parent or guardian and believe your child has provided personal information to Motivez, please contact us at <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>.</p>
+
+        <h2 id="third-party">10. Third-Party Links and Services</h2>
+        <p>The Service may integrate with third-party services (for example, map or location providers or external links to venues or event pages). When you interact with third-party services, their privacy practices govern your information. We recommend reviewing their policies before using those services.</p>
+
+        <h2 id="changes">11. Changes to This Privacy Policy</h2>
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements. If we make material changes, we will provide notice through the Service or by other appropriate means. The "Effective Date" at the top indicates when the policy was last updated.</p>
+
+        <h2 id="contact">12. Contact Us</h2>
+        <p>If you have questions about this Privacy Policy or want to exercise your privacy rights, contact us by email at <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>. [Optional: Our legal entity name is [Legal entity name]. Our mailing address is [Mailing address]. Our website is [Website domain].]</p>
+
+        <h2 id="california">13. California Residents (CCPA/CPRA)</h2>
+        <p>The California Consumer Privacy Act (CCPA) as amended by the California Privacy Rights Act (CPRA) gives California residents specific rights regarding their personal information. This section describes those rights and our practices in that context.</p>
+        <p><strong>Categories of personal information we collect.</strong> We collect identifiers (such as name, email, IP address, device identifiers); account and profile information; commercial information (such as Motive or transaction history if/when applicable); internet or network activity (such as usage and log data); geolocation (approximate or precise, with your permission); and inferences drawn from the above. We do not collect sensitive personal information for purposes that would trigger the right to limit use under the CPRA except as needed to provide the Service.</p>
+        <p><strong>Purposes.</strong> We use this information to provide and improve the Service, personalize your experience, communicate with you, ensure security and fraud prevention, and comply with law, as described elsewhere in this policy.</p>
+        <p><strong>Categories of third parties we disclose to.</strong> We may disclose personal information to service providers (infrastructure, analytics, support, communications); to other users when you make information visible (for example, as a Motive organizer or attendee); and to authorities when required by law.</p>
+        <p><strong>Sale and sharing.</strong> We do not sell personal information in the traditional sense. Under the CCPA/CPRA, "sale" and "share" have specific meanings (including certain disclosures for cross-context behavioral advertising). We do not currently sell or share personal information as those terms are defined by California law. We do not use personal information for cross-context behavioral advertising. If our practices change in the future, we will update this policy and provide an appropriate opt-out mechanism (such as a "Do Not Sell or Share My Personal Information" link) where required.</p>
+        <p><strong>Your rights.</strong> You have the right to know what categories of personal information we collect, the purposes for which we use it, and the categories of third parties we disclose it to. You may request access to, deletion of, and correction of personal information. You may have the right to opt out of certain "sale" or "sharing" as defined under California law. We will not discriminate against you for exercising your rights.</p>
+        <p><strong>How to exercise.</strong> To exercise your California rights, contact us at <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>. We may need to verify your identity (for example, by matching information you provide to our records) before completing your request.</p>
+
+        <h2 id="canada-pipeda">14. Canada (PIPEDA)</h2>
+        <p>The Personal Information Protection and Electronic Documents Act (PIPEDA) is Canada’s federal private-sector privacy law. For users in Canada, we align our practices with PIPEDA’s principles as follows.</p>
+        <p><strong>Consent.</strong> We collect, use, and disclose your personal information with your knowledge and consent, except where permitted or required by law. Consent may be express (for example, when you enable location) or implied (for example, when you provide your email for account-related communications). You may withdraw consent in certain circumstances, subject to legal or contractual restrictions; doing so may limit the Service we can provide.</p>
+        <p><strong>Access and correction.</strong> You have the right to access the personal information we hold about you and to request correction of inaccuracies. We will respond within the timeframes required by applicable law.</p>
+        <p><strong>Safeguards.</strong> We use administrative, technical, and physical safeguards appropriate to the sensitivity of the information to protect it against loss, theft, unauthorized access, disclosure, or modification, as described in the Data Security section.</p>
+        <p><strong>Accountability.</strong> We are accountable for the personal information under our control. We ensure that our service providers who process personal information on our behalf agree to use it only for our specified purposes and to protect it with comparable safeguards.</p>
+        <p><strong>Cross-border processing.</strong> Your personal information may be processed or stored in Canada, the United States, or other countries where our service providers operate. When we transfer personal information across borders, we take steps to ensure it is protected in accordance with this policy and applicable law, including through contractual measures where appropriate.</p>
+        <p><strong>Identifying purposes.</strong> We identify the purposes for which we collect personal information in this policy and, where appropriate, at or before the time of collection. We do not use or disclose your personal information for purposes other than those identified, except with your consent or as required or permitted by law.</p>
+        <p><strong>Challenging compliance and complaints.</strong> You may contact us to challenge our compliance with PIPEDA's principles or to make a complaint. We will investigate and respond in accordance with our internal procedures and applicable law. If you are not satisfied with our response, you may have the right to file a complaint with the Office of the Privacy Commissioner of Canada (https://www.priv.gc.ca).</p>
+
+        <h2 id="gdpr-transparency">15. Transparency and Rights (GDPR-Style Alignment)</h2>
+        <p>Motivez is focused on users in Canada and the United States. We are not currently targeting the European Economic Area (EEA), Switzerland, or the United Kingdom. For transparency and as a general standard, we align our policy with principles commonly associated with the General Data Protection Regulation (GDPR): we inform you about what we collect and why; we use legal bases such as your consent, performance of a contract with you, our legitimate interests (where not overridden by your rights), and compliance with legal obligations; and we support rights of access, rectification, erasure, restriction of processing, objection, and data portability to the extent applicable in your jurisdiction. If you are in the EEA, UK, or Switzerland and use our Service, you may contact us to exercise these rights; we will respond in line with our general practices and any applicable law.</p>
+
+        <p style="margin-top: 32px;">For any other questions, email <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>.</p>
     </article>
-  </main>
+    </main>
+
+    <aside class="toc-sidebar" aria-label="Table of contents">
+      <nav class="toc">
+        <strong>Contents</strong>
+        <a href="#information-we-collect">1. Information We Collect</a>
+        <a href="#how-we-use">2. How We Use Personal Information</a>
+        <a href="#legal-bases">3. Legal Bases and Consent</a>
+        <a href="#how-we-share">4. How We Share Personal Information</a>
+        <a href="#your-rights">5. Your Privacy Rights and Choices</a>
+        <a href="#security">6. Data Security and Protection Practices</a>
+        <a href="#international-transfers">7. International and Cross-Border Data Transfers</a>
+        <a href="#data-retention">8. Data Retention</a>
+        <a href="#children">9. Children and Minors</a>
+        <a href="#third-party">10. Third-Party Links and Services</a>
+        <a href="#changes">11. Changes to This Privacy Policy</a>
+        <a href="#contact">12. Contact Us</a>
+        <a href="#california">13. California Residents (CCPA/CPRA)</a>
+        <a href="#canada-pipeda">14. Canada (PIPEDA)</a>
+        <a href="#gdpr-transparency">15. Transparency and Rights (GDPR-Style Alignment)</a>
+      </nav>
+    </aside>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Motivez</h3>
+          <p>Never be bored again. Discover, plan, and share amazing experiences.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Links</h4>
+          <nav class="footer-links">
+            <ul>
+              <li><a href="index.html#problem">The Problem</a></li>
+              <li><a href="index.html#how-it-works">How It Works</a></li>
+              <li><a href="index.html#features">Features</a></li>
+              <li><a href="index.html#waitlist">Waitlist</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms and Conditions</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-heading">Connect</h4>
+          <div class="footer-connect">
+            <a href="https://instagram.com/motivezapp" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://tiktok.com/@motivezapp" target="_blank" rel="noopener" aria-label="TikTok">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/motivezapp/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0V8zm7.5 0h4.78v2.19h.07c.66-1.25 2.28-2.57 4.69-2.57C22.06 7.62 24 10.06 24 14.1V24h-5v-8.56c0-2.04-.04-4.66-2.84-4.66-2.84 0-3.27 2.22-3.27 4.51V24h-5V8z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Motivez. All rights reserved.</p>
+        <p>Coming soon to iOS and Android.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

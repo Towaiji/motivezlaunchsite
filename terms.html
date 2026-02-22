@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0b" />
+  <title>Motivez Terms and Conditions</title>
+  <meta name="description" content="Terms and Conditions for Motivez – social discovery app for students and young adults." />
+  <link rel="canonical" href="https://motivez.app/terms" />
+  <style>
+    :root {
+      --text: #f5f5f5;
+      --muted: #a0a0a0;
+      --bg: #0a0a0b;
+      --accent: #e91e63;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Top header: logo left, go back right */
+    .privacy-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 20px 64px 20px 64px;
+      background: var(--bg);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .privacy-header a {
+      text-decoration: none;
+    }
+    .privacy-header a:hover {
+      text-decoration: none;
+    }
+    .privacy-header .logo-link {
+      display: flex;
+      align-items: center;
+    }
+    .privacy-header .logo-link img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+    .privacy-header .btn-back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .privacy-header .btn-back:hover {
+      background: rgba(233, 30, 99, 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      .privacy-header {
+        padding: 16px 32px;
+      }
+    }
+
+    .page-layout {
+      display: flex;
+      max-width: 1280px;
+      margin: 56px 0 0;
+      margin-left: 128px;
+      margin-right: 64px;
+      gap: 96px;
+      align-items: flex-start;
+    }
+
+    main {
+      flex: 1;
+      min-width: 0;
+      max-width: 920px;
+      padding: 0 0 64px;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    .card {
+      padding: 0;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      line-height: 1.2;
+      font-size: clamp(2.6rem, 5vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-align: left;
+      color: var(--text);
+    }
+
+    h2 {
+      margin: 32px 0 12px;
+      line-height: 1.3;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-align: left;
+      color: var(--text);
+    }
+
+    p, li {
+      margin: 0 0 12px;
+      color: var(--text);
+      text-align: left;
+    }
+
+    .intro {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    ul {
+      margin: 0 0 10px 1.2rem;
+      padding: 0;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Right-side table of contents – wide enough for one line per item, shifted right for spacing */
+    .toc-sidebar {
+      width: 480px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 88px;
+      padding-top: 0.25rem;
+      padding-left: 80px;
+      margin-left: 56px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+    }
+
+    .toc {
+      margin: 0;
+      padding: 0;
+      font-size: 0.78rem;
+      line-height: 1.4;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .toc strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .toc a {
+      display: inline-block;
+      margin: 0 0 4px;
+      padding: 6px 8px;
+      color: var(--muted);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.15s ease, color 0.15s ease;
+      line-height: 1.35;
+    }
+
+    .toc a:hover,
+    .toc a:active,
+    .toc a:focus-visible {
+      background: rgba(255, 255, 255, 0.07);
+      color: var(--text);
+    }
+
+    .toc a:focus {
+      outline: none;
+    }
+
+    /* Footer (matches main site) */
+    .footer {
+      padding: 4rem 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: 3rem;
+    }
+    .footer-container {
+      max-width: 72rem;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+      .footer-brand {
+        grid-column: span 2;
+      }
+    }
+    .footer-brand h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 1rem;
+    }
+    .footer-brand p {
+      color: var(--muted);
+      max-width: 24rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .footer-heading {
+      color: var(--text);
+      font-weight: 600;
+      margin: 0 0 1rem;
+      font-size: 1rem;
+    }
+    .footer-links ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .footer-links li {
+      margin: 0 0 0.75rem;
+    }
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+    .footer-connect {
+      display: flex;
+      gap: 1rem;
+    }
+    .footer-connect a {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .footer-connect a:hover {
+      background: rgba(233, 30, 99, 0.2);
+      color: var(--accent);
+    }
+    .footer-connect svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .footer-bottom p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    @media (max-width: 960px) {
+      .toc-sidebar {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-layout {
+        margin-top: 28px;
+        margin-left: 32px;
+        margin-right: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="privacy-header">
+    <a href="index.html" class="logo-link" aria-label="Motivez home">
+      <img src="images/wordlogo.png" alt="Motivez" />
+    </a>
+    <a href="index.html" class="btn-back">Go back</a>
+  </header>
+  <div class="page-layout">
+    <main>
+      <article class="card">
+        <h1>Terms and Conditions (Terms of Service)</h1>
+
+        <p class="intro"><strong>Effective Date:</strong> February 20, 2026</p>
+
+        <p class="intro">These Terms and Conditions ("Terms") govern your access to and use of Motivez's website, mobile application, and related services (collectively, the "Service"). The Service is provided by Motivez Inc. ("Motivez," "we," "us," or "our"). Motivez is a social discovery and social planning platform that helps users find nearby places, events, and experiences, create and join public or private "Motives," and view social context such as attendees and friends through a location-powered discovery experience. By using the Service, you agree to these Terms.</p>
+
+        <h2 id="acceptance">1. Acceptance of Terms</h2>
+        <p>By accessing, downloading, creating an account for, or otherwise using the Service, you agree to be bound by these Terms and any policies referenced in them, including our <a href="privacy.html">Privacy Policy</a>. If you do not agree, you must not use the Service. You also represent that you have the legal capacity to enter into a binding agreement where you live. If you are using the Service on behalf of an organization, you represent that you have authority to bind that organization, and "you" includes the organization.</p>
+
+        <h2 id="eligibility">2. Eligibility and Age Requirements</h2>
+        <p>The Service is not intended for children under 13, and you may not use the Service if you are under 13. If you are under 18 (or under the age of majority where you live), you may use the Service only if you have permission from a parent or legal guardian, and your parent or legal guardian is responsible for your use of the Service and for compliance with these Terms. By using the Service, you represent and warrant that you meet these eligibility requirements and that your use of the Service does not violate any applicable law.</p>
+
+        <h2 id="description">3. Description of the Service</h2>
+        <p>Motivez provides tools that allow users to discover nearby experiences and to create, publish, share, join, and coordinate "Motives." The Service may include features such as recommendations, social visibility of attendees or friends (depending on settings and the nature of a Motive), and location-based results. We may add, remove, modify, suspend, or discontinue any feature of the Service at any time, including the availability of any Motive, listing, or content, without liability to you.</p>
+
+        <h2 id="account">4. Account Registration and Security</h2>
+        <p>You may need to create an account to use parts of the Service. You agree to provide accurate, current, and complete information and to keep your account information updated. You are responsible for maintaining the confidentiality of your login credentials and for all activity that occurs under your account. You agree to notify us promptly if you suspect any unauthorized use of your account or security breach. We may suspend or terminate your account, or require you to reset credentials, if we reasonably believe it is necessary to protect the security of the Service or other users.</p>
+
+        <h2 id="user-content">5. User Content and Conduct</h2>
+        <p>The Service may allow you to submit, post, upload, transmit, or otherwise make available content such as Motive details, text, images, links, comments, or messages (collectively, "User Content"). You retain ownership of your User Content as between you and Motivez. However, you grant Motivez a worldwide, non-exclusive, royalty-free, sublicensable, and transferable license to host, store, reproduce, distribute, display, perform, adapt (for formatting and technical purposes), and otherwise use your User Content as necessary to operate, provide, secure, and improve the Service, and to make your User Content available to others as you direct through the Service (for example, to attendees of a Motive or to the public for public Motives).</p>
+        <p>You agree not to post or engage in conduct that is illegal, harmful, threatening, harassing, hateful, discriminatory, defamatory, obscene, or otherwise objectionable; that impersonates any person or entity; that infringes intellectual property or other rights; that includes spam, unsolicited promotions, or deceptive content; or that attempts to exploit, harm, or endanger others. You are responsible for your interactions and for ensuring your User Content is accurate and appropriate. Motivez may remove or restrict access to User Content or accounts if we believe it violates these Terms, creates risk or harm, or is required for legal or safety reasons, but we do not guarantee we will monitor or remove all violating content.</p>
+
+        <h2 id="motives-events">6. Motives, Events, and User-to-User Interactions</h2>
+        <p>Motivez is a platform for discovery and coordination. Unless explicitly stated otherwise, Motivez is not an event organizer, venue operator, travel provider, or provider of goods or services offered through a Motive or third-party listing. Motives may be created by users or by third parties, and attendance is voluntary. You understand that Motivez does not control the behavior of users or third parties and is not responsible for what happens at meetups, events, venues, or experiences, including any injuries, losses, disputes, or damages.</p>
+        <p>You attend Motives and interact with other users at your own risk. You are responsible for taking reasonable precautions, including meeting in public places when appropriate, informing trusted people of plans, and complying with applicable laws and venue rules. Motivez does not guarantee the existence, quality, safety, legality, or accuracy of any Motive, listing, location, attendee list, or user profile, and does not guarantee that anyone will attend or that outcomes will meet expectations.</p>
+
+        <h2 id="location">7. Location-Based Services</h2>
+        <p>Some features of the Service rely on location information to show nearby results or to support Motives. Location results may be approximate and may not be accurate or available at all times. You control location permissions through your device and operating system settings. If you disable location access, certain Service features may not work properly or may be unavailable.</p>
+
+        <h2 id="third-party">8. Third-Party Services and Links</h2>
+        <p>The Service may integrate with or link to third-party services, including maps, place information providers, venues, ticketing pages, or other websites and services. Your use of third-party services is governed by their own terms and privacy policies. Motivez does not control and is not responsible for third-party services, content, products, or practices, and we do not endorse them. If you access third-party services, you do so at your own risk.</p>
+
+        <h2 id="payments">9. Payments, Fees, and Refunds (If/When Applicable)</h2>
+        <p>If Motivez offers paid features such as paid Motives, ticketing, subscriptions, or other purchases ("Paid Features"), you agree to pay all applicable fees and taxes and to comply with the terms presented at the time of purchase. Payments may be processed by third-party payment processors, and Motivez generally does not store full payment card details. Refunds are handled according to the event host's stated policy and applicable law. If Motivez sells a ticket directly for a Motive, Motivez will provide the refund policy at checkout and in the purchase confirmation.</p>
+
+        <h2 id="prohibited">10. Prohibited Uses</h2>
+        <p>You agree not to misuse the Service. This includes attempting to access non-public areas of the Service, interfering with or disrupting the Service, bypassing security measures, reverse engineering or attempting to derive source code (except where permitted by law), scraping or harvesting data without permission, using automated systems to access the Service in a manner that sends excessive requests, uploading malware, or using the Service for unlawful, harmful, or fraudulent purposes.</p>
+
+        <h2 id="ip">11. Intellectual Property</h2>
+        <p>The Service, including its software, design, text, graphics, logos, trademarks, and other content (excluding User Content), is owned by Motivez or its licensors and is protected by intellectual property laws. You are granted a limited, non-exclusive, non-transferable, revocable license to access and use the Service for your personal, non-commercial use in accordance with these Terms. No rights are granted to you except as expressly stated in these Terms.</p>
+
+        <h2 id="privacy">12. Privacy</h2>
+        <p>Your use of the Service is subject to our <a href="privacy.html">Privacy Policy</a>, which explains how we collect, use, and share information. The Privacy Policy is incorporated by reference into these Terms. By using the Service, you acknowledge that you have read and understand the Privacy Policy.</p>
+
+        <h2 id="termination">13. Termination and Suspension</h2>
+        <p>You may stop using the Service at any time. Motivez may suspend, restrict, or terminate your access to the Service or your account at any time if we reasonably believe you have violated these Terms, created risk or possible legal exposure, engaged in misuse, or if we must do so to comply with law or protect users and the Service. Upon termination, your right to use the Service will cease. Certain provisions of these Terms will survive termination, including those relating to intellectual property, disclaimers, limitation of liability, indemnification, and dispute resolution.</p>
+        <p>We may retain or delete your User Content and account information in accordance with our Privacy Policy and applicable law.</p>
+
+        <h2 id="disclaimers">14. Disclaimers</h2>
+        <p>The Service is provided on an "as is" and "as available" basis. To the maximum extent permitted by law, Motivez disclaims all warranties and conditions, express or implied, including implied warranties of merchantability, fitness for a particular purpose, and non-infringement. Motivez does not warrant that the Service will be uninterrupted, error-free, secure, or free of harmful components, or that any content, listings, Motives, or location results will be accurate, complete, or reliable.</p>
+
+        <h2 id="liability">15. Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law, Motivez and its affiliates, officers, directors, employees, agents, and service providers will not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits, data, goodwill, or other intangible losses, arising out of or related to your use of (or inability to use) the Service, including your participation in Motives or interactions with other users or third parties.</p>
+        <p>To the maximum extent permitted by law, Motivez's total liability for all claims relating to the Service will not exceed CAD $100 or the total amount you paid to Motivez for Paid Features in the twelve (12) months before the event giving rise to the claim, whichever is greater, unless applicable law requires a different cap or does not allow certain limitations.</p>
+        <p>Some jurisdictions do not allow certain limitations of liability, so some of the above limitations may not apply to you.</p>
+
+        <h2 id="indemnity">16. Indemnification</h2>
+        <p>You agree to defend, indemnify, and hold harmless Motivez and its affiliates, officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable legal fees) arising out of or related to your User Content, your use of the Service, your participation in Motives, your interactions with other users or third parties, or your violation of these Terms or applicable law.</p>
+
+        <h2 id="governing-law">17. Governing Law and Dispute Resolution</h2>
+        <p>These Terms are governed by the laws of the Province of Ontario and the federal laws of Canada applicable therein, without regard to conflict of law principles. Subject to the optional arbitration provision below, any dispute arising out of or relating to these Terms or the Service will be brought exclusively in the courts located in Toronto, Ontario, and you consent to the personal jurisdiction of those courts.</p>
+        <p><strong>Optional arbitration.</strong> You may choose to resolve any dispute through binding arbitration on an individual basis instead of in court. If you prefer arbitration, the dispute will be administered under the rules of a recognized arbitration body (such as the ADR Institute of Canada or, for U.S. residents, the American Arbitration Association) in accordance with its consumer rules. To opt out of this optional arbitration provision and instead resolve disputes in court as described above, you must send a clear written notice to <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a> within 30 days of the date you first accept these Terms (or first use the Service, if earlier), stating that you opt out of arbitration. If you opt out, the arbitration provision will not apply to you, and disputes will be resolved exclusively in the courts located in Toronto, Ontario.</p>
+        <p>California residents may have additional rights, and certain disputes may not be subject to arbitration or may have specific statutory procedures. Nothing in these Terms limits rights that cannot be waived under applicable law.</p>
+
+        <h2 id="changes">18. Changes to Terms</h2>
+        <p>We may update these Terms from time to time. If we make material changes, we will provide notice through the Service, by posting updated Terms at https://motivez.app (or such other URL as we may use for the Service), or by other reasonable means. The updated Terms will be effective as of the "Effective Date" listed at the top. By continuing to use the Service after the Terms are updated, you agree to the updated Terms.</p>
+
+        <h2 id="contact">19. Contact</h2>
+        <p>If you have questions about these Terms or the Service, contact us at:</p>
+        <p>Support Email: <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a><br />Mailing Address: 1 University Ave, Toronto, ON M5J 2P1, Canada<br />Website: https://motivez.app</p>
+
+        <p style="margin-top: 32px;">For any other questions, email <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>.</p>
+      </article>
+    </main>
+
+    <aside class="toc-sidebar" aria-label="Table of contents">
+      <nav class="toc">
+        <strong>Contents</strong>
+        <a href="#acceptance">1. Acceptance of Terms</a>
+        <a href="#eligibility">2. Eligibility and Age Requirements</a>
+        <a href="#description">3. Description of the Service</a>
+        <a href="#account">4. Account Registration and Security</a>
+        <a href="#user-content">5. User Content and Conduct</a>
+        <a href="#motives-events">6. Motives, Events, and User-to-User Interactions</a>
+        <a href="#location">7. Location-Based Services</a>
+        <a href="#third-party">8. Third-Party Services and Links</a>
+        <a href="#payments">9. Payments, Fees, and Refunds</a>
+        <a href="#prohibited">10. Prohibited Uses</a>
+        <a href="#ip">11. Intellectual Property</a>
+        <a href="#privacy">12. Privacy</a>
+        <a href="#termination">13. Termination and Suspension</a>
+        <a href="#disclaimers">14. Disclaimers</a>
+        <a href="#liability">15. Limitation of Liability</a>
+        <a href="#indemnity">16. Indemnification</a>
+        <a href="#governing-law">17. Governing Law and Dispute Resolution</a>
+        <a href="#changes">18. Changes to Terms</a>
+        <a href="#contact">19. Contact</a>
+      </nav>
+    </aside>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Motivez</h3>
+          <p>Never be bored again. Discover, plan, and share amazing experiences.</p>
+        </div>
+        <div>
+          <h4 class="footer-heading">Links</h4>
+          <nav class="footer-links">
+            <ul>
+              <li><a href="index.html#problem">The Problem</a></li>
+              <li><a href="index.html#how-it-works">How It Works</a></li>
+              <li><a href="index.html#features">Features</a></li>
+              <li><a href="index.html#waitlist">Waitlist</a></li>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms and Conditions</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div>
+          <h4 class="footer-heading">Connect</h4>
+          <div class="footer-connect">
+            <a href="https://instagram.com/motivezapp" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://tiktok.com/@motivezapp" target="_blank" rel="noopener" aria-label="TikTok">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/motivezapp/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0V8zm7.5 0h4.78v2.19h.07c.66-1.25 2.28-2.57 4.69-2.57C22.06 7.62 24 10.06 24 14.1V24h-5v-8.56c0-2.04-.04-4.66-2.84-4.66-2.84 0-3.27 2.22-3.27 4.51V24h-5V8z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Motivez. All rights reserved.</p>
+        <p>Coming soon to iOS and Android.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
