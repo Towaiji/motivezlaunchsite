@@ -388,55 +388,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            serif: ['Playfair Display', 'serif'],
-          },
-          colors: {
-            motivez: {
-              pink: '#e91e63',
-              dark: '#0a0a0b',
-              darker: '#050505',
-              card: '#111113',
-            },
-            pink: {
-              400: '#e91e63',
-              500: '#e91e63',
-            },
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'float-delayed': 'float 6s ease-in-out 2s infinite',
-            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'slide-up': 'slideUp 0.8s ease-out forwards',
-            'fade-in': 'fadeIn 1s ease-out forwards',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-20px)' },
-            },
-            slideUp: {
-              '0%': { opacity: '0', transform: 'translateY(40px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-            fadeIn: {
-              '0%': { opacity: '0' },
-              '100%': { opacity: '1' },
-            },
-          }
-        }
-      }
-    }
-  </script>
-  
+
+  <!-- Preload hero image (LCP) -->
+  <link rel="preload" as="image" href="images/screen.webp" type="image/webp">
+
   <style>
     * {
       scroll-behavior: smooth;
@@ -765,6 +720,9 @@
       }
     }
   </style>
+
+  <!-- Styles (after custom CSS so utilities take precedence) -->
+  <link rel="stylesheet" href="dist/styles.css">
 <base target="_blank">
 </head>
 <body>
@@ -779,14 +737,17 @@
   <nav class="nav-floating" id="navbar">
     <div class="flex w-full items-center justify-between gap-3 md:gap-10">
       <a href="#" class="flex items-center gap-3">
-        <img src="images/wordlogo.png" alt="Motivez" class="h-14 nav-logo" />
+        <picture class="contents">
+          <source srcset="images/wordlogo.webp" type="image/webp">
+          <img src="images/wordlogo.png" alt="Motivez" class="h-14 w-auto nav-logo" width="1280" height="853">
+        </picture>
       </a>
-      <div class="hidden md:flex items-center gap-8">
+      <div class="hidden md:flex items-center gap-8 whitespace-nowrap">
         <a href="#problem" class="nav-link text-base">The Problem</a>
         <a href="#how-it-works" class="nav-link text-base">How It Works</a>
         <a href="#features" class="nav-link text-base">Features</a>
       </div>
-      <a href="#waitlist" class="btn-primary text-base py-3 px-6 nav-cta">
+      <a href="#waitlist" class="btn-primary text-base py-3 px-6 nav-cta whitespace-nowrap flex-shrink-0">
         <span class="cta-full">Get Early Access</span>
         <span class="cta-short">Early Access</span>
       </a>
@@ -845,7 +806,10 @@
         <!-- Right: Phone mockup -->
         <div class="relative flex justify-center lg:justify-end reveal active" style="animation-delay: 0.2s;">
           <div class="phone-mockup animate-float">
-            <img src="images/screen.png" alt="Motivez App" />
+            <picture>
+              <source srcset="images/screen.webp" type="image/webp">
+              <img src="images/screen.png" alt="Motivez App" width="724" height="1148">
+            </picture>
           </div>
           <!-- Decorative elements -->
           <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-pink-500/20 rounded-full blur-3xl"></div>
@@ -950,7 +914,10 @@
         </div>
         <div class="flex justify-center reveal">
           <div class="phone-mockup">
-            <video src="videos/main.mov" autoplay loop muted playsinline></video>
+            <video autoplay loop muted playsinline preload="none">
+              <source src="videos/main.mp4" type="video/mp4">
+              <source src="videos/main.mov" type="video/quicktime">
+            </video>
           </div>
         </div>
       </div>
@@ -1003,7 +970,10 @@
           </div>
           <div class="order-1 lg:order-2 flex justify-center">
             <div class="phone-mockup">
-              <img src="images/Find.jpg" alt="Discover Screen" />
+              <picture>
+                <source srcset="images/Find.webp" type="image/webp">
+                <img src="images/Find.jpg" alt="Discover Screen" width="1179" height="2432" loading="lazy">
+              </picture>
             </div>
           </div>
         </div>
@@ -1012,7 +982,10 @@
         <div class="grid lg:grid-cols-2 gap-12 items-center reveal">
           <div class="flex justify-center">
             <div class="phone-mockup">
-              <video src="videos/dice.mov" autoplay loop muted playsinline></video>
+              <video autoplay loop muted playsinline preload="none">
+                <source src="videos/dice.mp4" type="video/mp4">
+                <source src="videos/dice.mov" type="video/quicktime">
+              </video>
             </div>
           </div>
           <div>
@@ -1069,7 +1042,10 @@
           </div>
           <div class="order-1 lg:order-2 flex justify-center">
             <div class="phone-mockup">
-              <img src="images/cal.png" alt="Calendar Screen" />
+              <picture>
+                <source srcset="images/cal.webp" type="image/webp">
+                <img src="images/cal.png" alt="Calendar Screen" width="1179" height="2556" loading="lazy">
+              </picture>
             </div>
           </div>
         </div>
@@ -1146,7 +1122,10 @@
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div class="flex justify-center reveal">
           <div class="phone-mockup">
-            <img src="images/user.jpg" alt="Profile & Stats" />
+            <picture>
+              <source srcset="images/user.webp" type="image/webp">
+              <img src="images/user.jpg" alt="Profile & Stats" width="1179" height="2423" loading="lazy">
+            </picture>
           </div>
         </div>
         <div class="reveal">
