@@ -1,0 +1,34 @@
+# Motivez
+> Motivez is a social discovery and planning app for university students and young adults in Toronto, Canada, helping them find nearby events, plan hangouts with friends, and explore their city.
+
+## Docs
+
+- [Home](https://motivez.app/): Main landing page introducing Motivez, its core value proposition ("Never Be Bored Again"), feature overview, and early-access waitlist signup. 2,500+ people currently on the waitlist.
+- [The Problem](https://motivez.app/#problem): Explains the core problem Motivez solves — students and young adults struggling to discover things to do and coordinate plans with friends.
+- [How It Works](https://motivez.app/#how-it-works): Step-by-step walkthrough of the Motivez experience: discovering activities, creating or joining Motives (social gatherings), and inviting friends.
+- [Features](https://motivez.app/#features): Detailed overview of app features including location-based discovery, budget filtering, "Roll the Dice" spontaneous recommendations, real-time event notifications, calendar sync, and personal adventure tracking dashboard.
+
+## Legal
+
+- [Privacy Policy](https://motivez.app/privacy): Full privacy policy (effective February 16, 2026) covering data collection (location, account, usage), data sharing, user rights, PIPEDA (Canada) and CCPA/CPRA (California) compliance, and data retention practices.
+- [Terms and Conditions](https://motivez.app/terms): Terms of service for Motivez Inc., covering user eligibility (13+), acceptable use, content licensing, liability limitations (capped at CAD $100), and dispute resolution under Ontario law in Toronto courts.
+
+## Key Facts
+
+- Founded in 2025 by Ali Towaiji
+- Pre-launch stage with 2,500+ users on the early-access waitlist
+- Primary market: Toronto and Greater Toronto Area (GTA)
+- Target users: university students and young adults
+- Platform: iOS and Android (coming soon)
+- Core concept: "Motives" — user-created social gatherings that others can discover and join
+- Industry: Social discovery, event planning, location-based services
+- Free to use; no premium tier announced
+
+## Contact
+
+- Website: https://motivez.app
+- Email: motivezapp@gmail.com
+- Support: motivezapp@gmail.com
+- Instagram: https://instagram.com/motivezapp
+- TikTok: https://tiktok.com/@motivezapp
+- LinkedIn: https://linkedin.com/company/motivezapp
