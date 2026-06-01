@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "WK3U43ZZPT.com.motivez.app",
+        "paths": ["/motive/*", "/place/*", "/user/*", "/invite"]
+      }
+    ]
+  }
+}
