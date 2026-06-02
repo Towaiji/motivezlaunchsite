@@ -31,7 +31,6 @@
       scroll-behavior: smooth;
     }
 
-    /* Top header: logo left, go back right */
     .privacy-header {
       display: flex;
       align-items: center;
@@ -149,7 +148,6 @@
       text-decoration: underline;
     }
 
-    /* Right-side table of contents – wide enough for one line per item, shifted right for spacing */
     .toc-sidebar {
       width: 480px;
       flex-shrink: 0;
@@ -204,7 +202,6 @@
       outline: none;
     }
 
-    /* Footer (matches main site) */
     .footer {
       padding: 4rem 1.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -322,111 +319,151 @@
     </a>
     <a href="index.html" class="btn-back">Go back</a>
   </header>
+
   <div class="page-layout">
     <main>
       <article class="card">
         <h1>Privacy Policy</h1>
 
-        <p class="intro"><strong>Effective Date:</strong> February 16, 2026</p>
+        <p class="intro"><strong>Effective Date:</strong> June 1, 2026</p>
 
-        <p class="intro">This Privacy Policy explains how Motivez ("Motivez," "we," "us," or "our") collects, uses, discloses, and protects personal information when you use our website, mobile application, and related services (collectively, the "Service"). Motivez is a social discovery app that helps users find nearby places, events, and experiences, create and join public or private "Motives," and view social context such as attendees and friends, with a location-powered discovery experience. This policy is written for users in Canada and the United States.</p>
+        <p class="intro">This Privacy Policy explains how Motivez ("Motivez," "we," "us," or "our") collects, uses, discloses, and protects personal information when you use our website, mobile application, and related services (collectively, the "Service"). Motivez is a social discovery and event-planning app that helps users find nearby places, create and join group outings called "Motives," coordinate with friends via group chat, and optionally purchase tickets for paid events through Stripe. This policy applies to users in Canada and the United States. Additional rights may apply under PIPEDA (Canada) and the CCPA/CPRA (California).</p>
 
-        <p class="intro">Depending on where you live, additional rights may apply under the Personal Information Protection and Electronic Documents Act (PIPEDA) in Canada and the California Consumer Privacy Act (CCPA) as amended by the California Privacy Rights Act (CPRA) in California. We also align our practices with commonly recognized privacy principles reflected in laws such as the General Data Protection Regulation (GDPR) for transparency, security, and user rights, even if you are not located in the European Economic Area.</p>
+        <h2 id="children">1. Children and COPPA Compliance</h2>
+        <p>The Service is intended for users who are 13 years of age or older. <strong>We do not knowingly collect personal information from children under 13.</strong> If you are under 13, do not create an account, use the Service, or submit any personal information to us. If we learn that we have collected personal information from a child under 13 without verified parental consent, we will delete that information promptly and terminate the associated account.</p>
+        <p>If you are a parent or legal guardian and believe your child under 13 has created an account or provided us with personal information, please contact us immediately at <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>. We will investigate and delete the account and data within a reasonable time.</p>
+        <p>Users between 13 and 17 may use the Service only with the knowledge and permission of a parent or legal guardian. Parents and guardians are responsible for supervising their minor's use of the Service. The Service involves real-world meetups, location sharing, and (for paid Motives) financial transactions — parents and guardians should be aware of these features before allowing a minor to participate.</p>
+        <p>We do not collect date of birth at registration. We do not knowingly allow users under 13. If you believe a user is under 13, please report it to <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>.</p>
 
-        <h2 id="information-we-collect">1. Information We Collect</h2>
-        <p>We collect information you provide directly, information collected automatically when you use the Service, and information from third parties you choose to connect. When you create an account, we collect identifiers and account details such as your name (or username), email address, authentication credentials (stored using secure methods by our authentication provider), and basic profile information you choose to add, such as interests, bio, and profile photo. If you create or join Motives, we collect the details you submit, such as the motive title, description, location, time, attendee status, and any optional notes you provide. If the Service includes social features (for example, adding friends or inviting contacts), we may collect information needed to support those features, such as friend connections or invite-related identifiers.</p>
-        <p>Because Motivez is designed around local discovery, we may collect location information. Depending on your settings, this can include approximate location (such as city-level derived from IP) and/or precise device location (GPS) if you grant permission. You can usually disable precise location in your device settings. If you disable location, discovery and other location-based features may not work or may work with limited relevance.</p>
-        <p>We also collect technical and usage information automatically. This typically includes device and app information (such as device type, operating system, app version), network information, log data (such as timestamps, feature usage, and crashes), and general analytics about how you interact with the Service. If we use advertising or ad-related analytics in the future, we may collect mobile advertising IDs where permitted by your device settings. On our website, we may use cookies or similar technologies to maintain sessions, improve performance, and measure usage.</p>
-        <p>If we introduce in-app payments (for example, ticketing or subscriptions), payment card information is typically collected and processed by a third-party payment processor, not stored directly by Motivez, though we may receive transaction confirmations and limited billing details.</p>
+        <h2 id="information-we-collect">2. Information We Collect</h2>
+        <p><strong>Account and profile information.</strong> When you register, we collect your name (or display name), username, email address, and authentication credentials. If you sign up via Google or Apple, we receive your name, email address, and profile photo from those providers. You may also add an optional bio and profile photo. We do not collect date of birth, phone number, or government ID.</p>
+        <p><strong>Motive and event data.</strong> When you create a Motive, we collect the title, description, category, start and end times, precise location (latitude and longitude), cover photo, capacity, privacy setting (public, friends-only, or closed), and payment settings if applicable. This information is stored and, depending on your privacy setting, may be visible to other users.</p>
+        <p><strong>Precise location.</strong> The Service uses your device's GPS to show nearby places and Motives and to power the discovery feed. Your current location is sent to our backend on each discovery request. We store precise latitude and longitude permanently in the database for all Motives you create. We do not store a continuous log of your device's location over time — location is used at the time of a request and for Motive records only. You can disable location access in your device settings at any time; doing so will disable discovery features.</p>
+        <p><strong>Messages and chat content.</strong> All messages you send in group chats — including text, shared media, polls, checklists, availability responses, and budget entries — are stored in our database. Messages are <strong>not end-to-end encrypted</strong> and are stored indefinitely unless you or an admin deletes them. Chat media (photos and videos) are stored in our cloud storage.</p>
+        <p><strong>Photos and media.</strong> We store profile photos (avatars), Motive cover images, group chat avatars, and photos and videos sent in chats. All media is stored in Supabase cloud storage.</p>
+        <p><strong>Social graph.</strong> We store your friend connections and friend request history (sent, received, accepted, declined).</p>
+        <p><strong>Attendance and ratings.</strong> We store your RSVP status for Motives, whether your attendance was approved or declined, and host ratings you give or receive.</p>
+        <p><strong>Push notification tokens.</strong> If you grant notification permission, we store your Expo push token on our servers to deliver push notifications. This token is device-specific and is removed when you log out.</p>
+        <p><strong>Notification history.</strong> Notifications sent to you (friend requests, messages, Motive updates, payment confirmations, etc.) are stored in our database, including their title, body, and associated metadata.</p>
+        <p><strong>Preferences and personalization.</strong> During onboarding, you select interest categories (e.g., food, sports, nightlife). These are stored and used to personalize your discovery feed. We also store in Redis a short-term cache (up to 7 days) of places you have liked or disliked in the swipe feed for ranking purposes.</p>
+        <p><strong>Payment data.</strong> If you purchase a ticket to a paid Motive, payment is processed by Stripe. We do not store your card number, CVV, or full bank account details. We store in our database: the Motive's ticket price, your attendance approval status after a confirmed payment, and your Stripe payment intent ID for reconciliation. If you are a host and connect a Stripe account to receive payouts, we store your Stripe Connect account ID and onboarding status.</p>
+        <p><strong>Technical and usage data.</strong> We collect standard server logs including IP addresses, device type, operating system, app version, and API request timestamps. Our backend logs events such as logins, place searches, and payment actions for security and debugging purposes.</p>
+        <p><strong>Trending search cache.</strong> Anonymized search queries are cached in Redis for up to 2 weeks to power trending features, then automatically deleted.</p>
 
-        <h2 id="how-we-use">2. How We Use Personal Information</h2>
-        <p>We use personal information to provide, maintain, and improve the Service. This includes creating and managing your account, authenticating you, enabling you to discover places and events, allowing you to create and join Motives, and delivering core functionality like location-based results and social context.</p>
-        <p>We also use information to personalize your experience. For example, your interests, past activity, and social connections may be used to recommend places or Motives you are more likely to enjoy. We use usage and diagnostic data to troubleshoot issues, optimize performance (including feed speed and reliability), and develop new features.</p>
-        <p>We use contact details like email to send important service communications, such as verification messages, security alerts, updates about changes to the Service, and responses to support requests. Where legally required, we will obtain your consent before sending marketing messages, and you can opt out of promotional communications at any time.</p>
-        <p>We may also use information to protect Motivez, our users, and the public by detecting fraud, preventing abuse, enforcing our terms, and complying with legal obligations.</p>
+        <h2 id="how-we-use">3. How We Use Personal Information</h2>
+        <p>We use the information we collect to:</p>
+        <ul>
+          <li>Create and manage your account and authenticate you securely</li>
+          <li>Power location-based discovery — showing nearby places and Motives based on your current location</li>
+          <li>Allow you to create, join, and coordinate Motives and group chats</li>
+          <li>Personalize your discovery feed based on your interests and activity</li>
+          <li>Process payments for paid Motives via Stripe</li>
+          <li>Send push notifications for messages, friend requests, Motive updates, and payment events</li>
+          <li>Display social context — showing which friends are attending a Motive or have liked a place</li>
+          <li>Detect and prevent fraud, abuse, and unauthorized access</li>
+          <li>Comply with legal obligations</li>
+          <li>Improve and develop the Service</li>
+        </ul>
+        <p>We do not use your personal information to serve third-party advertising. We do not sell your personal information.</p>
 
-        <h2 id="legal-bases">3. Legal Bases and Consent (Canada and U.S. Approach)</h2>
-        <p>In Canada, we generally rely on your knowledge and consent to collect, use, and disclose personal information, except where permitted or required by law. Consent can be express (for example, enabling precise location) or implied depending on the context (for example, using your email to provide account-related notices). You may withdraw consent in certain cases, but doing so may limit your ability to use parts of the Service.</p>
-        <p>In the United States, privacy requirements vary by state. We apply similar principles of notice, choice, and reasonable security. If you are a California resident, you may have additional rights described in the California section below.</p>
+        <h2 id="third-party-services">4. Third-Party Services and Data Sharing</h2>
+        <p>We share personal information only as described below.</p>
+        <p><strong>Supabase.</strong> Our database, authentication, and file storage provider. All user data, messages, media, and app records are stored on Supabase infrastructure.</p>
+        <p><strong>Google Places API.</strong> When you use the discovery feed, we send your precise latitude and longitude, search radius, and any text query to Google's Places API to retrieve nearby place results. Google's privacy policy governs this data. We do not send your name, email, or account information to Google Places.</p>
+        <p><strong>Stripe.</strong> If you purchase a ticket or connect a Stripe account as a host, payment data is processed by Stripe under Stripe's privacy policy and PCI DSS compliance. We send Stripe your user ID, the Motive ID, and the payment amount. Stripe independently collects your payment method details. Host Stripe Connect accounts involve Stripe collecting identity and banking information directly from the host during Stripe's onboarding.</p>
+        <p><strong>Expo.</strong> We use Expo's push notification infrastructure. Your push token is sent to Expo's servers to deliver notifications to your device. Expo's privacy policy governs this data.</p>
+        <p><strong>Railway.</strong> Our backend API is hosted on Railway's cloud infrastructure. API request data (including location coordinates in transit) passes through Railway's servers.</p>
+        <p><strong>Redis (RedisLabs).</strong> We use Redis to cache short-term data: liked/disliked places (up to 7 days), place details (up to 7 days), trending search terms (up to 2 weeks), and personalization data. This data is keyed by user ID, not linked to your name or email in Redis.</p>
+        <p><strong>Other users.</strong> Depending on your Motive's privacy settings, other users may see your profile name, username, avatar, and attendance status. In public Motives, any authenticated user can see the attendee list. In friends-only or closed Motives, visibility is limited to invited or approved attendees.</p>
+        <p><strong>Legal and safety disclosures.</strong> We may disclose information to law enforcement or other authorities if required by law, court order, or to protect the safety of users or the public.</p>
+        <p><strong>Business transfers.</strong> If Motivez is acquired or merges with another company, personal information may be transferred as part of that transaction under appropriate confidentiality protections.</p>
+        <p>We do not share your data with advertisers, data brokers, or analytics platforms. We have no active third-party analytics or crash reporting SDKs in the app at this time.</p>
 
-        <h2 id="how-we-share">4. How We Share Personal Information</h2>
-        <p>We do not sell personal information in the ordinary sense of exchanging it for money. We may share personal information in the following situations.</p>
-        <p>We share information with service providers who help us operate the Service (for example, cloud infrastructure, database and authentication providers, analytics and monitoring tools, customer support tools, and communications providers). These providers act on our instructions as processors and are permitted to use personal information only to perform services for us; we remain responsible for your personal information and require them to protect it under appropriate confidentiality and security obligations.</p>
-        <p>We share information when you choose to make it public or visible to others. For example, if you create a public Motive, other users may see the Motive details and attendee list depending on your settings and the nature of the event. If you join a Motive, your profile may be visible to the host and other attendees to support social coordination.</p>
-        <p>We may share information for legal and safety reasons if we believe disclosure is reasonably necessary to comply with law, respond to lawful requests, protect the rights and safety of our users, investigate fraud or security issues, or enforce our terms.</p>
-        <p>If Motivez is involved in a corporate transaction (such as a merger, acquisition, financing, or sale of assets), personal information may be transferred as part of that transaction, subject to standard confidentiality protections.</p>
+        <h2 id="location-detail">5. Location Data — Additional Detail</h2>
+        <p>Location is central to how Motivez works. Here is exactly how we handle it:</p>
+        <ul>
+          <li>Your device's GPS coordinates are sent to our backend each time you load the discovery feed or search for nearby places.</li>
+          <li>Your coordinates are forwarded to Google Places API to retrieve nearby venue data.</li>
+          <li>A geohash (approximately 100m precision) derived from your location is cached in Redis for up to 3 days to power the place pool — this is not linked to your account by name.</li>
+          <li>When you create a Motive, the precise latitude and longitude you select for the venue is stored permanently in our database as part of the Motive record.</li>
+          <li>We do not record a timestamped log of everywhere you go. Location is used at the point of a request; we do not build a movement history.</li>
+          <li>You can revoke location permission at any time in your iOS Settings. The app will continue to work for chat and social features but discovery and Motive creation will be unavailable.</li>
+        </ul>
 
-        <h2 id="your-rights">5. Your Privacy Rights and Choices</h2>
-        <p>You can usually review and update certain account and profile information in the app. You may also request access to the personal information we hold about you and request corrections if it is inaccurate.</p>
-        <p>You may request deletion of your account and associated personal information, subject to limited exceptions (for example, where we must retain information for legal compliance, security, dispute resolution, or to complete a transaction you requested). Where applicable, you may also request a copy of your information in a portable format, to the extent technically feasible.</p>
-        <p>You can control location access through your device settings. You can also manage certain communications preferences by using unsubscribe links in promotional emails or by changing in-app notification settings where available.</p>
-        <p>To exercise privacy rights, contact us using the details in the "Contact Us" section. We may need to verify your identity before completing your request. [If we offer a dedicated privacy request webform, we will make it available at: [Privacy request webform link].]</p>
+        <h2 id="messages-storage">6. Messages and Chat Data</h2>
+        <p>All messages sent in Motivez group chats are stored in our database indefinitely. This includes text messages, media references, poll questions and votes, availability responses, checklist items, and budget entries. <strong>Messages are not encrypted end-to-end</strong> — they are stored in plaintext in our database and are accessible to Motivez engineers with database access. We do not sell, analyze for advertising, or share message content with third parties. If you delete your account, your messages will be deleted from the database within a reasonable period, subject to our retention policy below.</p>
 
-        <h2 id="security">6. Data Security and Protection Practices</h2>
-        <p>We use reasonable administrative, technical, and physical safeguards designed to protect personal information from unauthorized access, disclosure, alteration, and destruction. We use encryption in transit (for example, HTTPS/TLS) when data moves between your device and our servers, and encryption at rest where supported by our infrastructure providers. We use access controls and least-privilege permissions to limit who can access personal information, and we monitor for suspicious activity to help detect abuse and security incidents. We maintain an incident response posture to assess and respond to potential breaches in accordance with our internal procedures and applicable law. No method of transmission or storage is completely secure; while we work to protect your information, we cannot guarantee absolute security.</p>
-
-        <h2 id="international-transfers">7. International and Cross-Border Data Transfers</h2>
-        <p>Motivez operates in Canada and the United States, and we may store or process information in either country depending on our service providers and infrastructure. Your personal information may therefore be transferred across borders and may be subject to the laws of the jurisdiction where it is processed. Where required, we use contractual and organizational safeguards intended to protect personal information when it is processed by service providers (including, where relevant, concepts comparable to standard contractual clauses or other transfer mechanisms). If we expand our processing locations in the future, we will update this Privacy Policy accordingly and describe the safeguards we rely on.</p>
+        <h2 id="your-rights">7. Your Rights and Choices</h2>
+        <p>You may update your profile information, username, bio, and avatar at any time within the app.</p>
+        <p>You may request deletion of your account and associated personal information by contacting us at <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>. We will delete your account, profile, messages, media, and friend connections within <strong>30 days</strong> of your verified request, except where we are required to retain information for legal compliance, security, dispute resolution, or to complete pending transactions.</p>
+        <p>You may request a copy of the personal information we hold about you by contacting us at the email above.</p>
+        <p>You may revoke location permission at any time through your device settings.</p>
+        <p>You may disable push notifications at any time through your device settings or iOS notification preferences.</p>
+        <p>You may opt out of marketing emails (if any) by using the unsubscribe link in such emails.</p>
 
         <h2 id="data-retention">8. Data Retention</h2>
-        <p>We retain personal information for as long as needed to provide the Service and for legitimate business purposes such as maintaining security, preventing fraud, complying with legal obligations, resolving disputes, and enforcing agreements. Retention depends on the purpose for which the information was collected and used. If you delete your account, we will take steps to delete or de-identify personal information associated with your account within a reasonable period, except where retention is required or permitted by law. Some information may persist in backups for a limited time and will be removed according to our backup and retention cycles.</p>
+        <p>We retain your personal information for as long as your account is active and as long as needed to provide the Service. Specifically:</p>
+        <ul>
+          <li><strong>Account and profile data:</strong> Retained until you delete your account or request deletion.</li>
+          <li><strong>Motive records:</strong> Retained indefinitely as part of the platform's event history, unless you delete the Motive or your account.</li>
+          <li><strong>Messages and chat media:</strong> Retained indefinitely unless deleted by a user or admin, or upon account deletion.</li>
+          <li><strong>Notification history:</strong> Retained indefinitely unless deleted upon account deletion.</li>
+          <li><strong>Push tokens:</strong> Deleted from our servers when you log out.</li>
+          <li><strong>Redis cache (liked/disliked places, personalization):</strong> Up to 7 days, then automatically deleted.</li>
+          <li><strong>Redis cache (trending searches):</strong> Up to 2 weeks, then automatically deleted.</li>
+          <li><strong>Place photo cache:</strong> Up to 3 days in our cloud storage, then automatically deleted.</li>
+          <li><strong>Server logs:</strong> Retained for a reasonable period for security and debugging, typically 30–90 days.</li>
+          <li><strong>Payment records:</strong> Retained as required by financial and legal obligations (typically 7 years under Canadian law).</li>
+        </ul>
 
-        <h2 id="children">9. Children and Minors</h2>
-        <p>Motivez is intended for older teens and adults. We do not knowingly collect personal information from children under 13. If we learn that we have collected personal information from a child under 13, we will delete it. For users who are minors (for example, under 18), we encourage using the Service with appropriate discretion, and we may apply additional limitations or protections where required by law. If you are a parent or guardian and believe your child has provided personal information to Motivez, please contact us at <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>.</p>
+        <h2 id="security">9. Security</h2>
+        <p>We use HTTPS/TLS encryption for all data in transit between your device and our servers. Our database and file storage are hosted on Supabase, which provides encryption at rest and access controls. We use row-level security (RLS) policies in our database to restrict data access to authorized users. Our backend API verifies your identity on every request using JWT tokens signed with a secret key. Payment processing is handled entirely by Stripe, which is PCI DSS compliant.</p>
+        <p>Despite these measures, no system is perfectly secure. We cannot guarantee that unauthorized access, hacking, data loss, or breaches will never occur. If we become aware of a breach that creates a real risk of significant harm to you, we will notify affected users and report to relevant authorities (including Canada's Office of the Privacy Commissioner under PIPEDA) <strong>as soon as feasible</strong> and no later than <strong>72 hours</strong> after we determine a reportable breach has occurred, to the extent required by applicable law.</p>
+        <p>If you discover a security vulnerability in our app or backend, please report it to <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>.</p>
 
-        <h2 id="third-party">10. Third-Party Links and Services</h2>
-        <p>The Service may integrate with third-party services (for example, map or location providers or external links to venues or event pages). When you interact with third-party services, their privacy practices govern your information. We recommend reviewing their policies before using those services.</p>
+        <h2 id="international">10. International Data Transfers</h2>
+        <p>Motivez is operated from Canada. Our backend infrastructure (Railway) and database (Supabase) may store and process data in the United States or other countries. By using the Service, you acknowledge that your data may be transferred to and processed in jurisdictions outside your home country. We take steps to ensure appropriate protections are in place, including using reputable service providers with strong security practices.</p>
 
-        <h2 id="changes">11. Changes to This Privacy Policy</h2>
-        <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements. If we make material changes, we will provide notice through the Service or by other appropriate means. The "Effective Date" at the top indicates when the policy was last updated.</p>
+        <h2 id="california">11. California Residents (CCPA/CPRA)</h2>
+        <p><strong>Do Not Sell or Share My Personal Information:</strong> Motivez does not sell or share your personal information as those terms are defined under California law. There is no opt-out mechanism required because we do not engage in these activities. If our practices change, we will update this policy and provide an opt-out link here before doing so.</p>
+        <p><strong>Categories collected:</strong> Identifiers (name, email, username, device ID, IP address); profile information; precise geolocation; internet activity (usage logs, app interactions); commercial information (payment history if applicable); inferences (interest categories, personalization data); audio/visual (profile photos, chat media).</p>
+        <p><strong>Purposes:</strong> Providing and improving the Service, personalization, security and fraud prevention, payment processing, push notifications, legal compliance.</p>
+        <p><strong>Sale and sharing:</strong> We do not sell personal information. We do not share personal information for cross-context behavioral advertising as defined under the CCPA/CPRA.</p>
+        <p><strong>Your rights:</strong> Right to know, right to delete, right to correct, right to opt out of sale/sharing (not applicable as we do not sell), right to non-discrimination. To exercise these rights, email <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>. We will verify your identity before completing your request.</p>
+        <p><strong>Sensitive personal information:</strong> We collect precise geolocation. We use it solely to provide the Service (discovery and Motive location features). We do not use it for advertising or profiling beyond what is necessary to operate the Service.</p>
 
-        <h2 id="contact">12. Contact Us</h2>
-        <p>If you have questions about this Privacy Policy or want to exercise your privacy rights, contact us by email at <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>. [Optional: Our legal entity name is [Legal entity name]. Our mailing address is [Mailing address]. Our website is [Website domain].]</p>
+        <h2 id="canada">12. Canada (PIPEDA)</h2>
+        <p>We collect, use, and disclose personal information with your knowledge and consent, except where permitted or required by law. You may withdraw consent at any time, subject to legal and contractual limitations, by contacting us — though withdrawal may limit your ability to use certain features. You have the right to access personal information we hold about you and request corrections. We will respond to access or correction requests within <strong>30 days</strong> as required under PIPEDA. We are accountable for personal information in our custody, including information processed by our service providers under appropriate data processing agreements. If you have a complaint about our privacy practices, contact us at <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>. If you are not satisfied with our response, you may file a complaint with the Office of the Privacy Commissioner of Canada at <a href="https://www.priv.gc.ca" target="_blank" rel="noopener">priv.gc.ca</a> or the applicable provincial privacy commissioner in Quebec (Commission d'accès à l'information), Alberta (Office of the Information and Privacy Commissioner of Alberta), or British Columbia (Office of the Information and Privacy Commissioner for BC).</p>
 
-        <h2 id="california">13. California Residents (CCPA/CPRA)</h2>
-        <p>The California Consumer Privacy Act (CCPA) as amended by the California Privacy Rights Act (CPRA) gives California residents specific rights regarding their personal information. This section describes those rights and our practices in that context.</p>
-        <p><strong>Categories of personal information we collect.</strong> We collect identifiers (such as name, email, IP address, device identifiers); account and profile information; commercial information (such as Motive or transaction history if/when applicable); internet or network activity (such as usage and log data); geolocation (approximate or precise, with your permission); and inferences drawn from the above. We do not collect sensitive personal information for purposes that would trigger the right to limit use under the CPRA except as needed to provide the Service.</p>
-        <p><strong>Purposes.</strong> We use this information to provide and improve the Service, personalize your experience, communicate with you, ensure security and fraud prevention, and comply with law, as described elsewhere in this policy.</p>
-        <p><strong>Categories of third parties we disclose to.</strong> We may disclose personal information to service providers (infrastructure, analytics, support, communications); to other users when you make information visible (for example, as a Motive organizer or attendee); and to authorities when required by law.</p>
-        <p><strong>Sale and sharing.</strong> We do not sell personal information in the traditional sense. Under the CCPA/CPRA, "sale" and "share" have specific meanings (including certain disclosures for cross-context behavioral advertising). We do not currently sell or share personal information as those terms are defined by California law. We do not use personal information for cross-context behavioral advertising. If our practices change in the future, we will update this policy and provide an appropriate opt-out mechanism (such as a "Do Not Sell or Share My Personal Information" link) where required.</p>
-        <p><strong>Your rights.</strong> You have the right to know what categories of personal information we collect, the purposes for which we use it, and the categories of third parties we disclose it to. You may request access to, deletion of, and correction of personal information. You may have the right to opt out of certain "sale" or "sharing" as defined under California law. We will not discriminate against you for exercising your rights.</p>
-        <p><strong>How to exercise.</strong> To exercise your California rights, contact us at <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>. We may need to verify your identity (for example, by matching information you provide to our records) before completing your request.</p>
+        <h2 id="changes">13. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Material changes will be communicated through the app or by email. The Effective Date at the top of this page reflects the most recent update. Continued use of the Service after an update constitutes acceptance of the revised policy.</p>
 
-        <h2 id="canada-pipeda">14. Canada (PIPEDA)</h2>
-        <p>The Personal Information Protection and Electronic Documents Act (PIPEDA) is Canada’s federal private-sector privacy law. For users in Canada, we align our practices with PIPEDA’s principles as follows.</p>
-        <p><strong>Consent.</strong> We collect, use, and disclose your personal information with your knowledge and consent, except where permitted or required by law. Consent may be express (for example, when you enable location) or implied (for example, when you provide your email for account-related communications). You may withdraw consent in certain circumstances, subject to legal or contractual restrictions; doing so may limit the Service we can provide.</p>
-        <p><strong>Access and correction.</strong> You have the right to access the personal information we hold about you and to request correction of inaccuracies. We will respond within the timeframes required by applicable law.</p>
-        <p><strong>Safeguards.</strong> We use administrative, technical, and physical safeguards appropriate to the sensitivity of the information to protect it against loss, theft, unauthorized access, disclosure, or modification, as described in the Data Security section.</p>
-        <p><strong>Accountability.</strong> We are accountable for the personal information under our control. We ensure that our service providers who process personal information on our behalf agree to use it only for our specified purposes and to protect it with comparable safeguards.</p>
-        <p><strong>Cross-border processing.</strong> Your personal information may be processed or stored in Canada, the United States, or other countries where our service providers operate. When we transfer personal information across borders, we take steps to ensure it is protected in accordance with this policy and applicable law, including through contractual measures where appropriate.</p>
-        <p><strong>Identifying purposes.</strong> We identify the purposes for which we collect personal information in this policy and, where appropriate, at or before the time of collection. We do not use or disclose your personal information for purposes other than those identified, except with your consent or as required or permitted by law.</p>
-        <p><strong>Challenging compliance and complaints.</strong> You may contact us to challenge our compliance with PIPEDA's principles or to make a complaint. We will investigate and respond in accordance with our internal procedures and applicable law. If you are not satisfied with our response, you may have the right to file a complaint with the Office of the Privacy Commissioner of Canada (https://www.priv.gc.ca).</p>
-
-        <h2 id="gdpr-transparency">15. Transparency and Rights (GDPR-Style Alignment)</h2>
-        <p>Motivez is focused on users in Canada and the United States. We are not currently targeting the European Economic Area (EEA), Switzerland, or the United Kingdom. For transparency and as a general standard, we align our policy with principles commonly associated with the General Data Protection Regulation (GDPR): we inform you about what we collect and why; we use legal bases such as your consent, performance of a contract with you, our legitimate interests (where not overridden by your rights), and compliance with legal obligations; and we support rights of access, rectification, erasure, restriction of processing, objection, and data portability to the extent applicable in your jurisdiction. If you are in the EEA, UK, or Switzerland and use our Service, you may contact us to exercise these rights; we will respond in line with our general practices and any applicable law.</p>
-
-        <p style="margin-top: 32px;">For any other questions, email <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a>.</p>
-    </article>
+        <h2 id="contact">14. Contact Us</h2>
+        <p>Motivez Inc.<br />
+        Email: <a href="mailto:motivezapp@gmail.com">motivezapp@gmail.com</a><br />
+        Mailing Address: 1 University Ave, Toronto, ON M5J 2P1, Canada<br />
+        Website: https://motivez.app</p>
+        <p>For account deletion, data access requests, children's data concerns, or any other privacy matter, email us at the address above. We aim to respond within 30 days.</p>
+      </article>
     </main>
 
     <aside class="toc-sidebar" aria-label="Table of contents">
       <nav class="toc">
         <strong>Contents</strong>
-        <a href="#information-we-collect">1. Information We Collect</a>
-        <a href="#how-we-use">2. How We Use Personal Information</a>
-        <a href="#legal-bases">3. Legal Bases and Consent</a>
-        <a href="#how-we-share">4. How We Share Personal Information</a>
-        <a href="#your-rights">5. Your Privacy Rights and Choices</a>
-        <a href="#security">6. Data Security and Protection Practices</a>
-        <a href="#international-transfers">7. International and Cross-Border Data Transfers</a>
+        <a href="#children">1. Children and COPPA</a>
+        <a href="#information-we-collect">2. Information We Collect</a>
+        <a href="#how-we-use">3. How We Use Personal Information</a>
+        <a href="#third-party-services">4. Third-Party Services and Data Sharing</a>
+        <a href="#location-detail">5. Location Data</a>
+        <a href="#messages-storage">6. Messages and Chat Data</a>
+        <a href="#your-rights">7. Your Rights and Choices</a>
         <a href="#data-retention">8. Data Retention</a>
-        <a href="#children">9. Children and Minors</a>
-        <a href="#third-party">10. Third-Party Links and Services</a>
-        <a href="#changes">11. Changes to This Privacy Policy</a>
-        <a href="#contact">12. Contact Us</a>
-        <a href="#california">13. California Residents (CCPA/CPRA)</a>
-        <a href="#canada-pipeda">14. Canada (PIPEDA)</a>
-        <a href="#gdpr-transparency">15. Transparency and Rights (GDPR-Style Alignment)</a>
+        <a href="#security">9. Security</a>
+        <a href="#international">10. International Data Transfers</a>
+        <a href="#california">11. California Residents (CCPA/CPRA)</a>
+        <a href="#canada">12. Canada (PIPEDA)</a>
+        <a href="#changes">13. Changes to This Policy</a>
+        <a href="#contact">14. Contact Us</a>
       </nav>
     </aside>
   </div>
@@ -467,8 +504,8 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Motivez. All rights reserved.</p>
-        <p>Coming soon to iOS and Android.</p>
+        <p>&copy; 2026 Motivez. All rights reserved.</p>
+        <p>Available on iOS.</p>
       </div>
     </div>
   </footer>
