@@ -1,0 +1,32 @@
+# Motivez
+
+> Motivez is a social discovery and planning app for students and young adults in Toronto and the Greater Toronto Area. It helps people find things to do nearby, discover local events and places, and plan hangouts with friends.
+
+Motivez is not a dating app, not a nightlife-only app, and not a ticket marketplace like Eventbrite. It is focused on social discovery and friend-based planning, including daytime activities and student hangouts.
+
+Key facts:
+- Status: Coming soon to iOS and Android, currently in early access / waitlist
+- Founder: Ali Towaiji
+- Founded: 2025
+- Based in / focused on: Toronto, Ontario, Canada
+- Audience: University students and young adults
+- Price: Free (early access)
+
+Core features:
+- Location-based discovery of events, places, and activities nearby
+- "Motivez Dice" — randomly picks a saved place for spontaneous plans
+- Social planning with friends, including invites and shared calendars
+- Personalized recommendations based on mood and budget
+
+## Pages
+
+- [Homepage](https://motivez.app/): Overview of Motivez, the problem it solves, how it works, features, and waitlist signup
+- [Privacy Policy](https://motivez.app/privacy)
+- [Terms and Conditions](https://motivez.app/terms)
+
+## Contact
+
+- Email: motivezapp@gmail.com
+- Instagram: https://instagram.com/motivezapp
+- TikTok: https://www.tiktok.com/@motivezapp
+- LinkedIn: https://www.linkedin.com/company/motivezapp/

@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# AI crawlers — explicit allow so Motivez can be cited and recommended in AI search/chat answers
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Gemini-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+Sitemap: https://motivez.app/sitemap.xml

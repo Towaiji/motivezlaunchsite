@@ -2,3 +2,7 @@
 /place/*   /index.html  200
 /user/*    /index.html  200
 /invite    /index.html  200
+
+# Clean URLs for legal pages (canonical tags use these paths)
+/privacy   /privacy.html  200
+/terms     /terms.html  200
