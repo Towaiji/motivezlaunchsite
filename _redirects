@@ -6,3 +6,4 @@
 # Clean URLs for legal pages (canonical tags use these paths)
 /privacy   /privacy.html  200
 /terms     /terms.html  200
+/about     /about.html  200

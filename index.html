@@ -57,8 +57,8 @@
   <meta name="twitter:creator" content="@motivezapp" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://motivez.app/images/favicon.png" />
-  <link rel="apple-touch-icon" href="https://motivez.app/images/favicon.png" />
+  <link rel="icon" type="image/png" href="https://motivez.app/images/favicon-32.png" />
+  <link rel="apple-touch-icon" href="https://motivez.app/images/apple-touch-icon.png" />
 
   <!-- Sitemap Reference -->
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://motivez.app/sitemap.xml" />
@@ -91,11 +91,11 @@
         "url": "https://motivez.app/",
         "logo": "https://motivez.app/images/wordlogo.png",
         "email": "motivezapp@gmail.com",
-        "founder": {
-          "@type": "Person",
-          "name": "Ali Towaiji"
-        },
         "foundingDate": "2025",
+        "foundingLocation": {
+          "@type": "City",
+          "name": "Toronto"
+        },
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "customer support",
@@ -150,7 +150,7 @@
         "@type": "SoftwareApplication",
         "@id": "https://motivez.app/#softwareapplication",
         "name": "Motivez",
-        "image": "https://motivez.app/images/og-image.jpg",
+        "image": "https://motivez.app/images/wordlogo.png",
         "sameAs": [
           "https://instagram.com/motivezapp",
           "https://www.tiktok.com/@motivezapp",
@@ -243,15 +243,41 @@
       },
       {
         "@type": "AboutPage",
-        "@id": "https://motivez.app/#aboutpage",
-        "url": "https://motivez.app/#why",
-        "name": "Why Motivez",
+        "@id": "https://motivez.app/about.html#aboutpage",
+        "url": "https://motivez.app/about.html",
+        "name": "About Motivez",
         "isPartOf": {
           "@id": "https://motivez.app/#website"
         },
         "about": {
           "@id": "https://motivez.app/#softwareapplication"
         }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://motivez.app/#webpage",
+        "url": "https://motivez.app/",
+        "name": "Motivez | Social Planning App for Things To Do Near You",
+        "isPartOf": {
+          "@id": "https://motivez.app/#website"
+        },
+        "about": {
+          "@id": "https://motivez.app/#softwareapplication"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://motivez.app/images/wordlogo.png"
+        },
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [
+            ".section-journey h1",
+            ".section-journey p.text-xl",
+            "#faq .faq-item summary",
+            "#faq .faq-answer"
+          ]
+        },
+        "inLanguage": "en-CA"
       },
       {
         "@type": "BreadcrumbList",
@@ -297,39 +323,39 @@
         "name": "What is Motivez?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Motivez is a mobile social discovery and planning app that helps students and young adults find things to do nearby, discover events and places, and plan hangouts with friends."
+          "text": "Motivez is a mobile app for discovering things to do and turning group-chat ideas into actual plans. It brings nearby places, events, saved ideas, friend invites, and planning tools into one place, so your group can spend less time debating and more time doing something together."
         }
       },
       {
         "@type": "Question",
-        "name": "Is Motivez for students?",
+        "name": "How does Motivez help a group make plans?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Motivez is designed for university students and young adults who want to quickly decide on activities and coordinate plans with friends."
+          "text": "Start by browsing nearby activities or saving places your group might like. Once you have an idea, you can invite friends, coordinate the details, and keep the plan connected to your calendar instead of spreading everything across search, maps, polls, and a long message thread. If nobody wants to make the final choice, the Motivez Dice can choose from your saved options."
         }
       },
       {
         "@type": "Question",
-        "name": "Is Motivez like Eventbrite?",
+        "name": "How does the Motivez Dice work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Eventbrite is primarily a ticketing and event registration platform. Motivez focuses on social discovery and planning with friends, including local places and activities beyond ticketed events."
+          "text": "The Motivez Dice is for the moment when everyone is interested but nobody will pick. Save a few places or activities, roll the Dice, and it selects one of those options at random. Your group keeps control of the shortlist while Motivez settles the final decision."
         }
       },
       {
         "@type": "Question",
-        "name": "Is Motivez a nightlife app?",
+        "name": "What kinds of things can I discover on Motivez?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Motivez is not nightlife-only. It supports broad social discovery use cases, including daytime activities, student hangouts, and local experiences."
+          "text": "Motivez is being built to surface nearby events, food spots, activities, casual hangouts, and local places worth trying. You will be able to narrow ideas by factors such as mood and budget, whether the plan is coffee after class, a free afternoon activity, dinner with friends, or a night out."
         }
       },
       {
         "@type": "Question",
-        "name": "How is Motivez different from Meetup?",
+        "name": "Who is Motivez for?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Meetup is centered on joining communities and recurring groups. Motivez is centered on quick social planning with your existing friends and finding nearby things to do in the moment."
+          "text": "Motivez is designed first for university students and young adults, but you do not need to be a student to use it. It is for anyone who wants an easier way to find something nearby, make a decision with friends, and organize a casual plan without turning it into a project."
         }
       },
       {
@@ -337,40 +363,77 @@
         "name": "Is Motivez free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Motivez early access is free to join."
+          "text": "Joining the Motivez early-access waitlist is free, and the app is planned to be free during early access. If paid features are introduced later, pricing and what is included will be explained clearly before anyone is charged."
         }
       },
       {
         "@type": "Question",
-        "name": "Is Motivez safe?",
+        "name": "Is Motivez available now, and where is it launching?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Motivez is designed for friend-based social planning and local discovery. Users should always follow standard personal safety best practices when meeting in public."
+          "text": "Motivez is currently accepting early-access signups and is coming soon to iOS and Android. The first launch is focused on Toronto and the Greater Toronto Area so the discovery experience can be useful and locally relevant from day one. Expansion to other Canadian cities is planned as the app grows."
         }
       },
       {
         "@type": "Question",
-        "name": "Does Motivez work in Toronto?",
+        "name": "How is Motivez different from Eventbrite?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Motivez has an initial focus on Toronto and the Greater Toronto Area."
+          "text": "Eventbrite is mainly built around finding, registering for, and buying tickets to scheduled events. Motivez is focused on the broader decision and planning process with friends, including places and casual activities that may not require a ticket. You might use Eventbrite when you already know you want an event; Motivez is for figuring out what the group should do and getting the plan organized."
         }
       },
       {
         "@type": "Question",
-        "name": "How does the Motivez Dice feature work?",
+        "name": "How is Motivez different from Meetup?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Motivez Dice randomly picks a place from your saved list when you can't decide what to do. It's built for spontaneous plans — roll the dice and Motivez suggests a place from your saved spots for your next hangout."
+          "text": "Meetup is useful for discovering communities, public groups, and recurring gatherings around a shared interest. Motivez is designed more for making plans with people you already know, especially when the group needs ideas or cannot agree on one. The focus is quick local discovery, choosing an option, and coordinating the hangout."
         }
       },
       {
         "@type": "Question",
-        "name": "Is Motivez available outside Toronto?",
+        "name": "Is Motivez a dating or nightlife app?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Motivez is launching first in Toronto and the Greater Toronto Area, with plans to expand to other Canadian cities as the app grows."
+          "text": "No. Motivez is a social discovery and planning app, not a dating app, and it is not limited to nightlife. It is meant for everyday plans such as coffee, food, parks, museums, campus hangouts, events, and nights out with friends."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "How should I use Motivez safely?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Motivez is designed around discovering public places and planning with friends, but every real-world outing still requires good judgment. Check venue details before leaving, meet in public when appropriate, tell someone where you are going, arrange a safe way home, and do not rely on an app listing as a guarantee that a place or event is suitable for you."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "@id": "https://motivez.app/#howto",
+    "name": "How to plan a hangout with Motivez",
+    "description": "Three steps to go from bored to booked with Motivez: discover what's around, roll the Motivez Dice if you can't decide, then plan and share with friends.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Discover What's Around",
+        "text": "Open Motivez and instantly see events, places, and activities happening near you. Filter by mood, budget, or vibe, whether you want a chill coffee spot or an epic night out."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Let Fate Decide",
+        "text": "Can't choose? Roll the Motivez Dice. It randomly picks from your saved places for spontaneous adventures. Sometimes the best nights are the ones you don't plan."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Plan & Share",
+        "text": "Invite friends, coordinate details, and keep everything in one place. Your calendar automatically syncs with your plans so you never double-book."
       }
     ]
   }
@@ -391,7 +454,7 @@
     "mainEntityOfPage": "https://motivez.app/",
     "primaryImageOfPage": {
       "@type": "ImageObject",
-      "url": "https://motivez.app/images/og-image.jpg"
+      "url": "https://motivez.app/images/wordlogo.png"
     },
     "about": {
       "@id": "https://motivez.app/#softwareapplication"
@@ -693,6 +756,100 @@
       width: 100%;
     }
     
+    /* FAQ accordion */
+    .faq-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 8px 24px;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      border-color: rgba(233, 30, 99, 0.3);
+    }
+
+    .faq-item summary {
+      cursor: pointer;
+      list-style: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #ffffff;
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #e91e63;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-item .faq-answer {
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.7;
+      padding-bottom: 20px;
+      font-size: 1rem;
+    }
+
+    /* Comparison table */
+    .comparison-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 20px 24px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      vertical-align: top;
+    }
+
+    .comparison-table th {
+      color: #ffffff;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .comparison-table th.highlight,
+    .comparison-table td.highlight {
+      background: rgba(233, 30, 99, 0.08);
+      color: #ffffff;
+    }
+
+    .comparison-table td {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .comparison-table tr:last-child th,
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
     /* Footer */
     footer {
       border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -739,7 +896,6 @@
 
   <!-- Styles (after custom CSS so utilities take precedence) -->
   <link rel="stylesheet" href="/dist/styles.css">
-<base target="_blank">
 </head>
 <body>
   <!-- Grain overlay -->
@@ -755,13 +911,14 @@
       <a href="#" class="flex items-center gap-3">
         <picture class="contents">
           <source srcset="/images/wordlogo.webp" type="image/webp">
-          <img src="/images/wordlogo.png" alt="Motivez" class="h-14 w-auto nav-logo" width="1280" height="853">
+          <img src="/images/wordlogo.webp" alt="Motivez" class="h-14 w-auto nav-logo" width="1280" height="853" decoding="async">
         </picture>
       </a>
       <div class="hidden md:flex items-center gap-8 whitespace-nowrap">
         <a href="#problem" class="nav-link text-base">The Problem</a>
         <a href="#how-it-works" class="nav-link text-base">How It Works</a>
         <a href="#features" class="nav-link text-base">Features</a>
+        <a href="#faq" class="nav-link text-base">FAQ</a>
       </div>
       <a href="#waitlist" class="btn-primary text-base py-3 px-6 nav-cta whitespace-nowrap flex-shrink-0">
         <span class="cta-full">Get Early Access</span>
@@ -824,7 +981,7 @@
           <div class="phone-mockup animate-float">
             <picture>
               <source srcset="/images/screen.webp" type="image/webp">
-              <img src="/images/screen.png" alt="Motivez app home screen showing nearby places, events, and activities to discover" width="724" height="1148">
+              <img src="/images/screen.webp" alt="Motivez app home screen showing nearby places, events, and activities to discover" width="724" height="1148" fetchpriority="high" decoding="async">
             </picture>
           </div>
           <!-- Decorative elements -->
@@ -930,9 +1087,8 @@
         </div>
         <div class="flex justify-center reveal">
           <div class="phone-mockup">
-            <video autoplay loop muted playsinline preload="none">
-              <source src="/videos/main.mp4" type="video/mp4">
-              <source src="/videos/main.mov" type="video/quicktime">
+            <video autoplay loop muted playsinline preload="none" class="lazy-video">
+              <source data-src="/videos/main.mp4" type="video/mp4">
             </video>
           </div>
         </div>
@@ -959,7 +1115,7 @@
               <div>
                 <h3 class="text-2xl font-bold text-white mb-4">Discover What's Around</h3>
                 <p class="text-gray-400 text-lg leading-relaxed mb-6">
-                  Open Motivez and instantly see events, places, and activities happening near you. Filter by mood, budget, or vibe—whether you want a chill coffee spot or an epic night out.
+                  Open Motivez and instantly see events, places, and activities happening near you. Filter by mood, budget, or vibe, whether you want a chill coffee spot or an epic night out.
                 </p>
                 <ul class="space-y-3">
                   <li class="flex items-center gap-3 text-gray-300">
@@ -988,7 +1144,7 @@
             <div class="phone-mockup">
               <picture>
                 <source srcset="/images/Find.webp" type="image/webp">
-                <img src="/images/Find.jpg" alt="Motivez discover screen showing nearby events and places filtered by mood and budget" width="1179" height="2432" loading="lazy">
+                <img src="/images/Find.webp" alt="Motivez discover screen showing nearby events and places filtered by mood and budget" width="1179" height="2432" loading="lazy" decoding="async">
               </picture>
             </div>
           </div>
@@ -998,9 +1154,8 @@
         <div class="grid lg:grid-cols-2 gap-12 items-center reveal">
           <div class="flex justify-center">
             <div class="phone-mockup">
-              <video autoplay loop muted playsinline preload="none">
-                <source src="/videos/dice.mp4" type="video/mp4">
-                <source src="/videos/dice.mov" type="video/quicktime">
+              <video autoplay loop muted playsinline preload="none" class="lazy-video">
+                <source data-src="/videos/dice.mp4" type="video/mp4">
               </video>
             </div>
           </div>
@@ -1014,9 +1169,9 @@
                 </p>
                 <div class="bg-white/5 rounded-2xl p-6 border border-white/10">
                   <p class="text-white italic">
-                    "We rolled the dice and ended up at this amazing rooftop bar we'd never have found otherwise. Best night of the semester!"
+                    Save the places your group likes, then let the Motivez Dice choose one at random when nobody wants to make the final call.
                   </p>
-                  <p class="text-pink-400 text-sm mt-3">- Sarah, University of Toronto</p>
+                  <p class="text-pink-400 text-sm mt-3">One tap, one choice, no more debate.</p>
                 </div>
               </div>
             </div>
@@ -1060,7 +1215,7 @@
             <div class="phone-mockup">
               <picture>
                 <source srcset="/images/cal.webp" type="image/webp">
-                <img src="/images/cal.png" alt="Motivez calendar screen showing planned hangouts synced automatically with friends" width="1179" height="2556" loading="lazy">
+                <img src="/images/cal.webp" alt="Motivez calendar screen showing planned hangouts synced automatically with friends" width="1179" height="2556" loading="lazy" decoding="async">
               </picture>
             </div>
           </div>
@@ -1101,7 +1256,7 @@
           </div>
           <h3 class="text-xl font-bold text-white mb-3">Budget-Friendly Options</h3>
           <p class="text-gray-400 leading-relaxed">
-            See cost estimates upfront. Filter by your budget—whether you're balling on a shoestring or ready to splurge.
+            See cost estimates upfront. Filter by your budget, whether you're balling on a shoestring or ready to splurge.
           </p>
         </div>
         
@@ -1140,7 +1295,7 @@
           <div class="phone-mockup">
             <picture>
               <source srcset="/images/user.webp" type="image/webp">
-              <img src="/images/user.jpg" alt="Motivez profile screen showing saved places, created motives, and friends' activity stats" width="1179" height="2423" loading="lazy">
+              <img src="/images/user.webp" alt="Motivez profile screen showing saved places, created motives, and friends' activity stats" width="1179" height="2423" loading="lazy" decoding="async">
             </picture>
           </div>
         </div>
@@ -1188,12 +1343,12 @@
     <div class="container mx-auto max-w-5xl">
       <div class="grid md:grid-cols-3 gap-12 text-center reveal">
         <div>
-          <div class="stat-number">10K+</div>
-          <p class="text-gray-400 mt-2">Places Discovered</p>
+          <div class="stat-number">Toronto</div>
+          <p class="text-gray-400 mt-2">Launching locally first</p>
         </div>
         <div>
-          <div class="stat-number">50K+</div>
-          <p class="text-gray-400 mt-2">Hangouts Planned</p>
+          <div class="stat-number">Free</div>
+          <p class="text-gray-400 mt-2">During early access</p>
         </div>
         <div>
           <div class="stat-number">2.5K+</div>
@@ -1209,14 +1364,124 @@
       <div class="reveal text-center">
         <span class="text-pink-400 text-sm font-semibold uppercase tracking-widest mb-4 block">Why Motivez</span>
         <h2 class="headline-lg text-white mb-6">
-          Built by someone tired of <span class="serif-accent text-pink-400">"idk, what do you wanna do"</span>
+          Built by three friends tired of <span class="serif-accent text-pink-400">"idk, what do you wanna do?"</span>
         </h2>
         <p class="text-xl text-gray-400 leading-relaxed max-w-2xl mx-auto mb-6">
-          Motivez was founded in 2025 by <strong class="text-white">Ali Towaiji</strong>, a student in Toronto who got fed up with group chats that died in decision paralysis — everyone free, nobody picking a plan.
+          Motivez started in Toronto in 2025 with three friends who were tired of watching good plans disappear into group-chat indecision. We built one place to discover nearby activities, settle the choice with the Motivez Dice, and organize the hangout with friends.
         </p>
         <p class="text-xl text-gray-400 leading-relaxed max-w-2xl mx-auto">
-          Motivez is built for students and young adults in Toronto and the GTA who want to turn "let's hang out" into an actual plan — fast. Discover what's nearby, roll the Motivez Dice when no one can decide, and coordinate with friends in one place.
+          Motivez is built for students and young adults in Toronto and the GTA who want to turn "let's hang out" into an actual plan, fast. Discover what's nearby, roll the Motivez Dice when no one can decide, and coordinate with friends in one place.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="faq" class="section-journey py-24 bg-motivez-darker/50 faq-section">
+    <div class="container mx-auto max-w-4xl">
+      <div class="text-center mb-16 reveal">
+        <span class="text-pink-400 text-sm font-semibold uppercase tracking-widest mb-4 block">FAQ</span>
+        <h2 class="headline-lg text-white mb-6">
+          Questions? <span class="serif-accent text-pink-400">We've got answers</span>
+        </h2>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+          How Motivez works, what you can discover, where we're launching, and how it compares with other event and social apps.
+        </p>
+      </div>
+
+      <div class="space-y-4 reveal faq-list">
+        <details class="faq-item">
+          <summary>What is Motivez?</summary>
+          <p class="faq-answer">Motivez is a mobile app for discovering things to do and turning group-chat ideas into actual plans. It brings nearby places, events, saved ideas, friend invites, and planning tools into one place, so your group can spend less time debating and more time doing something together.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does Motivez help a group make plans?</summary>
+          <p class="faq-answer">Start by browsing nearby activities or saving places your group might like. Once you have an idea, you can invite friends, coordinate the details, and keep the plan connected to your calendar instead of spreading everything across search, maps, polls, and a long message thread. If nobody wants to make the final choice, the Motivez Dice can choose from your saved options.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does the Motivez Dice work?</summary>
+          <p class="faq-answer">The Motivez Dice is for the moment when everyone is interested but nobody will pick. Save a few places or activities, roll the Dice, and it selects one of those options at random. Your group keeps control of the shortlist while Motivez settles the final decision.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What kinds of things can I discover on Motivez?</summary>
+          <p class="faq-answer">Motivez is being built to surface nearby events, food spots, activities, casual hangouts, and local places worth trying. You will be able to narrow ideas by factors such as mood and budget, whether the plan is coffee after class, a free afternoon activity, dinner with friends, or a night out.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Who is Motivez for?</summary>
+          <p class="faq-answer">Motivez is designed first for university students and young adults, but you do not need to be a student to use it. It is for anyone who wants an easier way to find something nearby, make a decision with friends, and organize a casual plan without turning it into a project.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is Motivez free?</summary>
+          <p class="faq-answer">Joining the Motivez early-access waitlist is free, and the app is planned to be free during early access. If paid features are introduced later, pricing and what is included will be explained clearly before anyone is charged.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is Motivez available now, and where is it launching?</summary>
+          <p class="faq-answer">Motivez is currently accepting early-access signups and is coming soon to iOS and Android. The first launch is focused on Toronto and the Greater Toronto Area so the discovery experience can be useful and locally relevant from day one. Expansion to other Canadian cities is planned as the app grows.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How is Motivez different from Eventbrite?</summary>
+          <p class="faq-answer">Eventbrite is mainly built around finding, registering for, and buying tickets to scheduled events. Motivez is focused on the broader decision and planning process with friends, including places and casual activities that may not require a ticket. You might use Eventbrite when you already know you want an event; Motivez is for figuring out what the group should do and getting the plan organized.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How is Motivez different from Meetup?</summary>
+          <p class="faq-answer">Meetup is useful for discovering communities, public groups, and recurring gatherings around a shared interest. Motivez is designed more for making plans with people you already know, especially when the group needs ideas or cannot agree on one. The focus is quick local discovery, choosing an option, and coordinating the hangout.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is Motivez a dating or nightlife app?</summary>
+          <p class="faq-answer">No. Motivez is a social discovery and planning app, not a dating app, and it is not limited to nightlife. It is meant for everyday plans such as coffee, food, parks, museums, campus hangouts, events, and nights out with friends.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How should I use Motivez safely?</summary>
+          <p class="faq-answer">Motivez is designed around discovering public places and planning with friends, but every real-world outing still requires good judgment. Check venue details before leaving, meet in public when appropriate, tell someone where you are going, arrange a safe way home, and do not rely on an app listing as a guarantee that a place or event is suitable for you.</p>
+        </details>
+      </div>
+
+      <!-- COMPARISON SUBSECTION -->
+      <div class="mt-20 reveal">
+        <div class="text-center mb-10">
+          <span class="text-pink-400 text-sm font-semibold uppercase tracking-widest mb-4 block">At a Glance</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-white">
+            Motivez vs <span class="serif-accent text-pink-400">Eventbrite</span> vs Meetup
+          </h3>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>App</th>
+                <th>What it's for</th>
+                <th class="highlight">Best for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Eventbrite</th>
+                <td>Ticketing and event registration for organizers and attendees.</td>
+                <td class="highlight">Buying tickets to a specific scheduled event.</td>
+              </tr>
+              <tr>
+                <th scope="row">Meetup</th>
+                <td>Joining communities and recurring interest groups.</td>
+                <td class="highlight">Finding a recurring group around a shared interest.</td>
+              </tr>
+              <tr>
+                <th scope="row">Motivez</th>
+                <td>Quick social planning with your existing friends, plus spontaneous nearby discovery.</td>
+                <td class="highlight">Deciding what to do tonight with the people you already know.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
@@ -1282,7 +1547,9 @@
             <li><a href="#problem" class="text-gray-400 hover:text-pink-400 transition-colors">The Problem</a></li>
             <li><a href="#how-it-works" class="text-gray-400 hover:text-pink-400 transition-colors">How It Works</a></li>
             <li><a href="#features" class="text-gray-400 hover:text-pink-400 transition-colors">Features</a></li>
+            <li><a href="#faq" class="text-gray-400 hover:text-pink-400 transition-colors">FAQ</a></li>
             <li><a href="#waitlist" class="text-gray-400 hover:text-pink-400 transition-colors">Waitlist</a></li>
+            <li><a href="/about.html" target="_self" class="text-gray-400 hover:text-pink-400 transition-colors">About</a></li>
             <li><a href="/privacy" target="_self" class="text-gray-400 hover:text-pink-400 transition-colors">Privacy Policy</a></li>
             <li><a href="/terms" target="_self" class="text-gray-400 hover:text-pink-400 transition-colors">Terms and Conditions</a></li>
           </ul>
@@ -1296,6 +1563,7 @@
             <li><a href="/guides/how-university-students-plan-hangouts-gta.html" class="text-gray-400 hover:text-pink-400 transition-colors">How Students Plan Hangouts</a></li>
             <li><a href="/guides/budget-hangout-spots-near-toronto-campuses.html" class="text-gray-400 hover:text-pink-400 transition-colors">Budget Hangout Spots</a></li>
             <li><a href="/guides/spontaneous-things-to-do-toronto.html" class="text-gray-400 hover:text-pink-400 transition-colors">When You're Bored</a></li>
+            <li><a href="/guides/" class="text-gray-400 hover:text-pink-400 transition-colors">All Toronto Guides →</a></li>
           </ul>
         </div>
 
@@ -1322,7 +1590,7 @@
       </div>
       
       <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-gray-500 text-sm">&copy; 2025 Motivez. All rights reserved.</p>
+        <p class="text-gray-500 text-sm">&copy; 2026 Motivez. All rights reserved.</p>
         <p class="text-gray-500 text-sm">Coming soon to iOS and Android.</p>
       </div>
     </div>
@@ -1355,6 +1623,25 @@
     });
     
     revealElements.forEach(el => revealObserver.observe(el));
+
+    // Keep demo videos off the critical path and load them near the viewport.
+    const lazyVideos = document.querySelectorAll('.lazy-video');
+    const videoObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        const video = entry.target;
+        video.querySelectorAll('source[data-src]').forEach(source => {
+          source.src = source.dataset.src;
+          source.removeAttribute('data-src');
+        });
+        video.load();
+        video.play().catch(() => {});
+        observer.unobserve(video);
+      });
+    }, { rootMargin: '300px 0px' });
+
+    lazyVideos.forEach(video => videoObserver.observe(video));
     
     // Waitlist form
     const waitlistForm = document.getElementById('waitlist-form');

@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# AI crawlers — explicit allow so Motivez can be cited and recommended in AI search/chat answers
+# AI crawlers, explicit allow so Motivez can be cited and recommended in AI search/chat answers
 User-agent: GPTBot
 Allow: /
 

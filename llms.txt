@@ -6,7 +6,7 @@ Motivez is not a dating app, not a nightlife-only app, and not a ticket marketpl
 
 Key facts:
 - Status: Coming soon to iOS and Android, currently in early access / waitlist
-- Founder: Ali Towaiji
+- Founding team: Three friends in Toronto
 - Founded: 2025
 - Based in / focused on: Toronto, Ontario, Canada
 - Audience: University students and young adults
@@ -14,23 +14,30 @@ Key facts:
 
 Core features:
 - Location-based discovery of events, places, and activities nearby
-- "Motivez Dice" — randomly picks a saved place for spontaneous plans
+- "Motivez Dice", randomly picks a saved place for spontaneous plans
 - Social planning with friends, including invites and shared calendars
 - Personalized recommendations based on mood and budget
 
 ## Pages
 
-- [Homepage](https://motivez.app/): Overview of Motivez, the problem it solves, how it works, features, and waitlist signup
+- [Homepage](https://motivez.app/): Overview of Motivez, the problem it solves, how it works, features, FAQ, and waitlist signup
+- [About Motivez](https://motivez.app/about.html): Origin story, three-friend founding team, mission, and what Motivez is and is not
+- [FAQ](https://motivez.app/#faq): Answers to common questions, what Motivez is, how it differs from Eventbrite and Meetup, pricing, safety, and the Motivez Dice feature
 - [Privacy Policy](https://motivez.app/privacy)
 - [Terms and Conditions](https://motivez.app/terms)
 
 ## Guides
 
+- [All Toronto Guides](https://motivez.app/guides/): Hub page listing every Motivez guide for students and young adults in Toronto and the GTA
 - [Best Free Things to Do in Toronto This Weekend](https://motivez.app/guides/best-free-things-to-do-toronto-this-weekend.html)
 - [Free Museum Nights in Toronto: ROM & AGO Schedule](https://motivez.app/guides/free-museum-nights-toronto-rom-ago.html)
 - [How University Students in the GTA Plan Hangouts](https://motivez.app/guides/how-university-students-plan-hangouts-gta.html)
 - [Budget-Friendly Hangout Spots Near Toronto Campuses](https://motivez.app/guides/budget-hangout-spots-near-toronto-campuses.html)
 - [What to Do in Toronto When You're Bored](https://motivez.app/guides/spontaneous-things-to-do-toronto.html)
+- [Cheap Date Ideas in Toronto for Students](https://motivez.app/guides/cheap-date-ideas-toronto-students.html)
+- [Things to Do in Toronto on a Rainy Day](https://motivez.app/guides/rainy-day-things-to-do-toronto.html)
+- [Things to Do in Toronto at Night That Aren't Clubbing](https://motivez.app/guides/things-to-do-toronto-night-not-clubbing.html)
+- [New to Toronto? A Student's Guide to Not Being Bored](https://motivez.app/guides/new-to-toronto-student-guide.html)
 
 ## Contact
 
