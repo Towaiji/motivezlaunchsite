@@ -83,6 +83,14 @@ h1 {
   line-height: 1.6;
 }
 
+.direct-answer {
+  font-size: 1.05rem;
+  color: var(--text);
+  margin: 0.5rem 0 1rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
 h2 {
   margin: 2.5rem 0 1rem;
   line-height: 1.3;
