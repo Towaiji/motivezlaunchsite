@@ -150,6 +150,27 @@ a:hover { text-decoration: underline; }
   margin-top: 2.5rem;
 }
 
+.guide-faq {
+  margin: 2.5rem 0;
+}
+.guide-faq h2 { margin-bottom: 1rem; }
+.faq-item {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text);
+}
+.faq-item .faq-answer {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+}
+
 .footer {
   padding: 4rem 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
