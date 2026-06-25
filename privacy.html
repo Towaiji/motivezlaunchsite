@@ -377,7 +377,7 @@
         <p><strong>Attendance and ratings.</strong> We store your RSVP status for Motives, whether your attendance was approved or declined, and host ratings you give or receive.</p>
         <p><strong>Push notification tokens.</strong> If you grant notification permission, we store your Expo push token on our servers to deliver push notifications. This token is device-specific and is removed when you log out.</p>
         <p><strong>Notification history.</strong> Notifications sent to you (friend requests, messages, Motive updates, payment confirmations, etc.) are stored in our database, including their title, body, and associated metadata.</p>
-        <p><strong>Preferences and personalization.</strong> During onboarding, you select interest categories (e.g., food, sports, nightlife). These are stored and used to personalize your discovery feed. We also store in Redis a short-term cache (up to 7 days) of places you have liked or disliked in the swipe feed for ranking purposes.</p>
+        <p><strong>Preferences and personalization.</strong> During onboarding, you select interest categories (e.g., food, sports, nightlife). These are stored and used to personalize your discovery feed. We also store in Redis a short-term cache (up to 30 days) of places you have liked or disliked in the swipe feed, and your category affinity scores, for ranking and personalization purposes.</p>
         <p><strong>Payment data.</strong> If you purchase a ticket to a paid Motive, payment is processed by Stripe. We do not store your card number, CVV, or full bank account details. We store in our database: the Motive's ticket price, your attendance approval status after a confirmed payment, and your Stripe payment intent ID for reconciliation. If you are a host and connect a Stripe account to receive payouts, we store your Stripe Connect account ID and onboarding status.</p>
         <p><strong>Technical and usage data.</strong> We collect standard server logs including IP addresses, device type, operating system, app version, and API request timestamps. Our backend logs events such as logins, place searches, and payment actions for security and debugging purposes.</p>
         <p><strong>Trending search cache.</strong> Anonymized search queries are cached in Redis for up to 2 weeks to power trending features, then automatically deleted.</p>
@@ -405,11 +405,13 @@
         <p><strong>Stripe.</strong> If you purchase a ticket or connect a Stripe account as a host, payment data is processed by Stripe under Stripe's privacy policy and PCI DSS compliance. We send Stripe your user ID, the Motive ID, and the payment amount. Stripe independently collects your payment method details. Host Stripe Connect accounts involve Stripe collecting identity and banking information directly from the host during Stripe's onboarding.</p>
         <p><strong>Expo.</strong> We use Expo's push notification infrastructure. Your push token is sent to Expo's servers to deliver notifications to your device. Expo's privacy policy governs this data.</p>
         <p><strong>Railway.</strong> Our backend API is hosted on Railway's cloud infrastructure. API request data (including location coordinates in transit) passes through Railway's servers.</p>
-        <p><strong>Redis (RedisLabs).</strong> We use Redis to cache short-term data: liked/disliked places (up to 7 days), place details (up to 7 days), trending search terms (up to 2 weeks), and personalization data. This data is keyed by user ID, not linked to your name or email in Redis.</p>
+        <p><strong>Redis (RedisLabs).</strong> We use Redis to cache short-term data: liked/disliked places and personalization/affinity data (up to 30 days), place details (up to 3 days), and trending search terms (up to 2 weeks). This data is keyed by user ID, not linked to your name or email in Redis.</p>
         <p><strong>Other users.</strong> Depending on your Motive's privacy settings, other users may see your profile name, username, avatar, and attendance status. In public Motives, any authenticated user can see the attendee list. In friends-only or closed Motives, visibility is limited to invited or approved attendees.</p>
         <p><strong>Legal and safety disclosures.</strong> We may disclose information to law enforcement or other authorities if required by law, court order, or to protect the safety of users or the public.</p>
         <p><strong>Business transfers.</strong> If Motivez is acquired or merges with another company, personal information may be transferred as part of that transaction under appropriate confidentiality protections.</p>
-        <p>We do not share your data with advertisers, data brokers, or analytics platforms. We have no active third-party analytics or crash reporting SDKs in the app at this time.</p>
+        <p><strong>PostHog.</strong> We use PostHog for product analytics to understand how features are used (for example, places liked, swipes, motives created, messages sent). Events are associated with your user ID. PostHog's privacy policy governs this data.</p>
+        <p><strong>Sentry.</strong> We use Sentry for crash and error reporting to diagnose and fix bugs. Sentry may collect device information, app state, and your user ID when an error occurs. Sentry's privacy policy governs this data.</p>
+        <p>We do not share your data with advertisers or data brokers.</p>
 
         <h2 id="location-detail">5. Location Data: Additional Detail</h2>
         <p>Location is central to how Motivez works. Here is exactly how we handle it:</p>
@@ -441,7 +443,7 @@
           <li><strong>Messages and chat media:</strong> Retained indefinitely unless deleted by a user or admin, or upon account deletion.</li>
           <li><strong>Notification history:</strong> Retained indefinitely unless deleted upon account deletion.</li>
           <li><strong>Push tokens:</strong> Deleted from our servers when you log out.</li>
-          <li><strong>Redis cache (liked/disliked places, personalization):</strong> Up to 7 days, then automatically deleted.</li>
+          <li><strong>Redis cache (liked/disliked places, personalization):</strong> Up to 30 days, then automatically deleted.</li>
           <li><strong>Redis cache (trending searches):</strong> Up to 2 weeks, then automatically deleted.</li>
           <li><strong>Place photo cache:</strong> Up to 3 days in our cloud storage, then automatically deleted.</li>
           <li><strong>Server logs:</strong> Retained for a reasonable period for security and debugging, typically 30–90 days.</li>
